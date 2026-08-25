@@ -3,15 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>หน้าแนะนำตัวของฉัน - Wantanan</title>
+  <title>Localhost | ศิลปินชื่อ วรรธนันท์</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    /* Reset & Custom Properties */
+    /* =========================================
+       1. Global Styles & Reset
+       ========================================= */
     * {
       margin: 0;
       padding: 0;
@@ -19,143 +22,344 @@
       font-family: 'Kanit', sans-serif;
     }
 
-    /* Soft Pastel Animated Background (พื้นหลังสีอ่อนละมุน) */
     body {
       min-height: 100vh;
+      width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(-45deg, #ffd1e8, #fbcfe8, #e0e7ff, #bae6fd);
-      background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
-      padding: 20px;
+      background: #e8dbf2; /* Fallback color */
+      /* พื้นหลังไล่ระดับสีพาสเทล */
+      background: linear-gradient(135deg, #fce4ec 0%, #e8dbf2 50%, #d1e3f8 100%);
       overflow-x: hidden;
-    }
-
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    /* Glassmorphism Card Container */
-    .card-wrapper {
       position: relative;
-      max-width: 480px;
-      width: 100%;
-      border-radius: 28px;
-      padding: 2px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.3));
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-      animation: fadeInUp 1s ease-out;
     }
 
-    .card {
-      background: rgba(255, 255, 255, 0.55);
+    /* =========================================
+       2. Background Animations (Constellations/Orbs)
+       ========================================= */
+    body::before, body::after {
+      content: '';
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      filter: blur(80px);
+      z-index: 0;
+      animation: float 15s ease-in-out infinite alternate;
+    }
+
+    body::before {
+      top: 10%;
+      left: 10%;
+      background: rgba(251, 207, 232, 0.4);
+    }
+
+    body::after {
+      bottom: 10%;
+      right: 10%;
+      background: rgba(186, 230, 253, 0.4);
+      animation-delay: -7s;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) scale(1); }
+      100% { transform: translateY(-40px) scale(1.1); }
+    }
+
+    /* =========================================
+       3. Main Profile Card (Glassmorphism)
+       ========================================= */
+    .profile-card {
+      background: rgba(255, 255, 255, 0.45);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border-radius: 26px;
-      border: 1px solid rgba(255, 255, 255, 0.8);
-      padding: 45px 35px;
-      text-align: center;
-      color: #334155;
+      border-radius: 30px;
+      width: 90%;
+      max-width: 600px;
+      padding: 40px;
+      z-index: 10;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+      position: relative;
+      /* เอฟเฟกต์แสงเรืองแสงรอบขอบการ์ด */
+      border: 2px solid transparent;
+      background-clip: padding-box;
+      animation: cardFadeIn 1s ease-out;
     }
 
-    /* Typography */
+    /* ขอบเรืองแสงแบบไล่ระดับสี (Pulse) */
+    .profile-card::before {
+      content: '';
+      position: absolute;
+      top: -2px; left: -2px; right: -2px; bottom: -2px;
+      z-index: -1;
+      border-radius: 32px;
+      background: linear-gradient(135deg, #fbcfe8, #bae6fd, #fbcfe8);
+      background-size: 200% 200%;
+      animation: borderGlow 6s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes borderGlow {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+
+    @keyframes cardFadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* =========================================
+       4. Card Content Layout
+       ========================================= */
+    .card-content {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    /* ส่วนหัว: รูปโปรไฟล์และสติกเกอร์ */
+    .profile-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+    }
+
+    .image-sticker-group {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .image-wrapper {
+      position: relative;
+    }
+
+    .image-wrapper img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      /* ขอบรูปเรืองแสง */
+      border: 4px solid #fff;
+      box-shadow: 0 0 15px rgba(251, 207, 232, 0.8);
+    }
+
+    /* สติกเกอร์ */
+    .sticker {
+      font-size: 1.5rem;
+      position: absolute;
+      opacity: 0.9;
+    }
+    .sticker.paw { color: #fbcfe8; top: -10px; right: -10px; }
+    .sticker.star { color: #ffe082; top: -20px; left: 50%; transform: translateX(-50%); }
+    .sticker.code { color: #bae6fd; bottom: -10px; right: -10px; }
+    .sticker.camera { color: #a5acaf; bottom: -15px; left: 10px; }
+
+    /* กลุ่มไอคอนทางขวา */
+    .header-icons {
+      display: flex;
+      gap: 15px;
+      color: #7c4dff;
+      font-size: 1.2rem;
+    }
+
+    /* ส่วนข้อความ */
+    .profile-text-section {
+      text-align: left;
+    }
+
     h1 {
-      font-size: 1.7rem;
+      font-size: 1.6rem;
+      color: #1e1e2e;
+      margin-bottom: 15px;
       font-weight: 600;
-      color: #1e293b;
-      margin-bottom: 20px;
-      letter-spacing: -0.3px;
     }
 
     p {
-      font-size: 1.05rem;
+      font-size: 1rem;
+      color: #4c4f69;
       line-height: 1.7;
-      color: #475569;
-      margin-bottom: 14px;
-      font-weight: 300;
+      margin-bottom: 10px;
     }
 
     p strong {
       font-weight: 600;
-      color: #0f172a;
+      color: #1e1e2e;
     }
 
-    /* Tag Badge Style */
+    /* Tags (Computer Science / Camera) */
+    .tag-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 5px;
+    }
+
     .tag {
-      display: inline-block;
-      background: rgba(255, 255, 255, 0.8);
-      padding: 6px 16px;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      font-weight: 400;
-      color: #3b82f6;
-      margin-top: 6px;
-      border: 1px solid rgba(226, 232, 240, 0.8);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
-    }
-
-    /* Interactive Portfolio Button */
-    .btn {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 25px;
-      padding: 12px 36px;
-      background: linear-gradient(135deg, #ffffff, #f8fafc);
-      color: #3b82f6;
-      text-decoration: none;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      color: #2563eb;
+      border: 1px solid rgba(186, 230, 253, 0.5);
+    }
+
+    .tag i {
       font-size: 1rem;
-      font-weight: 600;
-      border-radius: 50px;
-      border: 1px solid rgba(203, 213, 225, 0.6);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    /* ส่วน "เกี่ยวกับฉัน" */
+    .about-section {
+      background: rgba(255, 255, 255, 0.3);
+      padding: 20px;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .about-section h2 {
+      font-size: 1.2rem;
+      color: #1e1e2e;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* ส่วน "แฟ้มสะสมผลงาน" */
+    .portfolio-section {
+      margin-top: 10px;
+    }
+
+    .portfolio-section h2 {
+      font-size: 1.2rem;
+      color: #1e1e2e;
+      margin-bottom: 15px;
+    }
+
+    /* ตารางผลงาน (Slider Preview) */
+    .portfolio-grid {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 0;
+    }
+
+    .portfolio-item {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(5px);
+      width: 30%;
+      height: 100px;
+      border-radius: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      color: #4c4f69;
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.8);
       transition: all 0.3s ease;
+      cursor: pointer;
     }
 
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.2);
-      background: #3b82f6;
-      color: #ffffff;
-      border-color: #3b82f6;
+    .portfolio-item:hover {
+      background: #bae6fd;
+      color: #fff;
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(37, 99, 235, 0.2);
     }
 
-    .btn:active {
-      transform: translateY(-1px);
+    .portfolio-item i {
+      font-size: 2rem;
     }
 
-    /* Keyframe Animations */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(25px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .portfolio-item span {
+      font-size: 0.8rem;
+      font-weight: 400;
     }
+
+    /* ลูกศร Slider */
+    .slider-arrow {
+      color: #7c4dff;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
   </style>
 </head>
 <body>
 
-  <div class="card-wrapper">
-    <div class="card">
-      <h1>ยินดีต้อนรับสู่โปรไฟล์ของฉัน ✨</h1>
+  <div class="profile-card">
+    <div class="card-content">
       
-      <p>สวัสดีค่ะ! ดิฉันชื่อ <strong>วรรธนันท์ (Wantanan)</strong></p>
-      
-      <p>ขณะนี้กำลังศึกษา/สนใจด้าน<br>
-        <span class="tag"><i class="fa-solid fa-code"></i> Computer Science & Engineering</span>
-      </p>
-      
-      <a href="portfolio.html" class="btn">
-        <i class="fa-solid fa-folder-open"></i> แฟ้มสะสมผลงาน
-      </a>
+      <div class="profile-header">
+        <div class="image-sticker-group">
+          <div class="image-wrapper">
+            <img src="https://via.placeholder.com/120" alt="รูปโปรไฟล์ วรรธนันท์">
+            
+            <span class="sticker paw"><i class="fa-solid fa-paw"></i></span>
+            <span class="sticker star"><i class="fa-solid fa-star"></i></span>
+            <span class="sticker code"><i class="fa-solid fa-code"></i></span>
+            <span class="sticker camera"><i class="fa-solid fa-camera"></i></span>
+          </div>
+        </div>
+        
+        <div class="header-icons">
+          <i class="fa-solid fa-share-nodes"></i>
+          <i class="fa-solid fa-ellipsis"></i>
+        </div>
+      </div>
+
+      <div class="profile-text-section">
+        <h1>สวัสดีค่ะ! ดิฉันชื่อ <strong>วรรธนันท์ (Wantanan)</strong></h1>
+        
+        <p>ขณะนี้กำลังศึกษา/สนใจด้าน:</p>
+        <div class="tag-container">
+          <span class="tag">
+            <i class="fa-solid fa-code"></i> Computer Science & Engineering
+          </span>
+          <span class="tag">
+            <i class="fa-solid fa-camera"></i> Photography & Digital Art
+          </span>
+        </div>
+      </div>
+
+      <div class="about-section">
+        <h2><i class="fa-solid fa-user-heart"></i> เกี่ยวกับฉัน</h2>
+        <p>หลงใหลในการแก้ปัญหาผ่านโค้ดและจับภาพช่วงเวลาดีๆ ผ่านเลนส์... หากลบทำท่านจับท่าฝันทนหลากหลายกลิ่นเก็น...</p>
+      </div>
+
+      <div class="portfolio-section">
+        <h2><i class="fa-solid fa-box-archive"></i> แฟ้มสะสมผลงาน</h2>
+        
+        <div class="portfolio-grid">
+          <span class="slider-arrow"><i class="fa-solid fa-chevron-left"></i></span>
+          
+          <a href="#" class="portfolio-item">
+            <i class="fa-solid fa-folder-open"></i>
+            <span>Coding project</span>
+          </a>
+          <a href="#" class="portfolio-item">
+            <i class="fa-solid fa-image"></i>
+            <span>Photo album</span>
+          </a>
+          <a href="#" class="portfolio-item">
+            <i class="fa-solid fa-palette"></i>
+            <span>UI sketch</span>
+          </a>
+
+          <span class="slider-arrow"><i class="fa-solid fa-chevron-right"></i></span>
+        </div>
+      </div>
+
     </div>
   </div>
 
