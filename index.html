@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>หน้าแนะนำตัวสุดน่ารักของวรรธนันท์ 🍭</title>
-<link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;600&family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
+<title>หน้าแนะนำตัวของวรรธนันท์ 🍭</title>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --pink: #ffc6ff;
@@ -31,6 +31,8 @@
     justify-content: center;
     align-items: center;
     padding: 20px;
+    overflow: hidden; /* ป้องกันแถบสเกรลล์ตตอนขนมตกลงมา */
+    position: relative;
   }
 
   @keyframes gradientBG {
@@ -39,10 +41,53 @@
     100% { background-position: 0% 50%; }
   }
 
+  /* ------------------- เอฟเฟกต์วิ้งๆ และขนมตกลงมา ------------------- */
+  .falling-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .falling-item {
+    position: absolute;
+    top: -50px;
+    font-size: 24px;
+    animation: fall linear infinite;
+    user-select: none;
+  }
+
+  @keyframes fall {
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(105vh) rotate(360deg);
+      opacity: 0.2;
+    }
+  }
+
+  /* กำหนดตำแหน่ง ความเร็ว และดีเลย์ของของตกลงมา */
+  .falling-item:nth-child(1)  { left: 5%;  animation-duration: 6s;  animation-delay: 0s;   font-size: 22px; }
+  .falling-item:nth-child(2)  { left: 15%; animation-duration: 8s;  animation-delay: 2s;   font-size: 28px; }
+  .falling-item:nth-child(3)  { left: 25%; animation-duration: 7s;  animation-delay: 4s;   font-size: 20px; }
+  .falling-item:nth-child(4)  { left: 38%; animation-duration: 9s;  animation-delay: 1s;   font-size: 25px; }
+  .falling-item:nth-child(5)  { left: 50%; animation-duration: 6.5s; animation-delay: 3s;   font-size: 22px; }
+  .falling-item:nth-child(6)  { left: 62%; animation-duration: 8.5s; animation-delay: 0.5s; font-size: 30px; }
+  .falling-item:nth-child(7)  { left: 75%; animation-duration: 7.5s; animation-delay: 2.5s; font-size: 20px; }
+  .falling-item:nth-child(8)  { left: 85%; animation-duration: 9.5s; animation-delay: 1.5s; font-size: 26px; }
+  .falling-item:nth-child(9)  { left: 93%; animation-duration: 6.8s; animation-delay: 3.5s; font-size: 24px; }
+
+  /* ------------------- การ์ดโปรไฟล์ ------------------- */
   .card {
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.88);
     backdrop-filter: blur(10px);
-    border: 4px solid #ffffff;
+    /* เปลี่ยนขอบเป็นเส้นประสีม่วงพาสเทล */
+    border: 4px dashed #bdb2ff;
     border-radius: 35px;
     box-shadow: 0 15px 35px rgba(189, 178, 255, 0.4);
     max-width: 480px;
@@ -50,6 +95,7 @@
     padding: 40px 30px;
     text-align: center;
     position: relative;
+    z-index: 2;
     animation: float 4s ease-in-out infinite;
   }
 
@@ -58,6 +104,7 @@
     50% { transform: translateY(-10px); }
   }
 
+  /* กิมมิค: อวตารดุ๊กดิ๊กเมื่อเอาเมาส์ชี้ */
   .avatar {
     font-size: 65px;
     background: var(--yellow);
@@ -67,7 +114,18 @@
     border-radius: 50%;
     margin: 0 auto 15px auto;
     box-shadow: 0 8px 15px rgba(0,0,0,0.08);
-    border: 3px solid #fff;
+    border: 3px dashed #ffc6ff;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .avatar:hover {
+    animation: wiggle 0.5s ease-in-out infinite alternate;
+  }
+
+  @keyframes wiggle {
+    0% { transform: rotate(-10deg) scale(1.1); }
+    100% { transform: rotate(10deg) scale(1.1); }
   }
 
   h1 {
@@ -80,7 +138,7 @@
   p {
     font-size: 16px;
     line-height: 1.7;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
   }
 
   .highlight {
@@ -90,23 +148,7 @@
     font-weight: 600;
   }
 
-  .badge-container {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin: 20px 0;
-  }
-
-  .badge {
-    background: #ffffff;
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 13px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    border: 1px solid var(--purple);
-  }
-
+  /* ปุ่มกดสไตล์วิ้งๆ */
   .btn {
     display: inline-block;
     background: linear-gradient(45deg, #ffb3c6, #bdb2ff);
@@ -118,8 +160,8 @@
     border-radius: 25px;
     box-shadow: 0 8px 20px rgba(255, 179, 198, 0.5);
     transition: all 0.3s ease;
-    margin-top: 10px;
-    border: 2px solid #ffffff;
+    margin-top: 15px;
+    border: 2px dashed #ffffff;
   }
 
   .btn:hover {
@@ -130,47 +172,50 @@
 
   .social-links {
     margin-top: 25px;
-    font-size: 20px;
+    font-size: 22px;
   }
 
   .social-links a {
     color: var(--text-color);
     text-decoration: none;
-    margin: 0 8px;
+    margin: 0 10px;
     transition: transform 0.2s;
     display: inline-block;
   }
 
   .social-links a:hover {
-    transform: scale(1.3);
+    transform: scale(1.4) rotate(10deg);
   }
 </style>
 </head>
 <body>
 
-<div class="card">
-  <div class="avatar">🧁</div>
-  <h1>ยินดีต้อนรับสู่พาร์คหวานๆ ของฉัน ✨</h1>
-  
-  <p>สวัสดีงับ! ดิฉันชื่อ <span class="highlight">วรรธนันท์ (Wantanan)</span> 🎀</p>
-  <p>กำลังหลงรักโลกของ <br><strong>Computer Science & Engineering 💻✨</strong></p>
-  
-  <div class="badge-container">
-    <span class="badge">🍰 Web Dev</span>
-    <span class="badge">คุ้กกี้ 🍪</span>
-    <span class="badge">GitHub Pages 🚀</span>
-  </div>
+<!-- เอฟเฟกต์ขนมและแสงวิ้งๆ ตกลงมา -->
+<div class="falling-container">
+  <div class="falling-item">✨</div>
+  <div class="falling-item">🍰</div>
+  <div class="falling-item">💖</div>
+  <div class="falling-item">🍬</div>
+  <div class="falling-item">⭐</div>
+  <div class="falling-item">🍩</div>
+  <div class="falling-item">🍭</div>
+  <div class="falling-item">✨</div>
+  <div class="falling-item">🍓</div>
+</div>
 
-  <p style="font-size: 14px; color: #7a68a6;">
-    เว็บไซต์แรกสุดน่ารักที่โฮสต์บน GitHub Pages! 🍓
-  </p>
+<div class="card">
+  <div class="avatar" title="ลองแตะสิ!">🧁</div>
+  <h1>ยินดีต้อนรับสู่โปรไฟล์ของฉัน ✨</h1>
+  
+  <p>สวัสดีค่ะ! ดิฉันชื่อ <span class="highlight">วรรธนันท์ (Wantanan)</span> 🎀</p>
+  <p>ขณะนี้กำลังสนใจด้าน <br><strong>Computer Science & Engineering 💻✨</strong></p>
   
   <a href="portfolio.html" class="btn">🎀 แฟ้มสะสมผลงาน 🍩</a>
 
   <div class="social-links">
     <a href="#" title="GitHub">🐱</a>
     <a href="#" title="Instagram">📷</a>
-    <a href="#" title="Contact">เนยสด 🧈</a>
+    <a href="#" title="Sweet">🧈</a>
   </div>
 </div>
 
