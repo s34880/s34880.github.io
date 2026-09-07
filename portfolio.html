@@ -3,228 +3,310 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>แฟ้มสะสมผลงาน (Portfolio) - Princess Usahana Quest Log</title>
+<title>แฟ้มสะสมผลงาน (Portfolio) - Princess Usahana Theme</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Great+Vibes&family=Mali:ital,wght@0,300;0,500;0,700;1,400&display=swap');
+/* นำเข้าฟอนต์ Ruthie, Aguafina Script และ Mali จาก Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Aguafina+Script&family=Mali:ital,wght@0,300;0,500;0,700;1,400&family=Ruthie&display=swap');
 
-:root{
-    --pink-deep:#FF2A6D;
-    --pink-soft:#FF80AB;
-    --peach:#FF8A65;
-    --yellow:#FFD54F;
-    --yellow-soft:#FFE082;
-    --mint:#A7FFEB;
-    --sky:#80DEEA;
-    --green:#AED581;
-    --green-soft:#C5E1A5;
-    --lilac:#E1BEE7;
-    --ink:#424242;
-    --card-bg:#FFFFFF;
+* {
+    box-sizing: border-box;
 }
 
-*{ box-sizing:border-box; }
-
-body{
-    font-family:'Mali', cursive, sans-serif;
-    margin:0;
-    padding:20px 10px 40px;
-    background:linear-gradient(135deg,#FFF9C4 0%,#FFD1DC 35%,#E1BEE7 70%,#B3E5FC 100%);
-    background-attachment:fixed;
-    position:relative;
-    overflow-x:hidden;
-    min-height:100vh;
+body {
+    font-family: 'Mali', cursive, sans-serif;
+    margin: 0;
+    padding: 20px 10px;
+    background: linear-gradient(135deg, #FFF9C4 0%, #FFD1DC 35%, #E1BEE7 70%, #B3E5FC 100%);
+    background-attachment: fixed;
+    position: relative;
+    overflow-x: hidden;
+    min-height: 100vh;
 }
 
-.petal{
-    position:fixed; top:-10%; font-size:26px; user-select:none; z-index:1000;
-    pointer-events:none; animation:fall linear infinite;
-    filter:drop-shadow(0 2px 4px rgba(0,0,0,.1));
-}
-@keyframes fall{
-    0%{ transform:translateY(0) rotate(0deg); opacity:1; }
-    100%{ transform:translateY(105vh) rotate(360deg); opacity:0; }
-}
-.petal:nth-child(1){ left:5%; animation-duration:7s; animation-delay:0s; }
-.petal:nth-child(2){ left:18%; animation-duration:10s; animation-delay:2s; }
-.petal:nth-child(3){ left:32%; animation-duration:6s; animation-delay:4s; }
-.petal:nth-child(4){ left:48%; animation-duration:8s; animation-delay:1s; }
-.petal:nth-child(5){ left:62%; animation-duration:9s; animation-delay:3s; }
-.petal:nth-child(6){ left:75%; animation-duration:7s; animation-delay:5s; }
-.petal:nth-child(7){ left:88%; animation-duration:11s; animation-delay:1.5s; }
-
-.container{ max-width:900px; margin:auto; position:relative; z-index:1; }
-
-/* ===== HUD-style header : looks like a game character-select screen ===== */
-.hud{
-    background:var(--card-bg);
-    border-radius:28px;
-    border:4px solid var(--pink-soft);
-    box-shadow:7px 7px 0 var(--sky), 13px 13px 0 rgba(255,213,79,.5);
-    padding:22px 20px 16px;
-    text-align:center;
-    position:relative;
-    margin-bottom:18px;
-}
-.hud::before, .hud::after{
-    content:'✦';
-    position:absolute; top:10px; font-size:18px; color:var(--yellow);
-}
-.hud::before{ left:16px; }
-.hud::after{ right:16px; }
-
-.id-tag{
-    display:inline-flex; align-items:center; gap:6px;
-    background:#FFF3E0; border:2px dashed var(--peach); color:#D84315;
-    font-size:13px; letter-spacing:.5px; padding:3px 12px; border-radius:14px;
-    margin-bottom:12px;
-}
-.id-tag .dot{ width:7px; height:7px; border-radius:50%; background:#66BB6A; box-shadow:0 0 6px #66BB6A; display:inline-block; animation:blink 1.6s infinite; }
-@keyframes blink{ 50%{ opacity:.35; } }
-
-.avatar-ring{
-    width:132px; height:132px; border-radius:50%;
-    background:conic-gradient(from 0deg, var(--pink-soft), var(--yellow), var(--sky), var(--lilac), var(--pink-soft));
-    display:flex; align-items:center; justify-content:center;
-    margin:0 auto 12px; padding:6px;
-    animation:spin 9s linear infinite;
-}
-@keyframes spin{ to{ transform:rotate(360deg); } }
-.avatar-card{
-    width:120px; height:120px; border-radius:50%; background:#fff;
-    display:flex; align-items:center; justify-content:center;
-    border:4px solid #fff; overflow:hidden; animation:spin 9s linear infinite reverse;
-}
-.avatar-card img{ width:100%; height:100%; object-fit:cover; border-radius:50%; }
-
-.level-badge{
-    position:relative; top:-14px;
-    display:inline-block; background:var(--pink-deep); color:#fff;
-    font-family:'Mali',cursive; font-weight:700; font-size:14px;
-    padding:4px 14px; border-radius:12px; border:2px solid #fff;
-    box-shadow:0 3px 0 #C2185B;
+/* เอฟเฟกต์ดอกไม้ร่วงหล่น */
+.petal {
+    position: fixed;
+    top: -10%;
+    font-size: 26px;
+    user-select: none;
+    z-index: 1000;
+    pointer-events: none;
+    animation: fall linear infinite;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
 }
 
-.main-title{
-    font-family:'Great Vibes', cursive; font-size:52px; margin:0;
-    color:var(--pink-deep);
-    text-shadow:3px 3px 0 var(--yellow-soft), 0 0 15px rgba(255,64,129,.4);
-    letter-spacing:1px;
-    animation:glow 2s ease-in-out infinite alternate;
-}
-@keyframes glow{
-    from{ text-shadow:2px 2px 0 var(--yellow-soft), 0 0 10px rgba(255,128,171,.5); }
-    to{ text-shadow:3px 3px 0 var(--yellow-soft), 0 0 20px rgba(255,64,129,.8), 0 0 30px var(--pink-soft); }
-}
-.sub-title{
-    font-family:'Alex Brush', cursive; font-size:28px; color:#D81B60;
-    margin:-6px 0 4px; font-weight:bold;
-}
-.real-name{ margin:2px 0 14px; color:#555; font-size:16px; }
-
-.class-chip{
-    display:inline-block; background:linear-gradient(45deg,var(--green-soft),var(--mint));
-    border:2px solid var(--green); color:#2E7D32; font-weight:700; font-size:13px;
-    padding:5px 14px; border-radius:16px; margin:0 4px 4px;
-}
-.class-chip.alt{ background:linear-gradient(45deg,#FFE0B2,var(--yellow-soft)); border-color:var(--yellow); color:#E65100; }
-
-/* ===== quest-menu tab bar ===== */
-.nav-tabs{
-    display:flex; justify-content:flex-start; overflow-x:auto; gap:8px;
-    padding:4px 4px 15px; margin-bottom:6px;
-    scrollbar-width:thin; scrollbar-color:#FF8A80 #fff;
-}
-.nav-tabs::-webkit-scrollbar{ height:6px; }
-.nav-tabs::-webkit-scrollbar-thumb{ background-color:#FF8A80; border-radius:10px; }
-
-.nav-btn{
-    background:#FFFFFF; color:#FF5252; padding:8px 16px; border-radius:20px;
-    font-size:16px; font-weight:600; font-family:'Mali',cursive;
-    border:2px solid #FF8A80; box-shadow:3px 3px 0 var(--yellow);
-    cursor:pointer; white-space:nowrap; transition:all .2s ease;
-}
-.nav-btn.active, .nav-btn:hover{
-    background:linear-gradient(45deg,#FF8A80,var(--pink-soft)); color:#fff;
-    box-shadow:3px 3px 0 var(--sky); transform:translateY(-2px);
+@keyframes fall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
 }
 
-/* ===== slider ===== */
-.slider-wrapper{ overflow:hidden; width:100%; border-radius:30px; }
-.slides-container{ display:flex; transition:transform .4s cubic-bezier(.25,1,.5,1); width:100%; }
-.slide{ min-width:100%; box-sizing:border-box; }
+.petal:nth-child(1) { left: 5%; animation-duration: 7s; animation-delay: 0s; }
+.petal:nth-child(2) { left: 18%; animation-duration: 10s; animation-delay: 2s; }
+.petal:nth-child(3) { left: 32%; animation-duration: 6s; animation-delay: 4s; }
+.petal:nth-child(4) { left: 48%; animation-duration: 8s; animation-delay: 1s; }
+.petal:nth-child(5) { left: 62%; animation-duration: 9s; animation-delay: 3s; }
+.petal:nth-child(6) { left: 75%; animation-duration: 7s; animation-delay: 5s; }
+.petal:nth-child(7) { left: 88%; animation-duration: 11s; animation-delay: 1.5s; }
 
-.box{
-    background:var(--card-bg); padding:26px 24px 22px; border-radius:30px;
-    position:relative; border:5px dashed var(--peach); outline:5px solid #fff;
-    box-shadow:8px 8px 0 var(--green), 14px 14px 0 rgba(255,128,171,.4);
-    min-height:380px;
-}
-.section-tag{
-    position:absolute; top:-16px; left:24px; background:var(--pink-deep); color:#fff;
-    font-size:12px; letter-spacing:1px; padding:4px 12px; border-radius:10px;
-    box-shadow:0 3px 0 #C2185B;
-}
-.box::after{ content:'✨'; position:absolute; bottom:-15px; right:20px; font-size:22px; }
-
-h2{
-    color:#FF5722; font-size:24px; font-family:'Mali',cursive;
-    border-bottom:3px dotted var(--sky); padding-bottom:8px; margin:14px 0 10px;
-    display:inline-block;
-}
-.fancy-text{ font-family:'Alex Brush', cursive; font-size:30px; color:#E91E63; display:inline-block; padding:0 5px; }
-
-p, ul{ font-size:18px; color:var(--ink); line-height:1.65; font-family:'Mali',cursive; }
-ul{ list-style-type:none; padding-left:5px; }
-ul li{ margin-bottom:10px; }
-
-.info-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; margin-top:14px; }
-.info-item{
-    background:#F1F8E9; padding:10px 15px; border-radius:15px;
-    border:2px solid var(--green-soft); position:relative; padding-left:34px;
-}
-.info-item::before{ content:'🎀'; position:absolute; left:10px; top:9px; font-size:14px; }
-
-.edu-list li{ position:relative; padding:12px 14px 12px 16px; background:#FFF8E1; border-left:4px solid var(--yellow); border-radius:0 14px 14px 0; }
-
-.skill-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; margin-top:14px; }
-.skill-card{
-    background:linear-gradient(135deg,#FFF,#FFF3F6); border:2px solid var(--pink-soft);
-    border-radius:16px; padding:14px; text-align:center; box-shadow:3px 3px 0 var(--yellow-soft);
-}
-.skill-card .icon{ font-size:26px; display:block; margin-bottom:6px; }
-
-.motto-card{
-    text-align:center; background:linear-gradient(135deg,#FFF3E0,#FCE4EC);
-    border:2px dashed var(--pink-deep); border-radius:20px; padding:20px; margin-top:10px;
-}
-.motto-card i{ font-size:22px; color:var(--pink-deep); }
-
-/* ===== footer game-style nav ===== */
-.controls{ display:flex; align-items:center; justify-content:space-between; margin-top:18px; gap:10px; }
-.btn{
-    background:linear-gradient(45deg,#FF4081,var(--pink-soft)); color:#fff; padding:10px 22px;
-    text-decoration:none; border-radius:30px; font-size:18px; font-weight:bold;
-    font-family:'Mali',cursive; box-shadow:0 4px 10px rgba(255,64,129,.3);
-    transition:all .3s ease; border:2px solid #fff; cursor:pointer;
-}
-.btn:hover{ background:linear-gradient(45deg,#FF1744,#FF5252); transform:scale(1.05); }
-.btn:disabled{ background:#CCC; box-shadow:none; cursor:not-allowed; transform:none; }
-
-.page-counter{
-    font-family:'Mali',cursive; font-weight:700; color:#fff; background:var(--pink-deep);
-    padding:8px 16px; border-radius:16px; border:2px solid #fff; box-shadow:0 3px 0 #C2185B;
-    font-size:15px; white-space:nowrap;
+.container {
+    max-width: 900px;
+    margin: auto;
+    position: relative;
+    z-index: 1;
 }
 
-.footer{
-    text-align:center; font-size:20px; color:#616161; margin-top:22px;
-    background:rgba(255,255,255,.75); padding:12px; border-radius:20px;
-    backdrop-filter:blur(5px); font-family:'Alex Brush', cursive;
+/* รูปโปรไฟล์และหัวข้อส่วนบน */
+.header-wrapper {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-card {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid #FF80AB;
+    box-shadow: 6px 6px 0px #80DEEA, -5px -5px 0px #FFE082;
+    margin: 0 auto 15px auto;
+    transition: transform 0.3s ease;
+}
+
+.profile-card:hover {
+    transform: rotate(5deg) scale(1.05);
+}
+
+.profile-card img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid #A7FFEB;
+    object-fit: cover;
+}
+
+/* ใช้ฟอนต์ Ruthie ม้วนลูปสวยงามสไตล์งานปัก/งานเขียนโบราณ */
+.main-title {
+    font-family: 'Ruthie', cursive;
+    font-size: 72px;
+    margin: 0;
+    color: #E91E63;
+    text-shadow: 3px 3px 0px #FFE082, 0 0 15px rgba(255, 64, 129, 0.4);
+    letter-spacing: 1px;
+    line-height: 1;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 2px 2px 0px #FFE082, 0 0 10px rgba(255, 128, 171, 0.5);
+    }
+    to {
+        text-shadow: 3px 3px 0px #FFE082, 0 0 20px rgba(255, 64, 129, 0.8), 0 0 30px #FF80AB;
+    }
+}
+
+.sub-title {
+    font-family: 'Ruthie', cursive;
+    font-size: 42px;
+    color: #C2185B;
+    margin: -5px 0 5px 0;
+    font-weight: bold;
+}
+
+/* แถบเมนูนำทาง (Navigation Bar) */
+.nav-tabs {
+    display: flex;
+    justify-content: flex-start;
+    overflow-x: auto;
+    gap: 8px;
+    padding: 10px 5px 15px 5px;
+    margin-bottom: 15px;
+    scrollbar-width: thin;
+    scrollbar-color: #FF8A80 #FFF;
+}
+
+.nav-tabs::-webkit-scrollbar {
+    height: 6px;
+}
+.nav-tabs::-webkit-scrollbar-thumb {
+    background-color: #FF8A80;
+    border-radius: 10px;
+}
+
+.nav-btn {
+    background: #FFFFFF;
+    color: #FF5252;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Mali', cursive;
+    border: 2px solid #FF8A80;
+    box-shadow: 3px 3px 0px #FFD54F;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+
+.nav-btn.active, .nav-btn:hover {
+    background: #FF8A80;
+    color: #FFFFFF;
+    box-shadow: 3px 3px 0px #81D4FA;
+    transform: translateY(-2px);
+}
+
+/* Slider Container สลับหน้าซ้าย-ขวา */
+.slider-wrapper {
+    overflow: hidden;
+    width: 100%;
+    border-radius: 30px;
+}
+
+.slides-container {
+    display: flex;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    width: 100%;
+}
+
+.slide {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+/* กรอบเนื้อหา */
+.box {
+    background: #FFFFFF;
+    padding: 25px;
+    border-radius: 30px;
+    position: relative;
+    border: 5px dashed #FF8A65;
+    outline: 5px solid #FFFFFF;
+    box-shadow: 8px 8px 0px #AED581, 14px 14px 0px rgba(255, 128, 171, 0.4);
+    min-height: 380px;
+}
+
+.box::before {
+    content: '🌸';
+    position: absolute;
+    top: -18px;
+    left: 20px;
+    font-size: 24px;
+    background: #FFF;
+    padding: 0 5px;
+    border-radius: 50%;
+}
+
+.box::after {
+    content: '✨';
+    position: absolute;
+    bottom: -15px;
+    right: 20px;
+    font-size: 22px;
+}
+
+h2 {
+    color: #FF5722;
+    font-size: 26px;
+    font-family: 'Mali', cursive;
+    border-bottom: 3px dotted #80DEEA;
+    padding-bottom: 8px;
+    margin-top: 0;
+    display: inline-block;
+}
+
+/* ตกแต่งคำภาษาอังกฤษด้วย Ruthie */
+.fancy-text {
+    font-family: 'Ruthie', cursive;
+    font-size: 40px;
+    color: #E91E63;
+    display: inline-block;
+    padding: 0 5px;
+    vertical-align: middle;
+}
+
+p, ul {
+    font-size: 19px;
+    color: #424242;
+    line-height: 1.6;
+    font-family: 'Mali', cursive;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 5px;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.info-item {
+    background: #F1F8E9;
+    padding: 10px 15px;
+    border-radius: 15px;
+    border: 2px solid #C5E1A5;
+}
+
+/* ปุ่มควบคุมล่าง */
+.controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.btn {
+    background: linear-gradient(45deg, #FF4081, #FF80AB);
+    color: white;
+    padding: 10px 25px;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Mali', cursive;
+    box-shadow: 0 4px 10px rgba(255, 64, 129, 0.3);
+    transition: all 0.3s ease;
+    border: 2px solid #FFFFFF;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: linear-gradient(45deg, #FF1744, #FF5252);
+    transform: scale(1.05);
+}
+
+.btn:disabled {
+    background: #CCC;
+    box-shadow: none;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.footer {
+    text-align: center;
+    font-size: 32px;
+    color: #424242;
+    margin-top: 25px;
+    background: rgba(255, 255, 255, 0.75);
+    padding: 12px;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    font-family: 'Ruthie', cursive;
 }
 </style>
 </head>
 <body>
 
+<!-- ดอกไม้ร่วงหล่น -->
 <div class="petal">🌸</div>
 <div class="petal">✨</div>
 <div class="petal">🌼</div>
@@ -235,21 +317,17 @@ ul li{ margin-bottom:10px; }
 
 <div class="container">
 
-    <div class="hud">
-        <div class="id-tag"><span class="dot"></span> REC. NO. 2569-006 · STATUS: ACTIVE</div>
-        <div class="avatar-ring">
-            <div class="avatar-card">
-                <img src="IMG_4109.png" alt="รูปโปรไฟล์">
-            </div>
+    <!-- ส่วนหัว -->
+    <div class="header-wrapper">
+        <div class="profile-card">
+            <img src="IMG_4109.png" alt="รูปโปรไฟล์">
         </div>
-        <div class="level-badge">LV. ม.6</div>
         <h1 class="main-title">Portfolio</h1>
         <div class="sub-title">Princess Usahana</div>
-        <p class="real-name">วรรธนันท์ อุดมเดบภาคินทร์ (ปริ้นเซส)</p>
-        <span class="class-chip">🎓 มัธยมศึกษาปีที่ 6</span>
-        <span class="class-chip alt">✨ แผนการเรียน Gifted</span>
+        <p style="margin: 5px 0; color: #555; font-size: 18px;">วรรธนันท์ อุดมเดชภาคินทร์ (Princess)</p>
     </div>
 
+    <!-- แถบเมนูนำทาง (Tabs Navigation) -->
     <nav class="nav-tabs">
         <button class="nav-btn active" onclick="goToSlide(0)">👩‍🎓 ประวัติส่วนตัว</button>
         <button class="nav-btn" onclick="goToSlide(1)">📚 ประวัติการศึกษา</button>
@@ -260,12 +338,13 @@ ul li{ margin-bottom:10px; }
         <button class="nav-btn" onclick="goToSlide(6)">❤️ คติประจำใจ</button>
     </nav>
 
+    <!-- พื้นที่สไลด์เลื่อนซ้าย-ขวา -->
     <div class="slider-wrapper" id="sliderWrapper">
         <div class="slides-container" id="slidesContainer">
 
+            <!-- Slide 1: ประวัติส่วนตัว -->
             <div class="slide">
                 <div class="box">
-                    <span class="section-tag">SECTION 01</span>
                     <h2>👩‍🎓 ประวัติส่วนตัว <span class="fancy-text">Profile</span></h2>
                     <div class="info-grid">
                         <div class="info-item"><b>ชื่อ-นามสกุล :</b> วรรธนันท์ อุดมเดบภาคินทร์</div>
@@ -278,47 +357,48 @@ ul li{ margin-bottom:10px; }
                 </div>
             </div>
 
+            <!-- Slide 2: ประวัติการศึกษา -->
             <div class="slide">
                 <div class="box">
-                    <span class="section-tag">SECTION 02</span>
                     <h2>📚 ประวัติการศึกษา <span class="fancy-text">Education</span></h2>
-                    <ul class="edu-list">
+                    <ul>
                         <li>🏫 <b>ระดับมัธยมศึกษาตอนปลาย (ม.4 - ม.6) :</b><br>โรงเรียนบ้านบึง "อุตสาหกรรมนุเคราะห์" (แผนการเรียน Gifted)</li>
+                        <br>
                         <li>🏫 <b>ระดับมัธยมศึกษาตอนต้น (ม.1 - ม.3) :</b><br>โรงเรียนบ้านบึง "อุตสาหกรรมนุเคราะห์"</li>
                     </ul>
                 </div>
             </div>
 
+            <!-- Slide 3: ความสนใจศึกษาต่อ -->
             <div class="slide">
                 <div class="box">
-                    <span class="section-tag">SECTION 03</span>
                     <h2>🎯 ความสนใจในการศึกษาต่อ <span class="fancy-text">Interests</span></h2>
-                    <p style="text-indent:20px;">
+                    <p style="text-indent: 20px;">
                         มีความสนใจเข้าศึกษาต่อในระดับอุดมศึกษา ในสาขาวิชาที่เกี่ยวข้องกับ <b>เทคโนโลยีสารสนเทศ วิทยาการคอมพิวเตอร์ หรือการออกแบบดิจิทัล</b>
                     </p>
-                    <p style="text-indent:20px;">
+                    <p style="text-indent: 20px;">
                         เนื่องจากมีความหลงใหลในการคิดวิเคราะห์ พัฒนาโปรแกรม และการสร้างสรรค์ผลงานผ่านเทคโนโลยีใหม่ ๆ เพื่อประยุกต์ใช้ในอนาคต
                     </p>
                 </div>
             </div>
 
+            <!-- Slide 4: ความสามารถพิเศษ -->
             <div class="slide">
                 <div class="box">
-                    <span class="section-tag">SECTION 04</span>
                     <h2>⭐ ความสามารถพิเศษ <span class="fancy-text">Skills</span></h2>
-                    <div class="skill-grid">
-                        <div class="skill-card"><span class="icon">🎨</span>วาดภาพ / ออกแบบกราฟิก</div>
-                        <div class="skill-card"><span class="icon">🎤</span>ร้องเพลง</div>
-                        <div class="skill-card"><span class="icon">💻</span>ใช้โปรแกรมคอมพิวเตอร์และเขียนโค้ดเบื้องต้น</div>
-                        <div class="skill-card"><span class="icon">📖</span>รักการอ่านและการเรียนรู้สิ่งใหม่</div>
-                        <div class="skill-card"><span class="icon">🤝</span>มีมนุษยสัมพันธ์ดี ทำงานร่วมกับผู้อื่นได้เป็นอย่างดี</div>
-                    </div>
+                    <ul>
+                        <li>🎨 วาดภาพ / ออกแบบกราฟิก</li>
+                        <li>🎤 ร้องเพลง</li>
+                        <li>💻 ใช้โปรแกรมคอมพิวเตอร์และเขียนโค้ดเบื้องต้น</li>
+                        <li>📖 รักการอ่านและการเรียนรู้สิ่งใหม่</li>
+                        <li>🤝 มีมนุษยสัมพันธ์ดี ทำงานร่วมกับผู้อื่นได้เป็นอย่างดี</li>
+                    </ul>
                 </div>
             </div>
 
+            <!-- Slide 5: โครงงานวิทยาศาสตร์ -->
             <div class="slide">
                 <div class="box">
-                    <span class="section-tag">SECTION 05</span>
                     <h2>🧪 โครงงานวิทยาศาสตร์คำนวณ <span class="fancy-text">Project</span></h2>
                     <p><b>การสร้างเว็บไซต์ Portfolio ด้วยภาษา HTML และ CSS</b></p>
                     <p>จัดทำขึ้นเพื่อฝึกฝนทักษะการออกแบบหน้าเว็บ (UI Design) และพัฒนาทักษะการเขียนโปรแกรมคอมพิวเตอร์อย่างเป็นระบบ</p>
@@ -330,9 +410,9 @@ ul li{ margin-bottom:10px; }
                 </div>
             </div>
 
+            <!-- Slide 6: กิจกรรมและเกียรติบัตร -->
             <div class="slide">
                 <div class="box">
-                    <span class="section-tag">SECTION 06</span>
                     <h2>🏆 กิจกรรมและเกียรติบัตร <span class="fancy-text">Activities</span></h2>
                     <ul>
                         <li>🥇 เข้าร่วมการแข่งขันทางวิชาการ</li>
@@ -343,16 +423,15 @@ ul li{ margin-bottom:10px; }
                 </div>
             </div>
 
+            <!-- Slide 7: สิ่งที่ภาคภูมิใจ & คติประจำใจ -->
             <div class="slide">
                 <div class="box">
-                    <span class="section-tag">SECTION 07</span>
                     <h2>❤️ สิ่งที่ภาคภูมิใจ & 💡 คติประจำใจ</h2>
                     <p><b>สิ่งที่ภาคภูมิใจ :</b><br>มีความรับผิดชอบ ตั้งใจเรียน และพัฒนาตนเองอยู่เสมอ พร้อมเปิดรับและเรียนรู้สิ่งใหม่ ๆ เพื่อเติบโตในอนาคต</p>
-                    <div class="motto-card">
-                        <b>คติประจำใจ</b><br>
-                        <i>"ใครทำได้ ก็ให้เขาทำ"</i>
-                    </div>
-                    <div style="text-align:center; margin-top:20px;">
+                    <hr style="border: 1px dashed #FF80AB; margin: 15px 0;">
+                    <p><b>คติประจำใจ :</b><br><i style="font-size: 22px; color: #FF2A6D;">"ใครทำได้ ก็ให้เขาทำ"</i></p>
+                    
+                    <div style="text-align: center; margin-top: 20px;">
                         <a href="index.html" class="btn">🏠 กลับหน้าแรก</a>
                     </div>
                 </div>
@@ -361,13 +440,16 @@ ul li{ margin-bottom:10px; }
         </div>
     </div>
 
+    <!-- ปุ่มนำทาง ย้อนกลับ-ถัดไป -->
     <div class="controls">
-        <button class="btn" id="prevBtn" onclick="changeSlide(-1)">❮</button>
-        <span class="page-counter" id="pageCounter">01 / 07</span>
-        <button class="btn" id="nextBtn" onclick="changeSlide(1)">❯</button>
+        <button class="btn" id="prevBtn" onclick="changeSlide(-1)">❮ ย้อนกลับ</button>
+        <button class="btn" id="nextBtn" onclick="changeSlide(1)">ถัดไป ❯</button>
     </div>
 
-    <div class="footer">💗 Thank you for visiting my Portfolio 💗</div>
+    <!-- ฟุตเตอร์ -->
+    <div class="footer">
+        💗 Thank you for visiting my Portfolio 💗
+    </div>
 
 </div>
 
@@ -378,51 +460,63 @@ const totalSlides = document.querySelectorAll('.slide').length;
 const navButtons = document.querySelectorAll('.nav-btn');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
-const pageCounter = document.getElementById('pageCounter');
 
-function pad(n){ return n < 10 ? '0' + n : '' + n; }
-
-function updateSlidePosition(){
+function updateSlidePosition() {
     slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
-
+    
+    // อัปเดตสถานะปุ่มแท็บ
     navButtons.forEach((btn, index) => {
-        if(index === currentSlide){
+        if(index === currentSlide) {
             btn.classList.add('active');
-            btn.scrollIntoView({ behavior:'smooth', inline:'center', block:'nearest' });
+            btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
         } else {
             btn.classList.remove('active');
         }
     });
 
+    // เปิด/ปิด การใช้งานปุ่มย้อนกลับ-ถัดไป
     prevBtn.disabled = currentSlide === 0;
     nextBtn.disabled = currentSlide === totalSlides - 1;
-    pageCounter.textContent = `${pad(currentSlide + 1)} / ${pad(totalSlides)}`;
 }
 
-function goToSlide(index){
+function goToSlide(index) {
     currentSlide = index;
     updateSlidePosition();
 }
 
-function changeSlide(direction){
+function changeSlide(direction) {
     currentSlide += direction;
     if (currentSlide < 0) currentSlide = 0;
     if (currentSlide >= totalSlides) currentSlide = totalSlides - 1;
     updateSlidePosition();
 }
 
+// รองรับการใช้นิ้วปัดซ้าย-ขวาบนหน้าจอมือถือ (Touch Swipe)
 let touchStartX = 0;
 let touchEndX = 0;
 const sliderWrapper = document.getElementById('sliderWrapper');
 
-sliderWrapper.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; });
-sliderWrapper.addEventListener('touchend', e => { touchEndX = e.changedTouches[0].screenX; handleSwipe(); });
+sliderWrapper.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+});
 
-function handleSwipe(){
-    if (touchStartX - touchEndX > 50 && currentSlide < totalSlides - 1) changeSlide(1);
-    if (touchEndX - touchStartX > 50 && currentSlide > 0) changeSlide(-1);
+sliderWrapper.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+});
+
+function handleSwipe() {
+    if (touchStartX - touchEndX > 50) {
+        // ปัดซ้าย -> หน้าถัดไป
+        if (currentSlide < totalSlides - 1) changeSlide(1);
+    }
+    if (touchEndX - touchStartX > 50) {
+        // ปัดขวา -> หน้าก่อนหน้า
+        if (currentSlide > 0) changeSlide(-1);
+    }
 }
 
+// เรียกใช้งานครั้งแรกเพื่อเริ่มที่หน้า 0
 updateSlidePosition();
 </script>
 
