@@ -3,375 +3,352 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>แฟ้มสะสมผลงาน (Portfolio) - Princess Usahana Theme</title>
+<title>หน้าแนะนำตัวของวรรธนันท์ 🍭</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Great+Vibes&family=Prompt:wght@300;400;600&display=swap">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500;600&family=Sarabun:wght@400;600&display=swap');
+  /* กำหนดชื่อ Class สำหรับฟอนต์ Heart Script */
+  .heart-font {
+    font-family: 'Great Vibes', 'Alex Brush', cursive;
+  }
 
-body {
-    font-family: 'Sarabun', 'TH Sarabun New', sans-serif;
+  :root {
+    --pink-soft: #ffe5ec;
+    --pink-main: #ffb3c6;
+    --pink-accent: #ff85a1;
+    --pink-dark: #fb6f92;
+    --purple-soft: #e2afff;
+    --text-color: #6c4f70;
+  }
+
+  * {
+    box-sizing: border-box;
     margin: 0;
-    padding: 30px 15px 50px 15px;
-    /* แบ็กกราวด์พาสเทลหลากสีสไตล์ Usahana */
-    background: linear-gradient(135deg, #FFF9C4 0%, #FFD1DC 35%, #E1BEE7 70%, #B3E5FC 100%);
-    background-attachment: fixed;
-    position: relative;
-    overflow-x: hidden;
+    padding: 0;
+  }
+
+  body {
+    /* พื้นหลังหลักไล่เฉดสีชมพูพาสเทลหวานๆ */
+    background: linear-gradient(135deg, #fff0f5 0%, #ffd1dc 40%, #e1bee7 70%, #b3e5fc 100%);
+    font-family: 'Prompt', sans-serif;
+    color: var(--text-color);
     min-height: 100vh;
-}
-
-/* เอฟเฟกต์ดอกไม้ร่วงหล่น */
-.petal {
-    position: fixed;
-    top: -10%;
-    font-size: 26px;
-    user-select: none;
-    z-index: 1000;
-    pointer-events: none;
-    animation: fall linear infinite;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
-}
-
-@keyframes fall {
-    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-    100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
-}
-
-.petal:nth-child(1) { left: 5%; animation-duration: 7s; animation-delay: 0s; }
-.petal:nth-child(2) { left: 18%; animation-duration: 10s; animation-delay: 2s; }
-.petal:nth-child(3) { left: 32%; animation-duration: 6s; animation-delay: 4s; }
-.petal:nth-child(4) { left: 48%; animation-duration: 8s; animation-delay: 1s; }
-.petal:nth-child(5) { left: 62%; animation-duration: 9s; animation-delay: 3s; }
-.petal:nth-child(6) { left: 75%; animation-duration: 7s; animation-delay: 5s; }
-.petal:nth-child(7) { left: 88%; animation-duration: 11s; animation-delay: 1.5s; }
-
-.container {
-    max-width: 900px;
-    margin: auto;
-    position: relative;
-    z-index: 1;
-}
-
-/* แถบเมนูนำทาง (Navigation Bar) */
-.nav-tabs {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 30px;
-    position: sticky;
-    top: 15px;
-    z-index: 100;
-}
-
-.nav-btn {
-    background: #FFFFFF;
-    color: #FF5252;
-    padding: 10px 20px;
-    border-radius: 25px;
-    font-size: 20px;
-    font-weight: 600;
-    text-decoration: none;
-    border: 3px solid #FF8A80;
-    box-shadow: 4px 4px 0px #FFD54F;
-    transition: all 0.2s ease;
-}
-
-.nav-btn:hover {
-    transform: translateY(-3px) scale(1.03);
-    background: #FFF9C4;
-    color: #FF1744;
-    box-shadow: 6px 6px 0px #81D4FA;
-}
-
-/* กรอบรูปโปรไฟล์น่ารักสไตล์ Usahana ซ้อนทับ */
-.profile-wrapper {
-    position: relative;
-    width: 210px;
-    height: 210px;
-    margin: 0 auto 35px auto;
-}
-
-.profile-card {
-    width: 190px;
-    height: 190px;
-    border-radius: 50%;
-    background: #FFFFFF;
-    display: flex;
     align-items: center;
-    justify-content: center;
-    border: 6px solid #FF80AB;
-    box-shadow: 8px 8px 0px #80DEEA, -6px -6px 0px #FFE082;
+    padding: 20px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* ------------------- CSS สร้างพื้นหลังวงกลมลอยดุ๊กดิ๊ก (Background Blobs) ------------------- */
+  .bg-decorations {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .bg-circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(50px);
+    opacity: 0.65;
+    animation: floatBg 12s ease-in-out infinite alternate;
+  }
+
+  .bg-circle-1 {
+    width: 350px;
+    height: 350px;
+    background: #ffb3c6;
+    top: -50px;
+    left: -50px;
+    animation-delay: 0s;
+  }
+
+  .bg-circle-2 {
+    width: 450px;
+    height: 450px;
+    background: #e2afff;
+    bottom: -100px;
+    right: -80px;
+    animation-delay: -3s;
+  }
+
+  .bg-circle-3 {
+    width: 300px;
+    height: 300px;
+    background: #b3e5fc;
+    bottom: 10%;
+    left: -50px;
+    animation-delay: -6s;
+  }
+
+  .bg-circle-4 {
+    width: 250px;
+    height: 250px;
+    background: #fff9c4;
+    top: 15%;
+    right: 5%;
+    animation-delay: -9s;
+  }
+
+  @keyframes floatBg {
+    0% {
+      transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+    50% {
+      transform: translate(30px, 40px) scale(1.1) rotate(180deg);
+    }
+    100% {
+      transform: translate(-20px, 20px) scale(0.95) rotate(360deg);
+    }
+  }
+
+  /* ------------------- เอฟเฟกต์ตกแต่งตกลงมา ------------------- */
+  .falling-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .falling-item {
+    position: absolute;
+    top: -50px;
+    font-size: 24px;
+    animation: fall linear infinite;
+    user-select: none;
+  }
+
+  @keyframes fall {
+    0% {
+      transform: translateY(0) rotate(0deg) scale(0.8);
+      opacity: 1;
+    }
+    50% {
+      transform: translateY(50vh) rotate(180deg) scale(1.2);
+    }
+    100% {
+      transform: translateY(105vh) rotate(360deg) scale(0.8);
+      opacity: 0.2;
+    }
+  }
+
+  .falling-item:nth-child(1)  { left: 5%;  animation-duration: 6s;  animation-delay: 0s; }
+  .falling-item:nth-child(2)  { left: 18%; animation-duration: 8s;  animation-delay: 2s; }
+  .falling-item:nth-child(3)  { left: 28%; animation-duration: 7s;  animation-delay: 4s; }
+  .falling-item:nth-child(4)  { left: 40%; animation-duration: 9s;  animation-delay: 1s; }
+  .falling-item:nth-child(5)  { left: 52%; animation-duration: 6.5s; animation-delay: 3s; }
+  .falling-item:nth-child(6)  { left: 65%; animation-duration: 8.5s; animation-delay: 0.5s; }
+  .falling-item:nth-child(7)  { left: 78%; animation-duration: 7.5s; animation-delay: 2.5s; }
+  .falling-item:nth-child(8)  { left: 88%; animation-duration: 9.5s; animation-delay: 1.5s; }
+  .falling-item:nth-child(9)  { left: 95%; animation-duration: 6.8s; animation-delay: 3.5s; }
+
+  /* ------------------- การ์ดโปรไฟล์ ------------------- */
+  .card {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 4px dashed var(--pink-main);
+    border-radius: 40px;
+    box-shadow: 0 15px 35px rgba(255, 133, 161, 0.3);
+    max-width: 480px;
+    width: 100%;
+    padding: 40px 30px;
+    text-align: center;
     position: relative;
     z-index: 2;
-    margin: 0 auto;
-    transition: transform 0.3s ease;
-}
+    animation: floatCard 3.5s ease-in-out infinite alternate;
+  }
 
-.profile-card:hover {
-    transform: rotate(5deg) scale(1.05);
-}
+  /* การ์ดลอยขึ้น-ลงนุ่มนวล */
+  @keyframes floatCard {
+    0% { transform: translateY(0px) rotate(-0.5deg); }
+    100% { transform: translateY(-12px) rotate(0.5deg); }
+  }
 
-.profile-card img {
-    width: 170px;
-    height: 170px;
-    border-radius: 50%;
-    border: 4px solid #A7FFEB;
+  /* ------------------- รูปโปรไฟล์แบบดุ๊กดิ๊ก ------------------- */
+  .avatar-wrapper {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    margin: 0 auto 20px auto;
+  }
+
+  .avatar-img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-}
-
-/* กรอบเนื้อหาหลัก พร้อมการเล่นซ้อนทับและเส้นขอบสีสดใส */
-.box {
-    background: #FFFFFF;
-    padding: 30px;
-    margin-bottom: 35px;
-    border-radius: 30px;
-    position: relative;
-    /* กรอบตัดสีสันสดใส */
-    border: 5px dashed #FF8A65;
-    outline: 5px solid #FFFFFF;
-    box-shadow: 10px 10px 0px #AED581, 18px 18px 0px rgba(255, 128, 171, 0.4);
-    transition: transform 0.3s ease;
-}
-
-.box:hover {
-    transform: translateY(-5deg);
-}
-
-/* ตกแต่งมุมกรอบให้น่ารักขึ้น */
-.box::before {
-    content: '🌸';
-    position: absolute;
-    top: -18px;
-    left: 20px;
-    font-size: 24px;
-    background: #FFF;
-    padding: 0 5px;
     border-radius: 50%;
-}
+    border: 4px dashed var(--pink-accent);
+    padding: 4px;
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(251, 111, 146, 0.25);
+    /* เอฟเฟกต์ดุ๊กดิ๊กตลอดเวลา */
+    animation: avatarBounce 2.5s ease-in-out infinite alternate;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
 
-.box::after {
-    content: '✨';
-    position: absolute;
-    bottom: -15px;
-    right: 20px;
-    font-size: 22px;
-}
+  /* เอฟเฟกต์เด้งสั่นดุ๊กดิ๊ก */
+  @keyframes avatarBounce {
+    0% { transform: translateY(0) scale(1) rotate(0deg); }
+    30% { transform: translateY(-6px) scale(1.03) rotate(-3deg); }
+    60% { transform: translateY(0) scale(0.98) rotate(3deg); }
+    100% { transform: translateY(-10px) scale(1.05) rotate(-2deg); }
+  }
 
-/* เปลี่ยนสีขอบกรอบสลับกัน */
-.box:nth-child(even) {
-    border-color: #4FC3F7;
-    box-shadow: 10px 10px 0px #FF80AB, 18px 18px 0px rgba(255, 213, 79, 0.5);
-}
+  .avatar-img:hover {
+    animation: wiggle 0.4s ease-in-out infinite alternate;
+  }
 
-.title-box {
-    text-align: center;
-    background: linear-gradient(135deg, #FFFDE7, #FFF3E0);
-}
+  @keyframes wiggle {
+    0% { transform: rotate(-12deg) scale(1.12); }
+    100% { transform: rotate(12deg) scale(1.12); }
+  }
 
-h1 {
-    color: #FF2A6D;
-    font-size: 42px;
-    margin-top: 0;
-    text-shadow: 2px 2px 0px #FFE082;
-}
+  h1 {
+    font-family: 'Great Vibes', 'Prompt', cursive;
+    color: var(--pink-dark);
+    font-size: 32px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
 
-h2 {
-    color: #FF5722;
-    font-size: 30px;
-    border-bottom: 3px dotted #80DEEA;
-    padding-bottom: 8px;
-    margin-top: 0;
+  p {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  .highlight {
+    background: linear-gradient(120deg, #ffe5ec 0%, #ffc6ff 100%);
+    padding: 3px 12px;
+    border-radius: 15px;
+    font-weight: 600;
+    color: var(--pink-dark);
     display: inline-block;
-}
+    animation: pulseHighlight 2s infinite alternate;
+  }
 
-.box:nth-child(even) h2 {
-    color: #00B0FF;
-}
+  /* ตกแต่งตัวอักษรภาษาอังกฤษด้วยฟอนต์ Heart Script */
+  .heart-text {
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.25em;
+    font-weight: normal;
+  }
 
-p, ul {
-    font-size: 22px;
-    color: #424242;
-    line-height: 1.6;
-}
+  @keyframes pulseHighlight {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
+  }
 
-ul {
-    list-style-type: none;
-    padding-left: 10px;
-}
-
-ul li {
-    margin-bottom: 8px;
-    position: relative;
-}
-
-.info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
-}
-
-.info-item {
-    background: #F1F8E9;
-    padding: 12px 18px;
-    border-radius: 18px;
-    border: 2px solid #C5E1A5;
-}
-
-.btn {
+  /* ------------------- ปุ่มกดขยับดุ๊กดิ๊ก ------------------- */
+  .btn {
     display: inline-block;
-    background: linear-gradient(45deg, #FF4081, #FF80AB);
+    background: linear-gradient(45deg, var(--pink-main), var(--purple-soft));
     color: white;
-    padding: 12px 35px;
     text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 14px 32px;
     border-radius: 30px;
-    font-size: 22px;
-    font-weight: bold;
-    box-shadow: 0 5px 15px rgba(255, 64, 129, 0.4);
+    box-shadow: 0 8px 20px rgba(255, 179, 198, 0.6);
     transition: all 0.3s ease;
-    border: 3px solid #FFFFFF;
-}
+    margin-top: 15px;
+    border: 2px dashed #ffffff;
+    /* เอฟเฟกต์ปุ่มสั่นไหวดุ๊กดิ๊ก */
+    animation: btnPulse 3s ease-in-out infinite;
+  }
 
-.btn:hover {
-    background: linear-gradient(45deg, #FF1744, #FF5252);
-    transform: scale(1.08);
-    box-shadow: 0 8px 20px rgba(255, 23, 68, 0.5);
-}
+  @keyframes btnPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.04) rotate(1deg); }
+  }
 
-.footer {
-    text-align: center;
-    font-size: 22px;
-    color: #616161;
-    margin-top: 20px;
-    background: rgba(255, 255, 255, 0.7);
-    padding: 15px;
-    border-radius: 20px;
-    backdrop-filter: blur(5px);
-}
+  .btn:hover {
+    transform: scale(1.12) rotate(-3deg) !important;
+    box-shadow: 0 12px 25px rgba(251, 111, 146, 0.5);
+    background: linear-gradient(45deg, var(--purple-soft), var(--pink-dark));
+  }
+
+  /* ------------------- โซเชียลมีเดียดุ๊กดิ๊ก ------------------- */
+  .social-links {
+    margin-top: 25px;
+    font-size: 24px;
+  }
+
+  .social-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    margin: 0 12px;
+    display: inline-block;
+    transition: transform 0.2s;
+    animation: floatSocial 2s ease-in-out infinite alternate;
+  }
+
+  .social-links a:nth-child(1) { animation-delay: 0s; }
+  .social-links a:nth-child(2) { animation-delay: 0.3s; }
+  .social-links a:nth-child(3) { animation-delay: 0.6s; }
+
+  @keyframes floatSocial {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-5px) rotate(5deg); }
+  }
+
+  .social-links a:hover {
+    transform: scale(1.5) rotate(15deg) !important;
+  }
 </style>
 </head>
 <body>
 
-<!-- ดอกไม้ร่วงหล่น -->
-<div class="petal">🌸</div>
-<div class="petal">✨</div>
-<div class="petal">🌼</div>
-<div class="petal">🌺</div>
-<div class="petal">🌷</div>
-<div class="petal">💛</div>
-<div class="petal">🎀</div>
+<!-- วงกลมพื้นหลังลอยดุ๊กดิ๊ก (Pastel Floating Blobs) -->
+<div class="bg-decorations">
+  <div class="bg-circle bg-circle-1"></div>
+  <div class="bg-circle bg-circle-2"></div>
+  <div class="bg-circle bg-circle-3"></div>
+  <div class="bg-circle bg-circle-4"></div>
+</div>
 
-<div class="container">
+<!-- ไอคอนตกลงมา -->
+<div class="falling-container">
+  <div class="falling-item">✨</div>
+  <div class="falling-item">🌸</div>
+  <div class="falling-item">💖</div>
+  <div class="falling-item">🍬</div>
+  <div class="falling-item">⭐</div>
+  <div class="falling-item">🎀</div>
+  <div class="falling-item">🍭</div>
+  <div class="falling-item">✨</div>
+  <div class="falling-item">🍓</div>
+</div>
 
-    <!-- แถบเมนูนำทาง (Navigation Bar) -->
-    <nav class="nav-tabs">
-        <a href="#profile" class="nav-btn">👩‍🎓 ประวัติส่วนตัว</a>
-        <a href="#education" class="nav-btn">📚 ประวัติการศึกษา</a>
-        <a href="#future" class="nav-btn">🎯 ความสนใจศึกษาต่อ</a>
-        <a href="#skills" class="nav-btn">⭐ ความสามารถ</a>
-        <a href="#project" class="nav-btn">🧪 โครงงาน</a>
-    </nav>
+<!-- การ์ดเนื้อหา -->
+<div class="card">
+  <div class="avatar-wrapper">
+    <img src="IMG_4109.png" alt="รูปโปรไฟล์วรรธนันท์" class="avatar-img" title="ลองแตะสิ!">
+  </div>
+  
+  <h1 class="heart-font">Welcome to My Profile ✨</h1>
+  <p>สวัสดีค่ะ! ดิฉันชื่อ <span class="highlight">วรรธนันท์ (<span class="heart-text">Wantanan</span>)</span> 🎀</p>
+  <p>ขณะนี้กำลังสนใจด้าน <br><strong class="heart-text" style="font-size: 1.15em;">Computer Science & Engineering 💻✨</strong></p>
+  
+  <a href="portfolio.html" class="btn">✨🎀 แฟ้มสะสมผลงาน 🪽✨</a>
 
-    <!-- โปรไฟล์ -->
-    <div class="profile-wrapper">
-        <div class="profile-card">
-            <img src="IMG_4109.png" alt="รูปโปรไฟล์">
-        </div>
-    </div>
-
-    <!-- หัวข้อหลัก -->
-    <div class="box title-box">
-        <h1>🌷 แฟ้มสะสมผลงาน (Portfolio) 🌷</h1>
-        <p>💗 ยินดีต้อนรับสู่แฟ้มสะสมผลงานของฉัน 💗</p>
-    </div>
-
-    <!-- 1. ประวัติส่วนตัว -->
-    <div class="box" id="profile">
-        <h2>👩‍🎓 ประวัติส่วนตัว</h2>
-        <div class="info-grid">
-            <div class="info-item"><b>ชื่อ-นามสกุล :</b> วรรธนันท์ อุดมเดบภาคินทร์</div>
-            <div class="info-item"><b>ชื่อเล่น :</b> ปริ้นเซส</div>
-            <div class="info-item"><b>วันเดือนปีเกิด :</b> 17 พฤศจิกายน 2551</div>
-            <div class="info-item"><b>อายุ :</b> 17 ปี</div>
-            <div class="info-item"><b>ระดับชั้น :</b> มัธยมศึกษาปีที่ 6</div>
-            <div class="info-item"><b>แผนการเรียน :</b> Gifted</div>
-        </div>
-    </div>
-
-    <!-- 2. ประวัติการศึกษา (เพิ่มใหม่) -->
-    <div class="box" id="education">
-        <h2>📚 ประวัติการศึกษา</h2>
-        <ul>
-            <li>🏫 <b>ระดับมัธยมศึกษาตอนปลาย (ม.4 - ม.6) :</b> โรงเรียนบ้านบึง "อุตสาหกรรมนุเคราะห์" (แผนการเรียน Gifted)</li>
-            <li>🏫 <b>ระดับมัธยมศึกษาตอนต้น (ม.1 - ม.3) :</b> โรงเรียนบ้านบึง "อุตสาหกรรมนุเคราะห์"</li>
-        </ul>
-    </div>
-
-    <!-- 3. ความสนใจในการศึกษาต่อ (เพิ่มใหม่) -->
-    <div class="box" id="future">
-        <h2>🎯 ความสนใจในการศึกษาต่อ</h2>
-        <p>
-            มีความสนใจเข้าศึกษาต่อในระดับอุดมศึกษา ในสาขาวิชาที่เกี่ยวข้องกับ<b>เทคโนโลยีสารสนเทศ วิทยาการคอมพิวเตอร์ หรือการออกแบบดิจิทัล</b> เนื่องจากมีความหลงใหลในการคิดวิเคราะห์ พัฒนาโปรแกรม และการสร้างสรรค์ผลงานผ่านเทคโนโลยีใหม่ ๆ
-        </p>
-    </div>
-
-    <!-- ความสามารถพิเศษ -->
-    <div class="box" id="skills">
-        <h2>⭐ ความสามารถพิเศษ</h2>
-        <ul>
-            <li>🎨 วาดภาพ / ออกแบบกราฟิก</li>
-            <li>🎤 ร้องเพลง</li>
-            <li>💻 ใช้โปรแกรมคอมพิวเตอร์และเขียนโค้ดเบื้องต้น</li>
-            <li>📖 รักการอ่านและการเรียนรู้สิ่งใหม่</li>
-            <li>🤝 มีมนุษยสัมพันธ์ดี ทำงานร่วมกับผู้อื่นได้เป็นอย่างดี</li>
-        </ul>
-    </div>
-
-    <!-- โครงงานวิทยาศาสตร์ -->
-    <div class="box" id="project">
-        <h2>🧪 โครงงานวิทยาศาสตร์คำนวณ</h2>
-        <p>
-            <b>การสร้างเว็บไซต์ Portfolio ด้วยภาษา HTML และ CSS</b><br>
-            จัดทำขึ้นเพื่อฝึกฝนทักษะการออกแบบหน้าเว็บ (UI Design) และพัฒนาทักษะการเขียนโปรแกรมคอมพิวเตอร์อย่างเป็นระบบ
-        </p>
-        <p>
-            <b>สิ่งที่ได้รับจากการทำโครงงาน :</b><br>
-            ✔️ การคิดวิเคราะห์เชิงตรรกะ<br>
-            ✔️ การแก้ปัญหาเฉพาะหน้าในการเขียนโค้ด<br>
-            ✔️ ทักษะการออกแบบเว็บไซต์ให้สวยงามและใช้งานง่าย<br>
-            ✔️ การวางแผนและการทำงานอย่างเป็นระบบ
-        </p>
-    </div>
-
-    <!-- กิจกรรมและเกียรติบัตร -->
-    <div class="box">
-        <h2>🏆 กิจกรรมและเกียรติบัตร</h2>
-        <ul>
-            <li>🥇 เข้าร่วมการแข่งขันทางวิชาการ</li>
-            <li>📜 เข้าร่วมอบรมพัฒนาทักษะเทคโนโลยีและการออกแบบ</li>
-            <li>🎓 เข้าร่วมกิจกรรมพัฒนาผู้เรียนของโรงเรียน</li>
-            <li>🤝 เข้าร่วมกิจกรรมจิตอาสาและบำเพ็ญประโยชน์</li>
-        </ul>
-    </div>
-
-    <!-- สิ่งที่ภาคภูมิใจ & คติประจำใจ -->
-    <div class="box">
-        <h2>❤️ สิ่งที่ภาคภูมิใจ & 💡 คติประจำใจ</h2>
-        <p><b>สิ่งที่ภาคภูมิใจ :</b> มีความรับผิดชอบ ตั้งใจเรียน และพัฒนาตนเองอยู่เสมอ พร้อมเปิดรับและเรียนรู้สิ่งใหม่ ๆ เพื่อเติบโตในอนาคต</p>
-        <p><b>คติประจำใจ :</b> <i>"ใครทำได้ ก็ให้เขาทำ"</i></p>
-    </div>
-
-    <!-- ปุ่มกลับหน้าแรก -->
-    <div class="box" style="text-align:center;">
-        <a href="index.html" class="btn">
-            🏠 กลับหน้าแรก
-        </a>
-    </div>
-
-    <!-- ฟุตเตอร์ -->
-    <div class="footer">
-        💗 ขอบคุณที่เข้ามาเยี่ยมชม Portfolio ของฉัน 💗
-    </div>
-
+  <div class="social-links">
+    <a href="#" title="GitHub">🌷</a>
+    <a href="#" title="Instagram">🌦️</a>
+    <a href="#" title="Sweet">☔️</a>
+  </div>
 </div>
 
 </body>
