@@ -277,7 +277,7 @@ p, ul {
 .cert-box img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain; /* ปรับเป็น contain เพื่อให้เห็นรูปเกียรติบัตรครบถ้วน */
 }
 
 .photo-grid {
@@ -362,6 +362,7 @@ p, ul {
     <!-- ส่วนหัว -->
     <div class="header-wrapper">
         <div class="profile-card">
+            <!-- สมมติว่าไฟล์รูปโปรไฟล์ชื่อ IMG_4109.png ตามโค้ดเดิม -->
             <img src="IMG_4109.png" alt="รูปโปรไฟล์">
         </div>
         <h1 class="main-title">Portfolio</h1>
@@ -421,18 +422,27 @@ p, ul {
                         และโรงเรียนวิทยาศาสตร์จุฬาภรณราชวิทยาลัย
                     </div>
 
-                    <div class="cert-box"> IMG_4630.PNG
+                    <!-- พื้นที่ใส่รูปเกียรติบัตรหลัก (IMG_4630.PNG) -->
+                    <div class="cert-box">
+                        <img src="IMG_4630.PNG" alt="เกียรติบัตร">
                     </div>
 
+                    <!-- พื้นที่ใส่รูปรอง 3 รูป (JPG) -->
                     <div class="photo-grid">
-                        <div class="photo-box">IMG_4782.PNG</div>
-                        <div class="photo-box">IMG_4781.PNG</div>
-                        <div class="photo-box">IMG_4779.PNG</div>
+                        <div class="photo-box">
+                            <img src="IMG_4782.JPG" alt="รูปกิจกรรม 1">
+                        </div>
+                        <div class="photo-box">
+                            <img src="IMG_4781.JPG" alt="รูปกิจกรรม 2">
+                        </div>
+                        <div class="photo-box">
+                            <img src="IMG_4779.JPG" alt="รูปกิจกรรม 3">
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Slide 4: ความสนใจในการศึกษาต่อ + คติประจำใจ -->
+            <!-- Slide 4: ความสนใจในการศึกษาต่อ -->
             <div class="slide">
                 <div class="box">
                     <h2> ความสนใจในการศึกษาต่อ <span class="fancy-text">Interests</span></h2>
@@ -441,7 +451,6 @@ p, ul {
                         มีความสนใจเข้าศึกษาต่อในระดับอุดมศึกษา ในคณะอักษรศาสตร์ เนื่องจากมีความรักและหลงใหลในภาษา การศึกษาวัฒนธรรม และการวิเคราะห์วรรณกรรม มุ่งมั่นที่จะพัฒนาทักษะการสื่อสารระดับสูงและการคิดวิเคราะห์ เพื่อนำองค์ความรู้ไปประยุกต์ใช้ในสายอาชีพและการพัฒนาตนเองในอนาคต
                     </p>
                     <hr style="border: 0; border-top: 1px dashed #e0e0e0; margin: 20px 0;">
-    
                 </div>
             </div>
 
@@ -500,7 +509,9 @@ function changeSlide(direction) {
 
 function goBackOrHome() {
     if (currentSlide === 0) {
-        window.location.href = 'index.html';
+        // เปลี่ยนเป็นลิงก์หน้าแรกของคุณ หากต้องการ
+        // window.location.href = 'index.html'; 
+        alert('นี่คือหน้าแรกสุดแล้วครับ');
     } else {
         changeSlide(-1);
     }
@@ -534,6 +545,3 @@ updateSlidePosition();
 
 </body>
 </html>
-
-```
-
