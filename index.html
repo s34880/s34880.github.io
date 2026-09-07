@@ -1,24 +1,23 @@
-นี่คือโค้ด HTML/CSS ที่อัปเดตตามที่คุณต้องการครับ โดยทำการปรับปรุงตามโจทย์ดังนี้:
- * **ฟอนต์ Symphony:** เรียกใช้ฟอนต์สไตล์ Calligraphy/Script มาหวานสง่างามสำหรับหัวข้อ และผสมผสานให้อ่านง่าย
- * **พื้นหลังเกลียวชมพูประกายวิ้งๆ:** จำลองโทนสี Radial Swirl + Sparkles ลอยวน หมุนเบาๆ เลียนแบบภาพวอลเปเปอร์สีชมพูวิ้งๆ ที่ส่งมา
- * **รูปโปรไฟล์ใส่กรอบ:** เปลี่ยนจาก Emoji เป็นช่องใส่รูปโปรไฟล์ <img src="..."> พร้อมใส่กรอบลูกไม้/เส้นประสีชมพูหวาน
- * **เอฟเฟกต์ขยับ (Animations):** เพิ่มเอฟเฟกต์ดุ๊กดิ๊ก ขยับเด้ง นุ่มนวลให้กับรูปโปรไฟล์, ปุ่มกด, ตัวหนังสือ และฉากหลัง
-```html
 <!DOCTYPE html>
 <html lang="th">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>หน้าแนะนำตัวของวรรธนันท์ 🍭</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Charm:wght@400;700&family=Prompt:wght@300;400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Great+Vibes&family=Prompt:wght@300;400;600&display=swap">
 <style>
+  /* กำหนดชื่อ Class สำหรับฟอนต์ Heart Script สไตล์ภาพที่ส่งมา */
+  .heart-font {
+    font-family: 'Great Vibes', 'Alex Brush', cursive;
+  }
+
   :root {
-    --pink-light: #fff0f5;
-    --pink-soft: #ffc6ff;
-    --pink-main: #ff9ebb;
-    --pink-deep: #f72585;
+    --pink-soft: #ffe5ec;
+    --pink-main: #ffb3c6;
+    --pink-accent: #ff85a1;
+    --pink-dark: #fb6f92;
     --purple-soft: #e2afff;
-    --text-color: #5a3d66;
+    --text-color: #6c4f70;
   }
 
   * {
@@ -28,13 +27,10 @@
   }
 
   body {
-    /* พื้นหลังสีชมพูสไตล์ Spiral/Twirl + Prismatic Glow ตามรูปภาพ */
-    background: 
-      radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 198, 255, 0.6) 25%, rgba(255, 158, 187, 0.7) 55%, rgba(247, 143, 178, 0.9) 100%),
-      conic-gradient(from 0deg at 50% 50%, #ffe5ec, #ffc6ff, #ffb3c6, #ffe5ec);
-    background-blend-mode: overlay;
-    background-size: 150% 150%;
-    animation: swirlBG 15s linear infinite;
+    /* พื้นหลังสีชมพูไล่เฉดหวานๆ */
+    background: radial-gradient(circle at 20% 20%, #fff0f5 0%, #ffc6ff 40%, #ffb3c6 80%, #ff85a1 100%);
+    background-size: 200% 200%;
+    animation: pinkGradient 10s ease infinite alternate;
     font-family: 'Prompt', sans-serif;
     color: var(--text-color);
     min-height: 100vh;
@@ -46,14 +42,12 @@
     position: relative;
   }
 
-  /* เอฟเฟกต์หมุนหมุนเบาๆ ให้พื้นหลังเกลียวชมพูมีมิติ */
-  @keyframes swirlBG {
+  @keyframes pinkGradient {
     0% { background-position: 0% 0%; }
-    50% { background-position: 100% 100%; }
-    100% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
   }
 
-  /* ------------------- เอฟเฟกต์วิ้งๆ และประกายดาวตกลงมา ------------------- */
+  /* ------------------- เอฟเฟกต์ตกแต่งตกลงมา ------------------- */
   .falling-container {
     position: absolute;
     top: 0;
@@ -70,59 +64,56 @@
     font-size: 24px;
     animation: fall linear infinite;
     user-select: none;
-    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
   }
 
   @keyframes fall {
     0% {
       transform: translateY(0) rotate(0deg) scale(0.8);
-      opacity: 0.9;
+      opacity: 1;
     }
     50% {
       transform: translateY(50vh) rotate(180deg) scale(1.2);
-      opacity: 1;
     }
     100% {
-      transform: translateY(105vh) rotate(360deg) scale(0.7);
+      transform: translateY(105vh) rotate(360deg) scale(0.8);
       opacity: 0.2;
     }
   }
 
-  .falling-item:nth-child(1)  { left: 8%;  animation-duration: 5s;  animation-delay: 0s; }
-  .falling-item:nth-child(2)  { left: 20%; animation-duration: 7s;  animation-delay: 1.5s; }
-  .falling-item:nth-child(3)  { left: 32%; animation-duration: 6s;  animation-delay: 3s; }
-  .falling-item:nth-child(4)  { left: 45%; animation-duration: 8s;  animation-delay: 0.5s; }
-  .falling-item:nth-child(5)  { left: 58%; animation-duration: 5.5s; animation-delay: 2s; }
-  .falling-item:nth-child(6)  { left: 70%; animation-duration: 7.5s; animation-delay: 4s; }
-  .falling-item:nth-child(7)  { left: 82%; animation-duration: 6.5s; animation-delay: 1s; }
-  .falling-item:nth-child(8)  { left: 92%; animation-duration: 8.5s; animation-delay: 2.5s; }
+  .falling-item:nth-child(1)  { left: 5%;  animation-duration: 6s;  animation-delay: 0s; }
+  .falling-item:nth-child(2)  { left: 18%; animation-duration: 8s;  animation-delay: 2s; }
+  .falling-item:nth-child(3)  { left: 28%; animation-duration: 7s;  animation-delay: 4s; }
+  .falling-item:nth-child(4)  { left: 40%; animation-duration: 9s;  animation-delay: 1s; }
+  .falling-item:nth-child(5)  { left: 52%; animation-duration: 6.5s; animation-delay: 3s; }
+  .falling-item:nth-child(6)  { left: 65%; animation-duration: 8.5s; animation-delay: 0.5s; }
+  .falling-item:nth-child(7)  { left: 78%; animation-duration: 7.5s; animation-delay: 2.5s; }
+  .falling-item:nth-child(8)  { left: 88%; animation-duration: 9.5s; animation-delay: 1.5s; }
+  .falling-item:nth-child(9)  { left: 95%; animation-duration: 6.8s; animation-delay: 3.5s; }
 
   /* ------------------- การ์ดโปรไฟล์ ------------------- */
   .card {
-    background: rgba(255, 255, 255, 0.78);
+    background: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(12px);
-    /* กรอบลูกไม้ประยุกต์เส้นคู่สีชมพูพาสเทล */
-    border: 4px dashed #ffb3c6;
-    outline: 8px solid rgba(255, 255, 255, 0.5);
+    border: 4px dashed var(--pink-main);
     border-radius: 40px;
-    box-shadow: 0 20px 40px rgba(247, 37, 133, 0.25), inset 0 0 25px rgba(255, 255, 255, 0.8);
+    box-shadow: 0 15px 35px rgba(255, 133, 161, 0.3);
     max-width: 480px;
     width: 100%;
     padding: 40px 30px;
     text-align: center;
     position: relative;
     z-index: 2;
-    animation: floatCard 4s ease-in-out infinite;
+    animation: floatCard 3.5s ease-in-out infinite alternate;
   }
 
-  /* การ์ดลอยดุ๊กดิ๊ก */
+  /* การ์ดลอยขึ้น-ลงนุ่มนวล */
   @keyframes floatCard {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-12px) rotate(0.8deg); }
+    0% { transform: translateY(0px) rotate(-0.5deg); }
+    100% { transform: translateY(-12px) rotate(0.5deg); }
   }
 
-  /* ------------------- รูปโปรไฟล์ดุ๊กดิ๊กขยับได้ ------------------- */
-  .avatar-container {
+  /* ------------------- รูปโปรไฟล์แบบดุ๊กดิ๊ก ------------------- */
+  .avatar-wrapper {
     position: relative;
     width: 130px;
     height: 130px;
@@ -134,20 +125,21 @@
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
-    border: 4px dashed #ff85a1;
-    padding: 5px;
-    background: #ffffff;
-    box-shadow: 0 10px 20px rgba(247, 37, 133, 0.3);
-    /* เอฟเฟกต์รูปขยับเด้งดุ๊กดิ๊ก */
-    animation: avatarMove 3s ease-in-out infinite alternate;
+    border: 4px dashed var(--pink-accent);
+    padding: 4px;
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(251, 111, 146, 0.25);
+    /* เอฟเฟกต์ดุ๊กดิ๊กตลอดเวลา */
+    animation: avatarBounce 2.5s ease-in-out infinite alternate;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s;
   }
 
-  @keyframes avatarMove {
+  /* เอฟเฟกต์เด้งสั่นดุ๊กดิ๊ก */
+  @keyframes avatarBounce {
     0% { transform: translateY(0) scale(1) rotate(0deg); }
-    33% { transform: translateY(-8px) scale(1.04) rotate(-4deg); }
-    66% { transform: translateY(2px) scale(0.98) rotate(3deg); }
+    30% { transform: translateY(-6px) scale(1.03) rotate(-3deg); }
+    60% { transform: translateY(0) scale(0.98) rotate(3deg); }
     100% { transform: translateY(-10px) scale(1.05) rotate(-2deg); }
   }
 
@@ -156,22 +148,17 @@
   }
 
   @keyframes wiggle {
-    0% { transform: scale(1.15) rotate(-12deg); }
-    100% { transform: scale(1.15) rotate(12deg); }
-  }
-
-  /* ฟอนต์ Symphony Style สำหรับชื่อและหัวข้อ */
-  .symphony-font {
-    font-family: 'Charm', 'Alex Brush', cursive;
-    font-weight: 700;
+    0% { transform: rotate(-12deg) scale(1.12); }
+    100% { transform: rotate(12deg) scale(1.12); }
   }
 
   h1 {
-    font-family: 'Charm', 'Prompt', cursive;
-    color: #90356c;
-    font-size: 26px;
+    font-family: 'Great Vibes', 'Prompt', cursive;
+    color: var(--pink-dark);
+    font-size: 32px;
     margin-bottom: 15px;
-    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+    font-weight: 600;
+    letter-spacing: 1px;
   }
 
   p {
@@ -181,46 +168,54 @@
   }
 
   .highlight {
-    background: linear-gradient(120deg, #ffc6ff 0%, #ffe5ec 100%);
+    background: linear-gradient(120deg, #ffe5ec 0%, #ffc6ff 100%);
     padding: 3px 12px;
     border-radius: 15px;
     font-weight: 600;
-    color: #7209b7;
+    color: var(--pink-dark);
     display: inline-block;
-    animation: pulseHighlight 2s ease-in-out infinite alternate;
+    animation: pulseHighlight 2s infinite alternate;
+  }
+
+  /* ตกแต่งตัวอักษรภาษาอังกฤษด้วยฟอนต์ Heart Script */
+  .heart-text {
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.25em;
+    font-weight: normal;
   }
 
   @keyframes pulseHighlight {
     0% { transform: scale(1); }
-    100% { transform: scale(1.06); }
+    100% { transform: scale(1.05); }
   }
 
-  /* ------------------- ปุ่มกดดุ๊กดิ๊กวิ้งๆ ------------------- */
+  /* ------------------- ปุ่มกดขยับดุ๊กดิ๊ก ------------------- */
   .btn {
     display: inline-block;
-    background: linear-gradient(45deg, #ff85a1, #bdb2ff);
+    background: linear-gradient(45deg, var(--pink-main), var(--purple-soft));
     color: white;
     text-decoration: none;
     font-size: 18px;
     font-weight: 600;
-    padding: 14px 34px;
+    padding: 14px 32px;
     border-radius: 30px;
-    box-shadow: 0 8px 22px rgba(247, 37, 133, 0.35);
+    box-shadow: 0 8px 20px rgba(255, 179, 198, 0.6);
     transition: all 0.3s ease;
     margin-top: 15px;
     border: 2px dashed #ffffff;
-    animation: btnPulse 2.5s infinite alternate ease-in-out;
+    /* เอฟเฟกต์ปุ่มสั่นไหวดุ๊กดิ๊ก */
+    animation: btnPulse 3s ease-in-out infinite;
   }
 
   @keyframes btnPulse {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.05) rotate(-1deg); }
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.04) rotate(1deg); }
   }
 
   .btn:hover {
     transform: scale(1.12) rotate(-3deg) !important;
-    box-shadow: 0 12px 28px rgba(247, 37, 133, 0.5);
-    background: linear-gradient(45deg, #bdb2ff, #ff85a1);
+    box-shadow: 0 12px 25px rgba(251, 111, 146, 0.5);
+    background: linear-gradient(45deg, var(--purple-soft), var(--pink-dark));
   }
 
   /* ------------------- โซเชียลมีเดียดุ๊กดิ๊ก ------------------- */
@@ -244,7 +239,7 @@
 
   @keyframes floatSocial {
     0% { transform: translateY(0); }
-    100% { transform: translateY(-6px) rotate(8deg); }
+    100% { transform: translateY(-5px) rotate(5deg); }
   }
 
   .social-links a:hover {
@@ -263,16 +258,17 @@
   <div class="falling-item">🎀</div>
   <div class="falling-item">🍭</div>
   <div class="falling-item">✨</div>
+  <div class="falling-item">🍓</div>
 </div>
 
 <div class="card">
-  <div class="avatar-container">
+  <div class="avatar-wrapper">
     <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="รูปโปรไฟล์วรรธนันท์" class="avatar-img" title="ลองแตะสิ!">
   </div>
-
-  <h1 class="symphony-font">ยินดีต้อนรับสู่โปรไฟล์ของฉัน ✨</h1>
-  <p>สวัสดีค่ะ! ดิฉันชื่อ <span class="highlight symphony-font" style="font-size: 1.2em;">วรรธนันท์ (Wantanan)</span> 🎀</p>
-  <p>ขณะนี้กำลังสนใจด้าน <br><strong>Computer Science & Engineering 💻✨</strong></p>
+  
+  <h1 class="heart-font">Welcome to My Profile ✨</h1>
+  <p>สวัสดีค่ะ! ดิฉันชื่อ <span class="highlight">วรรธนันท์ (<span class="heart-text">Wantanan</span>)</span> 🎀</p>
+  <p>ขณะนี้กำลังสนใจด้าน <br><strong class="heart-text" style="font-size: 1.15em;">Computer Science & Engineering 💻✨</strong></p>
   
   <a href="portfolio.html" class="btn">✨🎀 แฟ้มสะสมผลงาน 🪽✨</a>
 
@@ -285,5 +281,3 @@
 
 </body>
 </html>
-
-```
