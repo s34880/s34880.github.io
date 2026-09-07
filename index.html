@@ -6,7 +6,7 @@
 <title>หน้าแนะนำตัวของวรรธนันท์ 🍭</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Great+Vibes&family=Prompt:wght@300;400;600&display=swap">
 <style>
-  /* กำหนดชื่อ Class สำหรับฟอนต์ Heart Script สไตล์ภาพที่ส่งมา */
+  /* กำหนดชื่อ Class สำหรับฟอนต์ Heart Script */
   .heart-font {
     font-family: 'Great Vibes', 'Alex Brush', cursive;
   }
@@ -27,10 +27,8 @@
   }
 
   body {
-    /* พื้นหลังสีชมพูไล่เฉดหวานๆ */
-    background: radial-gradient(circle at 20% 20%, #fff0f5 0%, #ffc6ff 40%, #ffb3c6 80%, #ff85a1 100%);
-    background-size: 200% 200%;
-    animation: pinkGradient 10s ease infinite alternate;
+    /* พื้นหลังหลักไล่เฉดสีชมพูพาสเทลหวานๆ */
+    background: linear-gradient(135deg, #fff0f5 0%, #ffd1dc 40%, #e1bee7 70%, #b3e5fc 100%);
     font-family: 'Prompt', sans-serif;
     color: var(--text-color);
     min-height: 100vh;
@@ -42,14 +40,77 @@
     position: relative;
   }
 
-  @keyframes pinkGradient {
-    0% { background-position: 0% 0%; }
-    100% { background-position: 100% 100%; }
+  /* ------------------- CSS สร้างพื้นหลังวงกลมลอยดุ๊กดิ๊ก (Background Blobs) ------------------- */
+  .bg-decorations {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .bg-circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(50px);
+    opacity: 0.65;
+    animation: floatBg 12s ease-in-out infinite alternate;
+  }
+
+  .bg-circle-1 {
+    width: 350px;
+    height: 350px;
+    background: #ffb3c6;
+    top: -50px;
+    left: -50px;
+    animation-delay: 0s;
+  }
+
+  .bg-circle-2 {
+    width: 450px;
+    height: 450px;
+    background: #e2afff;
+    bottom: -100px;
+    right: -80px;
+    animation-delay: -3s;
+  }
+
+  .bg-circle-3 {
+    width: 300px;
+    height: 300px;
+    background: #b3e5fc;
+    bottom: 10%;
+    left: -50px;
+    animation-delay: -6s;
+  }
+
+  .bg-circle-4 {
+    width: 250px;
+    height: 250px;
+    background: #fff9c4;
+    top: 15%;
+    right: 5%;
+    animation-delay: -9s;
+  }
+
+  @keyframes floatBg {
+    0% {
+      transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+    50% {
+      transform: translate(30px, 40px) scale(1.1) rotate(180deg);
+    }
+    100% {
+      transform: translate(-20px, 20px) scale(0.95) rotate(360deg);
+    }
   }
 
   /* ------------------- เอฟเฟกต์ตกแต่งตกลงมา ------------------- */
   .falling-container {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -93,7 +154,8 @@
   /* ------------------- การ์ดโปรไฟล์ ------------------- */
   .card {
     background: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border: 4px dashed var(--pink-main);
     border-radius: 40px;
     box-shadow: 0 15px 35px rgba(255, 133, 161, 0.3);
@@ -249,6 +311,15 @@
 </head>
 <body>
 
+<!-- วงกลมพื้นหลังลอยดุ๊กดิ๊ก (Pastel Floating Blobs) -->
+<div class="bg-decorations">
+  <div class="bg-circle bg-circle-1"></div>
+  <div class="bg-circle bg-circle-2"></div>
+  <div class="bg-circle bg-circle-3"></div>
+  <div class="bg-circle bg-circle-4"></div>
+</div>
+
+<!-- ไอคอนตกลงมา -->
 <div class="falling-container">
   <div class="falling-item">✨</div>
   <div class="falling-item">🌸</div>
@@ -261,6 +332,7 @@
   <div class="falling-item">🍓</div>
 </div>
 
+<!-- การ์ดเนื้อหา -->
 <div class="card">
   <div class="avatar-wrapper">
     <img src="IMG_4109.png" alt="รูปโปรไฟล์วรรธนันท์" class="avatar-img" title="ลองแตะสิ!">
