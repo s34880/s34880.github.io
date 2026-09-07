@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>แฟ้มสะสมผลงาน (Portfolio) - Princess Usahana Theme</title>
+<title>แฟ้มสะสมผลงาน (Portfolio) - วรรธนันท์ อุดมเดชภาคินทร์</title>
 <style>
-/* นำเข้าฟอนต์ Baloo 2 (หัวข้อ/ตกแต่ง), Great Vibes (ลายเซ็นชื่อ) และ Mali (เนื้อหา) จาก Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Great+Vibes&family=Mali:ital,wght@0,300;0,500;0,700;1,400&display=swap');
+/* นำเข้าฟอนต์ Google Fonts: Great Vibes (คำว่า Portfolio), Baloo 2 และ Mali (เนื้อหา) */
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Great+Vibes&family=Mali:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap');
 
 * {
     box-sizing: border-box;
@@ -15,156 +15,143 @@
 body {
     font-family: 'Mali', cursive, sans-serif;
     margin: 0;
-    padding: 20px 10px;
-    background: linear-gradient(135deg, #FFF9C4 0%, #FFD1DC 35%, #E1BEE7 70%, #B3E5FC 100%);
+    padding: 30px 15px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     background-attachment: fixed;
     position: relative;
     overflow-x: hidden;
     min-height: 100vh;
+    color: #2b2b2b;
 }
 
-/* เอฟเฟกต์ดอกไม้ร่วงหล่น */
-.petal {
+/* ตกแต่งพื้นหลังเรืองแสงแบบซอฟต์ๆ มินิมอล */
+body::before {
+    content: '';
     position: fixed;
-    top: -10%;
-    font-size: 26px;
-    user-select: none;
-    z-index: 1000;
-    pointer-events: none;
-    animation: fall linear infinite;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    top: -100px;
+    right: -100px;
+    width: 350px;
+    height: 350px;
+    background: rgba(255, 182, 193, 0.35);
+    filter: blur(80px);
+    border-radius: 50%;
+    z-index: 0;
 }
 
-@keyframes fall {
-    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-    100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
+body::after {
+    content: '';
+    position: fixed;
+    bottom: -100px;
+    left: -100px;
+    width: 350px;
+    height: 350px;
+    background: rgba(173, 216, 230, 0.35);
+    filter: blur(80px);
+    border-radius: 50%;
+    z-index: 0;
 }
-
-.petal:nth-child(1) { left: 5%; animation-duration: 7s; animation-delay: 0s; }
-.petal:nth-child(2) { left: 18%; animation-duration: 10s; animation-delay: 2s; }
-.petal:nth-child(3) { left: 32%; animation-duration: 6s; animation-delay: 4s; }
-.petal:nth-child(4) { left: 48%; animation-duration: 8s; animation-delay: 1s; }
-.petal:nth-child(5) { left: 62%; animation-duration: 9s; animation-delay: 3s; }
-.petal:nth-child(6) { left: 75%; animation-duration: 7s; animation-delay: 5s; }
-.petal:nth-child(7) { left: 88%; animation-duration: 11s; animation-delay: 1.5s; }
 
 .container {
-    max-width: 900px;
+    max-width: 860px;
     margin: auto;
     position: relative;
     z-index: 1;
 }
 
-/* รูปโปรไฟล์และหัวข้อส่วนบน */
+/* ส่วนหัวโปรไฟล์ */
 .header-wrapper {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .profile-card {
-    width: 140px;
-    height: 140px;
+    width: 130px;
+    height: 130px;
     border-radius: 50%;
-    background: #FFFFFF;
+    background: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 5px solid #FF80AB;
-    box-shadow: 6px 6px 0px #80DEEA, -5px -5px 0px #FFE082;
     margin: 0 auto 15px auto;
-    transition: transform 0.3s ease;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    border: 3px solid #ffffff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .profile-card:hover {
-    transform: rotate(5deg) scale(1.05);
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
 }
 
 .profile-card img {
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    border: 3px solid #A7FFEB;
     object-fit: cover;
 }
 
-/* หัวข้อหลัก ใช้ Baloo 2 ทรงกลมน่ารักแทน Pinyon Script */
+/* หัวข้อ Portfolio ใช้ฟอนต์ Great Vibes (สไตล์ Princess Usahana เดิม) */
 .main-title {
-    font-family: 'Baloo 2', cursive;
-    font-weight: 800;
-    font-size: 58px;
-    margin: 0;
-    color: #E91E63;
-    text-shadow: 3px 3px 0px #FFE082, 0 0 15px rgba(255, 64, 129, 0.4);
-    letter-spacing: 1px;
-    line-height: 1.1;
-    animation: glow 2s ease-in-out infinite alternate;
-}
-
-@keyframes glow {
-    from {
-        text-shadow: 2px 2px 0px #FFE082, 0 0 10px rgba(255, 128, 171, 0.5);
-    }
-    to {
-        text-shadow: 3px 3px 0px #FFE082, 0 0 20px rgba(255, 64, 129, 0.8), 0 0 30px #FF80AB;
-    }
-}
-
-/* ลายเซ็นชื่อ ใช้ Great Vibes ให้ความรู้สึกหรูหราแบบเจ้าหญิง */
-.sub-title {
     font-family: 'Great Vibes', cursive;
-    font-size: 42px;
-    color: #C2185B;
-    margin: -5px 0 5px 0;
+    font-size: 72px;
+    margin: 0;
+    color: #333333;
     font-weight: normal;
+    line-height: 1;
+    letter-spacing: 1px;
 }
 
-/* แถบเมนูนำทาง (Navigation Bar) */
+.sub-name {
+    font-size: 20px;
+    font-weight: 600;
+    color: #4a4a4a;
+    margin-top: 8px;
+    letter-spacing: 0.5px;
+}
+
+/* แถบเมนูนำทาง (Tabs Navigation) สไตล์แคปซูลมินิมอล */
 .nav-tabs {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     overflow-x: auto;
-    gap: 8px;
-    padding: 10px 5px 15px 5px;
-    margin-bottom: 15px;
-    scrollbar-width: thin;
-    scrollbar-color: #FF8A80 #FFF;
+    gap: 10px;
+    padding: 8px;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
 }
 
 .nav-tabs::-webkit-scrollbar {
-    height: 6px;
-}
-.nav-tabs::-webkit-scrollbar-thumb {
-    background-color: #FF8A80;
-    border-radius: 10px;
+    display: none;
 }
 
 .nav-btn {
-    background: #FFFFFF;
-    color: #FF5252;
-    padding: 8px 18px;
+    background: transparent;
+    color: #666666;
+    padding: 8px 20px;
     border-radius: 20px;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
     font-family: 'Mali', cursive;
-    border: 2px solid #FF8A80;
-    box-shadow: 3px 3px 0px #FFD54F;
+    border: none;
     cursor: pointer;
     white-space: nowrap;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
 }
 
 .nav-btn.active, .nav-btn:hover {
-    background: #FF8A80;
-    color: #FFFFFF;
-    box-shadow: 3px 3px 0px #81D4FA;
-    transform: translateY(-2px);
+    background: #2b2b2b;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-/* Slider Container สลับหน้าซ้าย-ขวา */
+/* Slider Container */
 .slider-wrapper {
     overflow: hidden;
     width: 100%;
-    border-radius: 30px;
+    border-radius: 24px;
 }
 
 .slides-container {
@@ -178,100 +165,75 @@ body {
     box-sizing: border-box;
 }
 
-/* กรอบเนื้อหา */
+/* กรอบเนื้อหาการ์ด */
 .box {
-    background: #FFFFFF;
-    padding: 25px;
-    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 35px 30px;
+    border-radius: 24px;
     position: relative;
-    border: 5px dashed #FF8A65;
-    outline: 5px solid #FFFFFF;
-    box-shadow: 8px 8px 0px #AED581, 14px 14px 0px rgba(255, 128, 171, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.8);
     min-height: 380px;
 }
 
-.box::before {
-    content: '🌸';
-    position: absolute;
-    top: -18px;
-    left: 20px;
-    font-size: 24px;
-    background: #FFF;
-    padding: 0 5px;
-    border-radius: 50%;
-}
-
-.box::after {
-    content: '✨';
-    position: absolute;
-    bottom: -15px;
-    right: 20px;
-    font-size: 22px;
-}
-
 h2 {
-    color: #FF5722;
-    font-size: 26px;
+    color: #222222;
+    font-size: 24px;
     font-family: 'Baloo 2', cursive;
     font-weight: 700;
-    border-bottom: 3px dotted #80DEEA;
-    padding-bottom: 8px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 12px;
     margin-top: 0;
-    display: inline-block;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-/* ตกแต่งคำภาษาอังกฤษด้วย Baloo 2 ทรงกลมน่ารัก */
 .fancy-text {
     font-family: 'Baloo 2', cursive;
     font-weight: 600;
-    font-size: 28px;
-    color: #E91E63;
-    display: inline-block;
-    padding: 0 5px;
-    vertical-align: middle;
+    font-size: 20px;
+    color: #888888;
+    margin-left: auto;
 }
 
 p, ul {
-    font-size: 19px;
-    color: #424242;
-    line-height: 1.6;
-    font-family: 'Mali', cursive;
-}
-
-ul {
-    list-style-type: none;
-    padding-left: 5px;
-}
-
-ul li {
-    margin-bottom: 10px;
+    font-size: 16px;
+    color: #4a4a4a;
+    line-height: 1.8;
 }
 
 .info-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 12px;
+    gap: 15px;
     margin-top: 15px;
 }
 
 .info-item {
-    background: #F1F8E9;
-    padding: 10px 15px;
-    border-radius: 15px;
-    border: 2px solid #C5E1A5;
+    background: #fdfdfd;
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: 1px solid #eaeaea;
+    font-size: 15px;
 }
 
-/* ประวัติการศึกษา แบบบรรทัดเรียงต่อกัน (ม.ปลาย แล้วเว้นบรรทัด แล้วม.ต้น) */
+.info-item b {
+    color: #222;
+}
+
+/* ประวัติการศึกษา */
 .edu-lines {
     margin-top: 15px;
 }
 
 .edu-line {
-    background: #FFF3E0;
-    padding: 14px 18px;
+    background: #fdfdfd;
+    padding: 18px 20px;
     border-radius: 16px;
-    border: 2px solid #FFCC80;
-    margin-bottom: 28px;
+    border: 1px solid #eaeaea;
+    margin-bottom: 15px;
 }
 
 .edu-line:last-child {
@@ -279,35 +241,36 @@ ul li {
 }
 
 .edu-line b {
-    color: #E65100;
-    font-size: 19px;
+    color: #111111;
+    font-size: 16px;
 }
 
 /* กิจกรรมแลกเปลี่ยน */
 .exchange-title {
-    font-size: 20px;
-    color: #AD1457;
-    background: #FCE4EC;
-    border: 2px dashed #F48FB1;
-    border-radius: 16px;
-    padding: 12px 16px;
+    font-size: 16px;
+    color: #2c3e50;
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    padding: 15px;
     margin: 10px 0 20px 0;
     text-align: center;
+    line-height: 1.6;
 }
 
 .cert-box {
     width: 100%;
-    aspect-ratio: 4 / 3;
-    background: #FFF8E1;
-    border: 3px solid #FFD54F;
-    border-radius: 20px;
+    aspect-ratio: 16 / 9;
+    background: #f1f3f5;
+    border: 1px dashed #ced4da;
+    border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #BFA100;
-    font-size: 18px;
+    color: #adb5bd;
+    font-size: 16px;
     text-align: center;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
     overflow: hidden;
 }
 
@@ -319,19 +282,19 @@ ul li {
 
 .photo-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 12px;
 }
 
 .photo-box {
     aspect-ratio: 1 / 1;
-    background: #E1F5FE;
-    border: 2px solid #81D4FA;
-    border-radius: 14px;
+    background: #f1f3f5;
+    border: 1px solid #dee2e6;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #0277BD;
+    color: #adb5bd;
     font-size: 14px;
     text-align: center;
     overflow: hidden;
@@ -347,68 +310,52 @@ ul li {
 .controls {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
 .btn {
-    background: linear-gradient(45deg, #FF4081, #FF80AB);
-    color: white;
-    padding: 10px 25px;
+    background: #ffffff;
+    color: #333333;
+    padding: 10px 24px;
     text-decoration: none;
-    border-radius: 30px;
-    font-size: 20px;
-    font-weight: bold;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: 600;
     font-family: 'Mali', cursive;
-    box-shadow: 0 4px 10px rgba(255, 64, 129, 0.3);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     transition: all 0.3s ease;
-    border: 2px solid #FFFFFF;
+    border: 1px solid #e0e0e0;
     cursor: pointer;
     display: inline-block;
 }
 
 .btn:hover {
-    background: linear-gradient(45deg, #FF1744, #FF5252);
-    transform: scale(1.05);
+    background: #2b2b2b;
+    color: #ffffff;
+    border-color: #2b2b2b;
+    transform: translateY(-2px);
 }
 
 .btn:disabled {
-    background: #CCC;
+    background: #f5f5f5;
+    color: #ccc;
+    border-color: #eee;
     box-shadow: none;
     cursor: not-allowed;
     transform: none;
 }
 
-.btn-home {
-    background: linear-gradient(45deg, #7E57C2, #B39DDB);
-}
-
-.btn-home:hover {
-    background: linear-gradient(45deg, #5E35B1, #9575CD);
-}
-
 .footer {
     text-align: center;
-    font-size: 30px;
-    color: #424242;
-    margin-top: 25px;
-    background: rgba(255, 255, 255, 0.75);
-    padding: 12px;
-    border-radius: 20px;
-    backdrop-filter: blur(5px);
-    font-family: 'Great Vibes', cursive;
+    font-size: 14px;
+    color: #777777;
+    margin-top: 30px;
+    padding: 10px;
+    font-family: 'Mali', cursive;
 }
 </style>
 </head>
 <body>
-
-<!-- ดอกไม้ร่วงหล่น -->
-<div class="petal">🌸</div>
-<div class="petal">✨</div>
-<div class="petal">🌼</div>
-<div class="petal">🌺</div>
-<div class="petal">🌷</div>
-<div class="petal">💛</div>
-<div class="petal">🎀</div>
 
 <div class="container">
 
@@ -418,16 +365,15 @@ ul li {
             <img src="IMG_4109.png" alt="รูปโปรไฟล์">
         </div>
         <h1 class="main-title">Portfolio</h1>
-        <div class="sub-title">Princess Usahana</div>
-        <p style="margin: 5px 0; color: #555; font-size: 18px;">วรรธนันท์ อุดมเดชภาคินทร์ </p>
+        <div class="sub-name">วรรธนันท์ อุดมเดชภาคินทร์</div>
     </div>
 
     <!-- แถบเมนูนำทาง (Tabs Navigation) -->
     <nav class="nav-tabs">
-        <button class="nav-btn active" onclick="goToSlide(0)"> ประวัติส่วนตัว</button>
-        <button class="nav-btn" onclick="goToSlide(1)"> ประวัติการศึกษา</button>
-        <button class="nav-btn" onclick="goToSlide(2)"> กิจกรรม</button>
-        <button class="nav-btn" onclick="goToSlide(3)"> ความสนใจในการศึกษาต่อ </button>
+        <button class="nav-btn active" onclick="goToSlide(0)">ประวัติส่วนตัว</button>
+        <button class="nav-btn" onclick="goToSlide(1)">ประวัติการศึกษา</button>
+        <button class="nav-btn" onclick="goToSlide(2)">กิจกรรม</button>
+        <button class="nav-btn" onclick="goToSlide(3)">ความสนใจในการศึกษาต่อ</button>
     </nav>
 
     <!-- พื้นที่สไลด์เลื่อนซ้าย-ขวา -->
@@ -449,7 +395,7 @@ ul li {
                 </div>
             </div>
 
-            <!-- Slide 2: ประวัติการศึกษา (เรียงเป็นบรรทัด ม.ปลาย แล้วเว้นบรรทัดตามด้วย ม.ต้น) -->
+            <!-- Slide 2: ประวัติการศึกษา -->
             <div class="slide">
                 <div class="box">
                     <h2>📚 ประวัติการศึกษา <span class="fancy-text">Education</span></h2>
@@ -470,7 +416,7 @@ ul li {
                     <h2>🏆 กิจกรรมและเกียรติบัตร <span class="fancy-text">Activities</span></h2>
 
                     <div class="exchange-title">
-                        โครงการแลกเปลี่ยนทางวิชาการครั้งที่ 10<br>
+                        <b>โครงการแลกเปลี่ยนทางวิชาการครั้งที่ 10</b><br>
                         ระหว่างโรงเรียนมัธยมศึกษาอิจิคาว่า ประเทศญี่ปุ่น<br>
                         และโรงเรียนวิทยาศาสตร์จุฬาภรณราชวิทยาลัย
                     </div>
@@ -491,19 +437,19 @@ ul li {
             <div class="slide">
                 <div class="box">
                     <h2>🎯 ความสนใจในการศึกษาต่อ <span class="fancy-text">Interests</span></h2>
-                    <p style="text-indent: 20px;">
+                    <p>
                         <b>สนใจคณะ/สาขา :</b><br>
                         มีความสนใจเข้าศึกษาต่อในระดับอุดมศึกษา ในสาขาวิชาที่เกี่ยวข้องกับเทคโนโลยีสารสนเทศ วิทยาการคอมพิวเตอร์ หรือการออกแบบดิจิทัล เนื่องจากมีความหลงใหลในการคิดวิเคราะห์ พัฒนาโปรแกรม และการสร้างสรรค์ผลงานผ่านเทคโนโลยีใหม่ ๆ เพื่อประยุกต์ใช้ในอนาคต
                     </p>
-                    <hr style="border: 1px dashed #FF80AB; margin: 15px 0;">
-                    <p><b>คติประจำใจ :</b><br><i style="font-size: 22px; color: #FF2A6D;">"ใครทำได้ ก็ให้เขาทำ"</i></p>
+                    <hr style="border: 0; border-top: 1px dashed #e0e0e0; margin: 20px 0;">
+                    <p><b>คติประจำใจ :</b><br><i style="font-size: 18px; color: #2b2b2b;">"ใครทำได้ ก็ให้เขาทำ"</i></p>
                 </div>
             </div>
 
         </div>
     </div>
 
-    <!-- ปุ่มนำทาง ย้อนกลับ-ถัดไป (ปุ่มย้อนกลับในหน้าแรกจะพากลับไปหน้า index.html) -->
+    <!-- ปุ่มนำทาง ย้อนกลับ-ถัดไป -->
     <div class="controls">
         <button class="btn" id="prevBtn" onclick="goBackOrHome()">❮ ย้อนกลับ</button>
         <button class="btn" id="nextBtn" onclick="changeSlide(1)">ถัดไป ❯</button>
@@ -511,7 +457,7 @@ ul li {
 
     <!-- ฟุตเตอร์ -->
     <div class="footer">
-        💗 Thank you for visiting my Portfolio 💗
+        © Portfolio - Wantanan Udomdetphakin
     </div>
 
 </div>
@@ -537,7 +483,6 @@ function updateSlidePosition() {
         }
     });
 
-    // ปุ่มย้อนกลับเปิดใช้งานตลอด (หน้าแรกจะพาไปหน้า index.html แทนการ disable)
     prevBtn.disabled = false;
     nextBtn.disabled = currentSlide === totalSlides - 1;
 }
@@ -554,7 +499,6 @@ function changeSlide(direction) {
     updateSlidePosition();
 }
 
-// ปุ่ม "ย้อนกลับ" : ถ้าอยู่หน้าแรกแล้ว ให้พาไปหน้า index.html แทนการเลื่อนสไลด์
 function goBackOrHome() {
     if (currentSlide === 0) {
         window.location.href = 'index.html';
@@ -579,16 +523,13 @@ sliderWrapper.addEventListener('touchend', e => {
 
 function handleSwipe() {
     if (touchStartX - touchEndX > 50) {
-        // ปัดซ้าย -> หน้าถัดไป
         if (currentSlide < totalSlides - 1) changeSlide(1);
     }
     if (touchEndX - touchStartX > 50) {
-        // ปัดขวา -> หน้าก่อนหน้า
         if (currentSlide > 0) changeSlide(-1);
     }
 }
 
-// เรียกใช้งานครั้งแรกเพื่อเริ่มที่หน้า 0
 updateSlidePosition();
 </script>
 
