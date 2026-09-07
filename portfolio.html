@@ -5,15 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>แฟ้มสะสมผลงาน (Portfolio) - Princess Usahana Theme</title>
 <style>
-/* นำเข้าฟอนต์น่ารัก สไตล์ลายมือและมีความอ่อนหวานรองรับภาษาไทย-อังกฤษ */
-@import url('https://fonts.googleapis.com/css2?family=Itim&family=Mali:ital,wght@0,300;0,500;0,700;1,400&display=swap');
+/* นำเข้าฟอนต์ Great Vibes, Alex Brush และ Mali จาก Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Great+Vibes&family=Mali:ital,wght@0,300;0,500;0,700;1,400&display=swap');
 
 * {
     box-sizing: border-box;
 }
 
 body {
-    font-family: 'Mali', 'Itim', cursive, sans-serif;
+    font-family: 'Mali', cursive, sans-serif;
     margin: 0;
     padding: 20px 10px;
     background: linear-gradient(135deg, #FFF9C4 0%, #FFD1DC 35%, #E1BEE7 70%, #B3E5FC 100%);
@@ -87,13 +87,32 @@ body {
     object-fit: cover;
 }
 
+/* ใช้ฟอนต์ Great Vibes เพิ่มความสลักเสลาอ่อนช้อย */
 .main-title {
-    color: #FF2A6D;
-    font-size: 36px;
+    font-family: 'Great Vibes', cursive;
+    font-size: 56px;
     margin: 0;
-    text-shadow: 2px 2px 0px #FFE082, 0 0 10px rgba(255, 64, 129, 0.2);
-    font-family: 'Itim', 'Mali', cursive;
-    letter-spacing: 1px;
+    color: #FF2A6D;
+    text-shadow: 3px 3px 0px #FFE082, 0 0 15px rgba(255, 64, 129, 0.4);
+    letter-spacing: 2px;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 2px 2px 0px #FFE082, 0 0 10px rgba(255, 128, 171, 0.5);
+    }
+    to {
+        text-shadow: 3px 3px 0px #FFE082, 0 0 20px rgba(255, 64, 129, 0.8), 0 0 30px #FF80AB;
+    }
+}
+
+.sub-title {
+    font-family: 'Alex Brush', cursive;
+    font-size: 30px;
+    color: #D81B60;
+    margin: -5px 0 5px 0;
+    font-weight: bold;
 }
 
 /* แถบเมนูนำทาง (Navigation Bar) */
@@ -119,11 +138,11 @@ body {
 .nav-btn {
     background: #FFFFFF;
     color: #FF5252;
-    padding: 8px 16px;
+    padding: 8px 18px;
     border-radius: 20px;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 600;
-    font-family: 'Itim', 'Mali', cursive;
+    font-family: 'Mali', cursive;
     border: 2px solid #FF8A80;
     box-shadow: 3px 3px 0px #FFD54F;
     cursor: pointer;
@@ -190,11 +209,20 @@ body {
 h2 {
     color: #FF5722;
     font-size: 26px;
-    font-family: 'Itim', 'Mali', cursive;
+    font-family: 'Mali', cursive;
     border-bottom: 3px dotted #80DEEA;
     padding-bottom: 8px;
     margin-top: 0;
     display: inline-block;
+}
+
+/* ตกแต่งคำภาษาอังกฤษด้วย Alex Brush */
+.fancy-text {
+    font-family: 'Alex Brush', cursive;
+    font-size: 32px;
+    color: #E91E63;
+    display: inline-block;
+    padding: 0 5px;
 }
 
 p, ul {
@@ -240,9 +268,9 @@ ul li {
     padding: 10px 25px;
     text-decoration: none;
     border-radius: 30px;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
-    font-family: 'Itim', 'Mali', cursive;
+    font-family: 'Mali', cursive;
     box-shadow: 0 4px 10px rgba(255, 64, 129, 0.3);
     transition: all 0.3s ease;
     border: 2px solid #FFFFFF;
@@ -263,14 +291,14 @@ ul li {
 
 .footer {
     text-align: center;
-    font-size: 18px;
+    font-size: 22px;
     color: #616161;
     margin-top: 25px;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.75);
     padding: 12px;
     border-radius: 20px;
     backdrop-filter: blur(5px);
-    font-family: 'Itim', 'Mali', cursive;
+    font-family: 'Alex Brush', cursive;
 }
 </style>
 </head>
@@ -292,8 +320,9 @@ ul li {
         <div class="profile-card">
             <img src="IMG_4109.png" alt="รูปโปรไฟล์">
         </div>
-        <h1 class="main-title">💖 🌷 Portfolio 🌷 💖</h1>
-        <p style="margin: 5px 0; color: #555;">วรรธนันท์ อุดมเดบภาคินทร์ (ปริ้นเซส)</p>
+        <h1 class="main-title">Portfolio</h1>
+        <div class="sub-title">Princess Usahana</div>
+        <p style="margin: 5px 0; color: #555; font-size: 18px;">วรรธนันท์ อุดมเดบภาคินทร์ (ปริ้นเซส)</p>
     </div>
 
     <!-- แถบเมนูนำทาง (Tabs Navigation) -->
@@ -314,7 +343,7 @@ ul li {
             <!-- Slide 1: ประวัติส่วนตัว -->
             <div class="slide">
                 <div class="box">
-                    <h2>👩‍🎓 ประวัติส่วนตัว</h2>
+                    <h2>👩‍🎓 ประวัติส่วนตัว <span class="fancy-text">Profile</span></h2>
                     <div class="info-grid">
                         <div class="info-item"><b>ชื่อ-นามสกุล :</b> วรรธนันท์ อุดมเดบภาคินทร์</div>
                         <div class="info-item"><b>ชื่อเล่น :</b> ปริ้นเซส</div>
@@ -329,7 +358,7 @@ ul li {
             <!-- Slide 2: ประวัติการศึกษา -->
             <div class="slide">
                 <div class="box">
-                    <h2>📚 ประวัติการศึกษา</h2>
+                    <h2>📚 ประวัติการศึกษา <span class="fancy-text">Education</span></h2>
                     <ul>
                         <li>🏫 <b>ระดับมัธยมศึกษาตอนปลาย (ม.4 - ม.6) :</b><br>โรงเรียนบ้านบึง "อุตสาหกรรมนุเคราะห์" (แผนการเรียน Gifted)</li>
                         <br>
@@ -341,7 +370,7 @@ ul li {
             <!-- Slide 3: ความสนใจศึกษาต่อ -->
             <div class="slide">
                 <div class="box">
-                    <h2>🎯 ความสนใจในการศึกษาต่อ</h2>
+                    <h2>🎯 ความสนใจในการศึกษาต่อ <span class="fancy-text">Interests</span></h2>
                     <p style="text-indent: 20px;">
                         มีความสนใจเข้าศึกษาต่อในระดับอุดมศึกษา ในสาขาวิชาที่เกี่ยวข้องกับ <b>เทคโนโลยีสารสนเทศ วิทยาการคอมพิวเตอร์ หรือการออกแบบดิจิทัล</b>
                     </p>
@@ -354,7 +383,7 @@ ul li {
             <!-- Slide 4: ความสามารถพิเศษ -->
             <div class="slide">
                 <div class="box">
-                    <h2>⭐ ความสามารถพิเศษ</h2>
+                    <h2>⭐ ความสามารถพิเศษ <span class="fancy-text">Skills</span></h2>
                     <ul>
                         <li>🎨 วาดภาพ / ออกแบบกราฟิก</li>
                         <li>🎤 ร้องเพลง</li>
@@ -368,7 +397,7 @@ ul li {
             <!-- Slide 5: โครงงานวิทยาศาสตร์ -->
             <div class="slide">
                 <div class="box">
-                    <h2>🧪 โครงงานวิทยาศาสตร์คำนวณ</h2>
+                    <h2>🧪 โครงงานวิทยาศาสตร์คำนวณ <span class="fancy-text">Project</span></h2>
                     <p><b>การสร้างเว็บไซต์ Portfolio ด้วยภาษา HTML และ CSS</b></p>
                     <p>จัดทำขึ้นเพื่อฝึกฝนทักษะการออกแบบหน้าเว็บ (UI Design) และพัฒนาทักษะการเขียนโปรแกรมคอมพิวเตอร์อย่างเป็นระบบ</p>
                     <p><b>สิ่งที่ได้รับจากโครงงาน :</b></p>
@@ -382,7 +411,7 @@ ul li {
             <!-- Slide 6: กิจกรรมและเกียรติบัตร -->
             <div class="slide">
                 <div class="box">
-                    <h2>🏆 กิจกรรมและเกียรติบัตร</h2>
+                    <h2>🏆 กิจกรรมและเกียรติบัตร <span class="fancy-text">Activities</span></h2>
                     <ul>
                         <li>🥇 เข้าร่วมการแข่งขันทางวิชาการ</li>
                         <li>📜 เข้าร่วมอบรมพัฒนาทักษะเทคโนโลยีและการออกแบบ</li>
@@ -417,7 +446,7 @@ ul li {
 
     <!-- ฟุตเตอร์ -->
     <div class="footer">
-        💗 ขอบคุณที่เข้ามาเยี่ยมชม Portfolio ของฉัน 💗
+        💗 Thank you for visiting my Portfolio 💗
     </div>
 
 </div>
