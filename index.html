@@ -1,17 +1,24 @@
+นี่คือโค้ด HTML/CSS ที่อัปเดตตามที่คุณต้องการครับ โดยทำการปรับปรุงตามโจทย์ดังนี้:
+ * **ฟอนต์ Symphony:** เรียกใช้ฟอนต์สไตล์ Calligraphy/Script มาหวานสง่างามสำหรับหัวข้อ และผสมผสานให้อ่านง่าย
+ * **พื้นหลังเกลียวชมพูประกายวิ้งๆ:** จำลองโทนสี Radial Swirl + Sparkles ลอยวน หมุนเบาๆ เลียนแบบภาพวอลเปเปอร์สีชมพูวิ้งๆ ที่ส่งมา
+ * **รูปโปรไฟล์ใส่กรอบ:** เปลี่ยนจาก Emoji เป็นช่องใส่รูปโปรไฟล์ <img src="..."> พร้อมใส่กรอบลูกไม้/เส้นประสีชมพูหวาน
+ * **เอฟเฟกต์ขยับ (Animations):** เพิ่มเอฟเฟกต์ดุ๊กดิ๊ก ขยับเด้ง นุ่มนวลให้กับรูปโปรไฟล์, ปุ่มกด, ตัวหนังสือ และฉากหลัง
+```html
 <!DOCTYPE html>
 <html lang="th">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>หน้าแนะนำตัวของวรรธนันท์ 🍭</title>
-<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Charm:wght@400;700&family=Prompt:wght@300;400;600&display=swap">
 <style>
   :root {
-    --pink: #ffc6ff;
-    --purple: #bdb2ff;
-    --blue: #a0c4ff;
-    --yellow: #fdffb6;
-    --text-color: #5c4d7d;
+    --pink-light: #fff0f5;
+    --pink-soft: #ffc6ff;
+    --pink-main: #ff9ebb;
+    --pink-deep: #f72585;
+    --purple-soft: #e2afff;
+    --text-color: #5a3d66;
   }
 
   * {
@@ -21,9 +28,13 @@
   }
 
   body {
-    background: linear-gradient(135deg, var(--pink), var(--purple), var(--blue), var(--yellow));
-    background-size: 400% 400%;
-    animation: gradientBG 12s ease infinite;
+    /* พื้นหลังสีชมพูสไตล์ Spiral/Twirl + Prismatic Glow ตามรูปภาพ */
+    background: 
+      radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 198, 255, 0.6) 25%, rgba(255, 158, 187, 0.7) 55%, rgba(247, 143, 178, 0.9) 100%),
+      conic-gradient(from 0deg at 50% 50%, #ffe5ec, #ffc6ff, #ffb3c6, #ffe5ec);
+    background-blend-mode: overlay;
+    background-size: 150% 150%;
+    animation: swirlBG 15s linear infinite;
     font-family: 'Prompt', sans-serif;
     color: var(--text-color);
     min-height: 100vh;
@@ -31,17 +42,18 @@
     justify-content: center;
     align-items: center;
     padding: 20px;
-    overflow: hidden; /* ป้องกันแถบสเกรลล์ตตอนขนมตกลงมา */
+    overflow: hidden;
     position: relative;
   }
 
-  @keyframes gradientBG {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+  /* เอฟเฟกต์หมุนหมุนเบาๆ ให้พื้นหลังเกลียวชมพูมีมิติ */
+  @keyframes swirlBG {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
   }
 
-  /* ------------------- เอฟเฟกต์วิ้งๆ และขนมตกลงมา ------------------- */
+  /* ------------------- เอฟเฟกต์วิ้งๆ และประกายดาวตกลงมา ------------------- */
   .falling-container {
     position: absolute;
     top: 0;
@@ -58,81 +70,108 @@
     font-size: 24px;
     animation: fall linear infinite;
     user-select: none;
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8));
   }
 
   @keyframes fall {
     0% {
-      transform: translateY(0) rotate(0deg);
+      transform: translateY(0) rotate(0deg) scale(0.8);
+      opacity: 0.9;
+    }
+    50% {
+      transform: translateY(50vh) rotate(180deg) scale(1.2);
       opacity: 1;
     }
     100% {
-      transform: translateY(105vh) rotate(360deg);
+      transform: translateY(105vh) rotate(360deg) scale(0.7);
       opacity: 0.2;
     }
   }
 
-  /* กำหนดตำแหน่ง ความเร็ว และดีเลย์ของของตกลงมา */
-  .falling-item:nth-child(1)  { left: 5%;  animation-duration: 6s;  animation-delay: 0s;   font-size: 22px; }
-  .falling-item:nth-child(2)  { left: 15%; animation-duration: 8s;  animation-delay: 2s;   font-size: 28px; }
-  .falling-item:nth-child(3)  { left: 25%; animation-duration: 7s;  animation-delay: 4s;   font-size: 20px; }
-  .falling-item:nth-child(4)  { left: 38%; animation-duration: 9s;  animation-delay: 1s;   font-size: 25px; }
-  .falling-item:nth-child(5)  { left: 50%; animation-duration: 6.5s; animation-delay: 3s;   font-size: 22px; }
-  .falling-item:nth-child(6)  { left: 62%; animation-duration: 8.5s; animation-delay: 0.5s; font-size: 30px; }
-  .falling-item:nth-child(7)  { left: 75%; animation-duration: 7.5s; animation-delay: 2.5s; font-size: 20px; }
-  .falling-item:nth-child(8)  { left: 85%; animation-duration: 9.5s; animation-delay: 1.5s; font-size: 26px; }
-  .falling-item:nth-child(9)  { left: 93%; animation-duration: 6.8s; animation-delay: 3.5s; font-size: 24px; }
+  .falling-item:nth-child(1)  { left: 8%;  animation-duration: 5s;  animation-delay: 0s; }
+  .falling-item:nth-child(2)  { left: 20%; animation-duration: 7s;  animation-delay: 1.5s; }
+  .falling-item:nth-child(3)  { left: 32%; animation-duration: 6s;  animation-delay: 3s; }
+  .falling-item:nth-child(4)  { left: 45%; animation-duration: 8s;  animation-delay: 0.5s; }
+  .falling-item:nth-child(5)  { left: 58%; animation-duration: 5.5s; animation-delay: 2s; }
+  .falling-item:nth-child(6)  { left: 70%; animation-duration: 7.5s; animation-delay: 4s; }
+  .falling-item:nth-child(7)  { left: 82%; animation-duration: 6.5s; animation-delay: 1s; }
+  .falling-item:nth-child(8)  { left: 92%; animation-duration: 8.5s; animation-delay: 2.5s; }
 
   /* ------------------- การ์ดโปรไฟล์ ------------------- */
   .card {
-    background: rgba(255, 255, 255, 0.88);
-    backdrop-filter: blur(10px);
-    /* เปลี่ยนขอบเป็นเส้นประสีม่วงพาสเทล */
-    border: 4px dashed #bdb2ff;
-    border-radius: 35px;
-    box-shadow: 0 15px 35px rgba(189, 178, 255, 0.4);
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(12px);
+    /* กรอบลูกไม้ประยุกต์เส้นคู่สีชมพูพาสเทล */
+    border: 4px dashed #ffb3c6;
+    outline: 8px solid rgba(255, 255, 255, 0.5);
+    border-radius: 40px;
+    box-shadow: 0 20px 40px rgba(247, 37, 133, 0.25), inset 0 0 25px rgba(255, 255, 255, 0.8);
     max-width: 480px;
     width: 100%;
     padding: 40px 30px;
     text-align: center;
     position: relative;
     z-index: 2;
-    animation: float 4s ease-in-out infinite;
+    animation: floatCard 4s ease-in-out infinite;
   }
 
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
+  /* การ์ดลอยดุ๊กดิ๊ก */
+  @keyframes floatCard {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(0.8deg); }
   }
 
-  /* กิมมิค: อวตารดุ๊กดิ๊กเมื่อเอาเมาส์ชี้ */
-  .avatar {
-    font-size: 65px;
-    background: var(--yellow);
-    width: 110px;
-    height: 110px;
-    line-height: 110px;
+  /* ------------------- รูปโปรไฟล์ดุ๊กดิ๊กขยับได้ ------------------- */
+  .avatar-container {
+    position: relative;
+    width: 130px;
+    height: 130px;
+    margin: 0 auto 20px auto;
+  }
+
+  .avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 50%;
-    margin: 0 auto 15px auto;
-    box-shadow: 0 8px 15px rgba(0,0,0,0.08);
-    border: 3px dashed #ffc6ff;
+    border: 4px dashed #ff85a1;
+    padding: 5px;
+    background: #ffffff;
+    box-shadow: 0 10px 20px rgba(247, 37, 133, 0.3);
+    /* เอฟเฟกต์รูปขยับเด้งดุ๊กดิ๊ก */
+    animation: avatarMove 3s ease-in-out infinite alternate;
     cursor: pointer;
     transition: transform 0.3s ease;
   }
 
-  .avatar:hover {
-    animation: wiggle 0.5s ease-in-out infinite alternate;
+  @keyframes avatarMove {
+    0% { transform: translateY(0) scale(1) rotate(0deg); }
+    33% { transform: translateY(-8px) scale(1.04) rotate(-4deg); }
+    66% { transform: translateY(2px) scale(0.98) rotate(3deg); }
+    100% { transform: translateY(-10px) scale(1.05) rotate(-2deg); }
+  }
+
+  .avatar-img:hover {
+    animation: wiggle 0.4s ease-in-out infinite alternate;
   }
 
   @keyframes wiggle {
-    0% { transform: rotate(-10deg) scale(1.1); }
-    100% { transform: rotate(10deg) scale(1.1); }
+    0% { transform: scale(1.15) rotate(-12deg); }
+    100% { transform: scale(1.15) rotate(12deg); }
+  }
+
+  /* ฟอนต์ Symphony Style สำหรับชื่อและหัวข้อ */
+  .symphony-font {
+    font-family: 'Charm', 'Alex Brush', cursive;
+    font-weight: 700;
   }
 
   h1 {
-    color: #6b4c9a;
-    font-size: 24px;
+    font-family: 'Charm', 'Prompt', cursive;
+    color: #90356c;
+    font-size: 26px;
     margin-bottom: 15px;
-    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
   }
 
   p {
@@ -142,72 +181,97 @@
   }
 
   .highlight {
-    background: linear-gradient(120deg, #ffc6ff 0%, #ffffb5 100%);
-    padding: 2px 10px;
-    border-radius: 12px;
+    background: linear-gradient(120deg, #ffc6ff 0%, #ffe5ec 100%);
+    padding: 3px 12px;
+    border-radius: 15px;
     font-weight: 600;
+    color: #7209b7;
+    display: inline-block;
+    animation: pulseHighlight 2s ease-in-out infinite alternate;
   }
 
-  /* ปุ่มกดสไตล์วิ้งๆ */
+  @keyframes pulseHighlight {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.06); }
+  }
+
+  /* ------------------- ปุ่มกดดุ๊กดิ๊กวิ้งๆ ------------------- */
   .btn {
     display: inline-block;
-    background: linear-gradient(45deg, #ffb3c6, #bdb2ff);
+    background: linear-gradient(45deg, #ff85a1, #bdb2ff);
     color: white;
     text-decoration: none;
     font-size: 18px;
     font-weight: 600;
-    padding: 14px 32px;
-    border-radius: 25px;
-    box-shadow: 0 8px 20px rgba(255, 179, 198, 0.5);
+    padding: 14px 34px;
+    border-radius: 30px;
+    box-shadow: 0 8px 22px rgba(247, 37, 133, 0.35);
     transition: all 0.3s ease;
     margin-top: 15px;
     border: 2px dashed #ffffff;
+    animation: btnPulse 2.5s infinite alternate ease-in-out;
+  }
+
+  @keyframes btnPulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05) rotate(-1deg); }
   }
 
   .btn:hover {
-    transform: scale(1.08) rotate(-2deg);
-    box-shadow: 0 12px 25px rgba(189, 178, 255, 0.7);
-    background: linear-gradient(45deg, #bdb2ff, #ffb3c6);
+    transform: scale(1.12) rotate(-3deg) !important;
+    box-shadow: 0 12px 28px rgba(247, 37, 133, 0.5);
+    background: linear-gradient(45deg, #bdb2ff, #ff85a1);
   }
 
+  /* ------------------- โซเชียลมีเดียดุ๊กดิ๊ก ------------------- */
   .social-links {
     margin-top: 25px;
-    font-size: 22px;
+    font-size: 24px;
   }
 
   .social-links a {
     color: var(--text-color);
     text-decoration: none;
-    margin: 0 10px;
-    transition: transform 0.2s;
+    margin: 0 12px;
     display: inline-block;
+    transition: transform 0.2s;
+    animation: floatSocial 2s ease-in-out infinite alternate;
+  }
+
+  .social-links a:nth-child(1) { animation-delay: 0s; }
+  .social-links a:nth-child(2) { animation-delay: 0.3s; }
+  .social-links a:nth-child(3) { animation-delay: 0.6s; }
+
+  @keyframes floatSocial {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-6px) rotate(8deg); }
   }
 
   .social-links a:hover {
-    transform: scale(1.4) rotate(10deg);
+    transform: scale(1.5) rotate(15deg) !important;
   }
 </style>
 </head>
 <body>
 
-<!-- เอฟเฟกต์ขนมและแสงวิ้งๆ ตกลงมา -->
 <div class="falling-container">
   <div class="falling-item">✨</div>
-  <div class="falling-item">🍰</div>
+  <div class="falling-item">🌸</div>
   <div class="falling-item">💖</div>
   <div class="falling-item">🍬</div>
   <div class="falling-item">⭐</div>
-  <div class="falling-item">🍪</div>
+  <div class="falling-item">🎀</div>
   <div class="falling-item">🍭</div>
   <div class="falling-item">✨</div>
-  <div class="falling-item">🍓</div>
 </div>
 
 <div class="card">
-  <div class="avatar" title="ลองแตะสิ!">💐</div>
-  <h1>ยินดีต้อนรับสู่โปรไฟล์ของฉัน ✨</h1>
-  
-  <p>สวัสดีค่ะ! ดิฉันชื่อ <span class="highlight">วรรธนันท์ (Wantanan)</span> 🎀</p>
+  <div class="avatar-container">
+    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="รูปโปรไฟล์วรรธนันท์" class="avatar-img" title="ลองแตะสิ!">
+  </div>
+
+  <h1 class="symphony-font">ยินดีต้อนรับสู่โปรไฟล์ของฉัน ✨</h1>
+  <p>สวัสดีค่ะ! ดิฉันชื่อ <span class="highlight symphony-font" style="font-size: 1.2em;">วรรธนันท์ (Wantanan)</span> 🎀</p>
   <p>ขณะนี้กำลังสนใจด้าน <br><strong>Computer Science & Engineering 💻✨</strong></p>
   
   <a href="portfolio.html" class="btn">✨🎀 แฟ้มสะสมผลงาน 🪽✨</a>
@@ -221,3 +285,5 @@
 
 </body>
 </html>
+
+```
