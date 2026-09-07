@@ -3,353 +3,608 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>หน้าแนะนำตัวของวรรธนันท์ 🍭</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Great+Vibes&family=Prompt:wght@300;400;600&display=swap">
+<title>แฟ้มสะสมผลงาน (Portfolio) - Princess Usahana Theme</title>
 <style>
-  /* กำหนดชื่อ Class สำหรับฟอนต์ Heart Script */
-  .heart-font {
-    font-family: 'Great Vibes', 'Alex Brush', cursive;
-  }
+/* นำเข้าฟอนต์ Baloo 2 (หัวข้อ/ตกแต่ง), Great Vibes (ลายเซ็นชื่อ) และ Mali (เนื้อหา) จาก Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Great+Vibes&family=Mali:ital,wght@0,300;0,500;0,700;1,400&display=swap');
 
-  :root {
-    --pink-soft: #ffe5ec;
-    --pink-main: #ffb3c6;
-    --pink-accent: #ff85a1;
-    --pink-dark: #fb6f92;
-    --purple-soft: #e2afff;
-    --text-color: #6c4f70;
-  }
-
-  * {
+* {
     box-sizing: border-box;
+}
+
+body {
+    font-family: 'Mali', cursive, sans-serif;
     margin: 0;
-    padding: 0;
-  }
-
-  body {
-    /* พื้นหลังหลักไล่เฉดสีชมพูพาสเทลหวานๆ */
-    background: linear-gradient(135deg, #fff0f5 0%, #ffd1dc 40%, #e1bee7 70%, #b3e5fc 100%);
-    font-family: 'Prompt', sans-serif;
-    color: var(--text-color);
+    padding: 20px 10px;
+    background: linear-gradient(135deg, #FFF9C4 0%, #FFD1DC 35%, #E1BEE7 70%, #B3E5FC 100%);
+    background-attachment: fixed;
+    position: relative;
+    overflow-x: hidden;
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    overflow: hidden;
-    position: relative;
-  }
+}
 
-  /* ------------------- CSS สร้างพื้นหลังวงกลมลอยดุ๊กดิ๊ก (Background Blobs) ------------------- */
-  .bg-decorations {
+/* เอฟเฟกต์ดอกไม้ร่วงหล่น */
+.petal {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    pointer-events: none;
-    overflow: hidden;
-  }
-
-  .bg-circle {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(50px);
-    opacity: 0.65;
-    animation: floatBg 12s ease-in-out infinite alternate;
-  }
-
-  .bg-circle-1 {
-    width: 350px;
-    height: 350px;
-    background: #ffb3c6;
-    top: -50px;
-    left: -50px;
-    animation-delay: 0s;
-  }
-
-  .bg-circle-2 {
-    width: 450px;
-    height: 450px;
-    background: #e2afff;
-    bottom: -100px;
-    right: -80px;
-    animation-delay: -3s;
-  }
-
-  .bg-circle-3 {
-    width: 300px;
-    height: 300px;
-    background: #b3e5fc;
-    bottom: 10%;
-    left: -50px;
-    animation-delay: -6s;
-  }
-
-  .bg-circle-4 {
-    width: 250px;
-    height: 250px;
-    background: #fff9c4;
-    top: 15%;
-    right: 5%;
-    animation-delay: -9s;
-  }
-
-  @keyframes floatBg {
-    0% {
-      transform: translate(0, 0) scale(1) rotate(0deg);
-    }
-    50% {
-      transform: translate(30px, 40px) scale(1.1) rotate(180deg);
-    }
-    100% {
-      transform: translate(-20px, 20px) scale(0.95) rotate(360deg);
-    }
-  }
-
-  /* ------------------- เอฟเฟกต์ตกแต่งตกลงมา ------------------- */
-  .falling-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  .falling-item {
-    position: absolute;
-    top: -50px;
-    font-size: 24px;
-    animation: fall linear infinite;
+    top: -10%;
+    font-size: 26px;
     user-select: none;
-  }
+    z-index: 1000;
+    pointer-events: none;
+    animation: fall linear infinite;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
 
-  @keyframes fall {
-    0% {
-      transform: translateY(0) rotate(0deg) scale(0.8);
-      opacity: 1;
-    }
-    50% {
-      transform: translateY(50vh) rotate(180deg) scale(1.2);
-    }
-    100% {
-      transform: translateY(105vh) rotate(360deg) scale(0.8);
-      opacity: 0.2;
-    }
-  }
+@keyframes fall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
+}
 
-  .falling-item:nth-child(1)  { left: 5%;  animation-duration: 6s;  animation-delay: 0s; }
-  .falling-item:nth-child(2)  { left: 18%; animation-duration: 8s;  animation-delay: 2s; }
-  .falling-item:nth-child(3)  { left: 28%; animation-duration: 7s;  animation-delay: 4s; }
-  .falling-item:nth-child(4)  { left: 40%; animation-duration: 9s;  animation-delay: 1s; }
-  .falling-item:nth-child(5)  { left: 52%; animation-duration: 6.5s; animation-delay: 3s; }
-  .falling-item:nth-child(6)  { left: 65%; animation-duration: 8.5s; animation-delay: 0.5s; }
-  .falling-item:nth-child(7)  { left: 78%; animation-duration: 7.5s; animation-delay: 2.5s; }
-  .falling-item:nth-child(8)  { left: 88%; animation-duration: 9.5s; animation-delay: 1.5s; }
-  .falling-item:nth-child(9)  { left: 95%; animation-duration: 6.8s; animation-delay: 3.5s; }
+.petal:nth-child(1) { left: 5%; animation-duration: 7s; animation-delay: 0s; }
+.petal:nth-child(2) { left: 18%; animation-duration: 10s; animation-delay: 2s; }
+.petal:nth-child(3) { left: 32%; animation-duration: 6s; animation-delay: 4s; }
+.petal:nth-child(4) { left: 48%; animation-duration: 8s; animation-delay: 1s; }
+.petal:nth-child(5) { left: 62%; animation-duration: 9s; animation-delay: 3s; }
+.petal:nth-child(6) { left: 75%; animation-duration: 7s; animation-delay: 5s; }
+.petal:nth-child(7) { left: 88%; animation-duration: 11s; animation-delay: 1.5s; }
 
-  /* ------------------- การ์ดโปรไฟล์ ------------------- */
-  .card {
-    background: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 4px dashed var(--pink-main);
-    border-radius: 40px;
-    box-shadow: 0 15px 35px rgba(255, 133, 161, 0.3);
-    max-width: 480px;
-    width: 100%;
-    padding: 40px 30px;
+.container {
+    max-width: 900px;
+    margin: auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* รูปโปรไฟล์และหัวข้อส่วนบน */
+.header-wrapper {
     text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile-card {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid #FF80AB;
+    box-shadow: 6px 6px 0px #80DEEA, -5px -5px 0px #FFE082;
+    margin: 0 auto 15px auto;
+    transition: transform 0.3s ease;
+}
+
+.profile-card:hover {
+    transform: rotate(5deg) scale(1.05);
+}
+
+.profile-card img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid #A7FFEB;
+    object-fit: cover;
+}
+
+/* หัวข้อหลัก ใช้ Baloo 2 ทรงกลมน่ารักแทน Pinyon Script */
+.main-title {
+    font-family: 'Baloo 2', cursive;
+    font-weight: 800;
+    font-size: 58px;
+    margin: 0;
+    color: #E91E63;
+    text-shadow: 3px 3px 0px #FFE082, 0 0 15px rgba(255, 64, 129, 0.4);
+    letter-spacing: 1px;
+    line-height: 1.1;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 2px 2px 0px #FFE082, 0 0 10px rgba(255, 128, 171, 0.5);
+    }
+    to {
+        text-shadow: 3px 3px 0px #FFE082, 0 0 20px rgba(255, 64, 129, 0.8), 0 0 30px #FF80AB;
+    }
+}
+
+/* ลายเซ็นชื่อ ใช้ Great Vibes ให้ความรู้สึกหรูหราแบบเจ้าหญิง */
+.sub-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 42px;
+    color: #C2185B;
+    margin: -5px 0 5px 0;
+    font-weight: normal;
+}
+
+/* แถบเมนูนำทาง (Navigation Bar) */
+.nav-tabs {
+    display: flex;
+    justify-content: flex-start;
+    overflow-x: auto;
+    gap: 8px;
+    padding: 10px 5px 15px 5px;
+    margin-bottom: 15px;
+    scrollbar-width: thin;
+    scrollbar-color: #FF8A80 #FFF;
+}
+
+.nav-tabs::-webkit-scrollbar {
+    height: 6px;
+}
+.nav-tabs::-webkit-scrollbar-thumb {
+    background-color: #FF8A80;
+    border-radius: 10px;
+}
+
+.nav-btn {
+    background: #FFFFFF;
+    color: #FF5252;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Mali', cursive;
+    border: 2px solid #FF8A80;
+    box-shadow: 3px 3px 0px #FFD54F;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+
+.nav-btn.active, .nav-btn:hover {
+    background: #FF8A80;
+    color: #FFFFFF;
+    box-shadow: 3px 3px 0px #81D4FA;
+    transform: translateY(-2px);
+}
+
+/* Slider Container สลับหน้าซ้าย-ขวา */
+.slider-wrapper {
+    overflow: hidden;
+    width: 100%;
+    border-radius: 30px;
+}
+
+.slides-container {
+    display: flex;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    width: 100%;
+}
+
+.slide {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+/* กรอบเนื้อหา */
+.box {
+    background: #FFFFFF;
+    padding: 25px;
+    border-radius: 30px;
     position: relative;
-    z-index: 2;
-    animation: floatCard 3.5s ease-in-out infinite alternate;
-  }
+    border: 5px dashed #FF8A65;
+    outline: 5px solid #FFFFFF;
+    box-shadow: 8px 8px 0px #AED581, 14px 14px 0px rgba(255, 128, 171, 0.4);
+    min-height: 380px;
+}
 
-  /* การ์ดลอยขึ้น-ลงนุ่มนวล */
-  @keyframes floatCard {
-    0% { transform: translateY(0px) rotate(-0.5deg); }
-    100% { transform: translateY(-12px) rotate(0.5deg); }
-  }
+.box::before {
+    content: '🌸';
+    position: absolute;
+    top: -18px;
+    left: 20px;
+    font-size: 24px;
+    background: #FFF;
+    padding: 0 5px;
+    border-radius: 50%;
+}
 
-  /* ------------------- รูปโปรไฟล์แบบดุ๊กดิ๊ก ------------------- */
-  .avatar-wrapper {
-    position: relative;
-    width: 130px;
-    height: 130px;
-    margin: 0 auto 20px auto;
-  }
+.box::after {
+    content: '✨';
+    position: absolute;
+    bottom: -15px;
+    right: 20px;
+    font-size: 22px;
+}
 
-  .avatar-img {
+h2 {
+    color: #FF5722;
+    font-size: 26px;
+    font-family: 'Baloo 2', cursive;
+    font-weight: 700;
+    border-bottom: 3px dotted #80DEEA;
+    padding-bottom: 8px;
+    margin-top: 0;
+    display: inline-block;
+}
+
+/* ตกแต่งคำภาษาอังกฤษด้วย Baloo 2 ทรงกลมน่ารัก */
+.fancy-text {
+    font-family: 'Baloo 2', cursive;
+    font-weight: 600;
+    font-size: 28px;
+    color: #E91E63;
+    display: inline-block;
+    padding: 0 5px;
+    vertical-align: middle;
+}
+
+p, ul {
+    font-size: 19px;
+    color: #424242;
+    line-height: 1.6;
+    font-family: 'Mali', cursive;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 5px;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.info-item {
+    background: #F1F8E9;
+    padding: 10px 15px;
+    border-radius: 15px;
+    border: 2px solid #C5E1A5;
+}
+
+/* การ์ดแยกระดับการศึกษา */
+.edu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin-top: 15px;
+}
+
+.edu-card {
+    background: #FFF3E0;
+    padding: 18px;
+    border-radius: 20px;
+    border: 2px solid #FFCC80;
+}
+
+.edu-card b {
+    color: #E65100;
+    font-size: 20px;
+}
+
+.edu-card p {
+    margin: 6px 0 0 0;
+}
+
+/* กิจกรรมแลกเปลี่ยน */
+.exchange-title {
+    font-size: 20px;
+    color: #AD1457;
+    background: #FCE4EC;
+    border: 2px dashed #F48FB1;
+    border-radius: 16px;
+    padding: 12px 16px;
+    margin: 10px 0 20px 0;
+    text-align: center;
+}
+
+.cert-box {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: #FFF8E1;
+    border: 3px solid #FFD54F;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #BFA100;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 16px;
+    overflow: hidden;
+}
+
+.cert-box img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 50%;
-    border: 4px dashed var(--pink-accent);
-    padding: 4px;
-    background: #fff;
-    box-shadow: 0 8px 20px rgba(251, 111, 146, 0.25);
-    /* เอฟเฟกต์ดุ๊กดิ๊กตลอดเวลา */
-    animation: avatarBounce 2.5s ease-in-out infinite alternate;
-    cursor: pointer;
-    transition: transform 0.3s;
-  }
+}
 
-  /* เอฟเฟกต์เด้งสั่นดุ๊กดิ๊ก */
-  @keyframes avatarBounce {
-    0% { transform: translateY(0) scale(1) rotate(0deg); }
-    30% { transform: translateY(-6px) scale(1.03) rotate(-3deg); }
-    60% { transform: translateY(0) scale(0.98) rotate(3deg); }
-    100% { transform: translateY(-10px) scale(1.05) rotate(-2deg); }
-  }
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+}
 
-  .avatar-img:hover {
-    animation: wiggle 0.4s ease-in-out infinite alternate;
-  }
+.photo-box {
+    aspect-ratio: 1 / 1;
+    background: #E1F5FE;
+    border: 2px solid #81D4FA;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0277BD;
+    font-size: 14px;
+    text-align: center;
+    overflow: hidden;
+}
 
-  @keyframes wiggle {
-    0% { transform: rotate(-12deg) scale(1.12); }
-    100% { transform: rotate(12deg) scale(1.12); }
-  }
+.photo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
-  h1 {
-    font-family: 'Great Vibes', 'Prompt', cursive;
-    color: var(--pink-dark);
-    font-size: 32px;
-    margin-bottom: 15px;
-    font-weight: 600;
-    letter-spacing: 1px;
-  }
+/* ปุ่มควบคุมล่าง */
+.controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
 
-  p {
-    font-size: 16px;
-    line-height: 1.7;
-    margin-bottom: 16px;
-  }
-
-  .highlight {
-    background: linear-gradient(120deg, #ffe5ec 0%, #ffc6ff 100%);
-    padding: 3px 12px;
-    border-radius: 15px;
-    font-weight: 600;
-    color: var(--pink-dark);
-    display: inline-block;
-    animation: pulseHighlight 2s infinite alternate;
-  }
-
-  /* ตกแต่งตัวอักษรภาษาอังกฤษด้วยฟอนต์ Heart Script */
-  .heart-text {
-    font-family: 'Great Vibes', cursive;
-    font-size: 1.25em;
-    font-weight: normal;
-  }
-
-  @keyframes pulseHighlight {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.05); }
-  }
-
-  /* ------------------- ปุ่มกดขยับดุ๊กดิ๊ก ------------------- */
-  .btn {
-    display: inline-block;
-    background: linear-gradient(45deg, var(--pink-main), var(--purple-soft));
+.btn {
+    background: linear-gradient(45deg, #FF4081, #FF80AB);
     color: white;
+    padding: 10px 25px;
     text-decoration: none;
-    font-size: 18px;
-    font-weight: 600;
-    padding: 14px 32px;
     border-radius: 30px;
-    box-shadow: 0 8px 20px rgba(255, 179, 198, 0.6);
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Mali', cursive;
+    box-shadow: 0 4px 10px rgba(255, 64, 129, 0.3);
     transition: all 0.3s ease;
-    margin-top: 15px;
-    border: 2px dashed #ffffff;
-    /* เอฟเฟกต์ปุ่มสั่นไหวดุ๊กดิ๊ก */
-    animation: btnPulse 3s ease-in-out infinite;
-  }
-
-  @keyframes btnPulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.04) rotate(1deg); }
-  }
-
-  .btn:hover {
-    transform: scale(1.12) rotate(-3deg) !important;
-    box-shadow: 0 12px 25px rgba(251, 111, 146, 0.5);
-    background: linear-gradient(45deg, var(--purple-soft), var(--pink-dark));
-  }
-
-  /* ------------------- โซเชียลมีเดียดุ๊กดิ๊ก ------------------- */
-  .social-links {
-    margin-top: 25px;
-    font-size: 24px;
-  }
-
-  .social-links a {
-    color: var(--text-color);
-    text-decoration: none;
-    margin: 0 12px;
+    border: 2px solid #FFFFFF;
+    cursor: pointer;
     display: inline-block;
-    transition: transform 0.2s;
-    animation: floatSocial 2s ease-in-out infinite alternate;
-  }
+}
 
-  .social-links a:nth-child(1) { animation-delay: 0s; }
-  .social-links a:nth-child(2) { animation-delay: 0.3s; }
-  .social-links a:nth-child(3) { animation-delay: 0.6s; }
+.btn:hover {
+    background: linear-gradient(45deg, #FF1744, #FF5252);
+    transform: scale(1.05);
+}
 
-  @keyframes floatSocial {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-5px) rotate(5deg); }
-  }
+.btn:disabled {
+    background: #CCC;
+    box-shadow: none;
+    cursor: not-allowed;
+    transform: none;
+}
 
-  .social-links a:hover {
-    transform: scale(1.5) rotate(15deg) !important;
-  }
+.btn-home {
+    background: linear-gradient(45deg, #7E57C2, #B39DDB);
+}
+
+.btn-home:hover {
+    background: linear-gradient(45deg, #5E35B1, #9575CD);
+}
+
+.footer {
+    text-align: center;
+    font-size: 30px;
+    color: #424242;
+    margin-top: 25px;
+    background: rgba(255, 255, 255, 0.75);
+    padding: 12px;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    font-family: 'Great Vibes', cursive;
+}
 </style>
 </head>
 <body>
 
-<!-- วงกลมพื้นหลังลอยดุ๊กดิ๊ก (Pastel Floating Blobs) -->
-<div class="bg-decorations">
-  <div class="bg-circle bg-circle-1"></div>
-  <div class="bg-circle bg-circle-2"></div>
-  <div class="bg-circle bg-circle-3"></div>
-  <div class="bg-circle bg-circle-4"></div>
+<!-- ดอกไม้ร่วงหล่น -->
+<div class="petal">🌸</div>
+<div class="petal">✨</div>
+<div class="petal">🌼</div>
+<div class="petal">🌺</div>
+<div class="petal">🌷</div>
+<div class="petal">💛</div>
+<div class="petal">🎀</div>
+
+<div class="container">
+
+    <!-- ส่วนหัว -->
+    <div class="header-wrapper">
+        <div class="profile-card">
+            <img src="IMG_4109.png" alt="รูปโปรไฟล์">
+        </div>
+        <h1 class="main-title">Portfolio</h1>
+        <div class="sub-title">Princess Usahana</div>
+        <p style="margin: 5px 0; color: #555; font-size: 18px;">วรรธนันท์ อุดมเดบภาคินทร์ (ปริ้นเซส)</p>
+    </div>
+
+    <!-- แถบเมนูนำทาง (Tabs Navigation) -->
+    <nav class="nav-tabs">
+        <button class="nav-btn active" onclick="goToSlide(0)">👩‍🎓 ประวัติส่วนตัว</button>
+        <button class="nav-btn" onclick="goToSlide(1)">📚 ประวัติการศึกษา</button>
+        <button class="nav-btn" onclick="goToSlide(2)">🏆 กิจกรรม</button>
+        <button class="nav-btn" onclick="goToSlide(3)">❤️ คติประจำใจ</button>
+        <button class="nav-btn" onclick="goToSlide(4)">🎯 ความสนใจ</button>
+    </nav>
+
+    <!-- พื้นที่สไลด์เลื่อนซ้าย-ขวา -->
+    <div class="slider-wrapper" id="sliderWrapper">
+        <div class="slides-container" id="slidesContainer">
+
+            <!-- Slide 1: ประวัติส่วนตัว -->
+            <div class="slide">
+                <div class="box">
+                    <h2>👩‍🎓 ประวัติส่วนตัว <span class="fancy-text">Profile</span></h2>
+                    <div class="info-grid">
+                        <div class="info-item"><b>ชื่อ-นามสกุล :</b> วรรธนันท์ อุดมเดบภาคินทร์</div>
+                        <div class="info-item"><b>ชื่อเล่น :</b> ปริ้นเซส</div>
+                        <div class="info-item"><b>วันเกิด :</b> 17 พฤศจิกายน 2551</div>
+                        <div class="info-item"><b>อายุ :</b> 17 ปี</div>
+                        <div class="info-item"><b>ระดับชั้น :</b> มัธยมศึกษาปีที่ 6</div>
+                        <div class="info-item"><b>แผนการเรียน :</b> Gifted</div>
+                    </div>
+                    <div style="text-align: center; margin-top: 20px;">
+                        <a href="index.html" class="btn btn-home">🏠 กลับหน้าแรก</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2: ประวัติการศึกษา (แยกช่อง ม.ต้น / ม.ปลาย) -->
+            <div class="slide">
+                <div class="box">
+                    <h2>📚 ประวัติการศึกษา <span class="fancy-text">Education</span></h2>
+                    <div class="edu-grid">
+                        <div class="edu-card">
+                            <b>🏫 ระดับมัธยมศึกษาตอนปลาย (ม.4 - ม.6)</b>
+                            <p>โรงเรียนบ้านบึง "อุตสาหกรรมนุเคราะห์"<br>(แผนการเรียน Gifted)</p>
+                        </div>
+                        <div class="edu-card">
+                            <b>🏫 ระดับมัธยมศึกษาตอนต้น (ม.1 - ม.3)</b>
+                            <p>โรงเรียนบ้านบึง "อุตสาหกรรมนุเคราะห์"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: กิจกรรมและเกียรติบัตร -->
+            <div class="slide">
+                <div class="box">
+                    <h2>🏆 กิจกรรมและเกียรติบัตร <span class="fancy-text">Activities</span></h2>
+
+                    <div class="exchange-title">
+                        โครงการแลกเปลี่ยนทางวิชาการครั้งที่ 10<br>
+                        ระหว่างโรงเรียนมัธยมศึกษาอิจิคาว่า ประเทศญี่ปุ่น<br>
+                        และโรงเรียนวิทยาศาสตร์จุฬาภรณราชวิทยาลัย
+                    </div>
+
+                    <div class="cert-box">
+                        🖼️ วางรูปเกียรติบัตรที่นี่
+                    </div>
+
+                    <div class="photo-grid">
+                        <div class="photo-box">📷 รูปที่ 1</div>
+                        <div class="photo-box">📷 รูปที่ 2</div>
+                        <div class="photo-box">📷 รูปที่ 3</div>
+                        <div class="photo-box">📷 รูปที่ 4</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4: สิ่งที่ภาคภูมิใจ & คติประจำใจ -->
+            <div class="slide">
+                <div class="box">
+                    <h2>❤️ สิ่งที่ภาคภูมิใจ & 💡 คติประจำใจ</h2>
+                    <p><b>สิ่งที่ภาคภูมิใจ :</b><br>มีความรับผิดชอบ ตั้งใจเรียน และพัฒนาตนเองอยู่เสมอ พร้อมเปิดรับและเรียนรู้สิ่งใหม่ ๆ เพื่อเติบโตในอนาคต</p>
+                    <hr style="border: 1px dashed #FF80AB; margin: 15px 0;">
+                    <p><b>คติประจำใจ :</b><br><i style="font-size: 22px; color: #FF2A6D;">"ใครทำได้ ก็ให้เขาทำ"</i></p>
+                </div>
+            </div>
+
+            <!-- Slide 5: ความสนใจในการศึกษาต่อ (ย้ายมาไว้ท้ายสุด) -->
+            <div class="slide">
+                <div class="box">
+                    <h2>🎯 ความสนใจในการศึกษาต่อ <span class="fancy-text">Interests</span></h2>
+                    <p style="text-indent: 20px;">
+                        มีความสนใจเข้าศึกษาต่อในระดับอุดมศึกษา ในสาขาวิชาที่เกี่ยวข้องกับ <b>เทคโนโลยีสารสนเทศ วิทยาการคอมพิวเตอร์ หรือการออกแบบดิจิทัล</b>
+                    </p>
+                    <p style="text-indent: 20px;">
+                        เนื่องจากมีความหลงใหลในการคิดวิเคราะห์ พัฒนาโปรแกรม และการสร้างสรรค์ผลงานผ่านเทคโนโลยีใหม่ ๆ เพื่อประยุกต์ใช้ในอนาคต
+                    </p>
+
+                    <div style="text-align: center; margin-top: 20px;">
+                        <a href="index.html" class="btn">🏠 กลับหน้าแรก</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ปุ่มนำทาง ย้อนกลับ-ถัดไป -->
+    <div class="controls">
+        <button class="btn" id="prevBtn" onclick="changeSlide(-1)">❮ ย้อนกลับ</button>
+        <button class="btn" id="nextBtn" onclick="changeSlide(1)">ถัดไป ❯</button>
+    </div>
+
+    <!-- ฟุตเตอร์ -->
+    <div class="footer">
+        💗 Thank you for visiting my Portfolio 💗
+    </div>
+
 </div>
 
-<!-- ไอคอนตกลงมา -->
-<div class="falling-container">
-  <div class="falling-item">✨</div>
-  <div class="falling-item">🌸</div>
-  <div class="falling-item">💖</div>
-  <div class="falling-item">🍬</div>
-  <div class="falling-item">⭐</div>
-  <div class="falling-item">🎀</div>
-  <div class="falling-item">🍭</div>
-  <div class="falling-item">✨</div>
-  <div class="falling-item">🍓</div>
-</div>
+<script>
+let currentSlide = 0;
+const slidesContainer = document.getElementById('slidesContainer');
+const totalSlides = document.querySelectorAll('.slide').length;
+const navButtons = document.querySelectorAll('.nav-btn');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
 
-<!-- การ์ดเนื้อหา -->
-<div class="card">
-  <div class="avatar-wrapper">
-    <img src="IMG_4109.png" alt="รูปโปรไฟล์วรรธนันท์" class="avatar-img" title="ลองแตะสิ!">
-  </div>
-  
-  <h1 class="heart-font">Welcome to My Profile ✨</h1>
-  <p>สวัสดีค่ะ! ดิฉันชื่อ <span class="highlight">วรรธนันท์ (<span class="heart-text">Wantanan</span>)</span> 🎀</p>
-  <p>ขณะนี้กำลังสนใจด้าน <br><strong class="heart-text" style="font-size: 1.15em;">Computer Science & Engineering 💻✨</strong></p>
-  
-  <a href="portfolio.html" class="btn">✨🎀 แฟ้มสะสมผลงาน 🪽✨</a>
+function updateSlidePosition() {
+    slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
 
-  <div class="social-links">
-    <a href="#" title="GitHub">🌷</a>
-    <a href="#" title="Instagram">🌦️</a>
-    <a href="#" title="Sweet">☔️</a>
-  </div>
-</div>
+    // อัปเดตสถานะปุ่มแท็บ
+    navButtons.forEach((btn, index) => {
+        if(index === currentSlide) {
+            btn.classList.add('active');
+            btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+
+    // เปิด/ปิด การใช้งานปุ่มย้อนกลับ-ถัดไป
+    prevBtn.disabled = currentSlide === 0;
+    nextBtn.disabled = currentSlide === totalSlides - 1;
+}
+
+function goToSlide(index) {
+    currentSlide = index;
+    updateSlidePosition();
+}
+
+function changeSlide(direction) {
+    currentSlide += direction;
+    if (currentSlide < 0) currentSlide = 0;
+    if (currentSlide >= totalSlides) currentSlide = totalSlides - 1;
+    updateSlidePosition();
+}
+
+// รองรับการใช้นิ้วปัดซ้าย-ขวาบนหน้าจอมือถือ (Touch Swipe)
+let touchStartX = 0;
+let touchEndX = 0;
+const sliderWrapper = document.getElementById('sliderWrapper');
+
+sliderWrapper.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+});
+
+sliderWrapper.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+});
+
+function handleSwipe() {
+    if (touchStartX - touchEndX > 50) {
+        // ปัดซ้าย -> หน้าถัดไป
+        if (currentSlide < totalSlides - 1) changeSlide(1);
+    }
+    if (touchEndX - touchStartX > 50) {
+        // ปัดขวา -> หน้าก่อนหน้า
+        if (currentSlide > 0) changeSlide(-1);
+    }
+}
+
+// เรียกใช้งานครั้งแรกเพื่อเริ่มที่หน้า 0
+updateSlidePosition();
+</script>
 
 </body>
 </html>
