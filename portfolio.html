@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>แฟ้มสะสมผลงาน (Portfolio) - Princess Usahana Theme</title>
+<title>แฟ้มสะสมผลงาน (Portfolio) </title>
 <style>
 /* นำเข้าฟอนต์ Baloo 2 (หัวข้อ/ตกแต่ง), Great Vibes (ลายเซ็นชื่อ) และ Mali (เนื้อหา) จาก Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Great+Vibes&family=Mali:ital,wght@0,300;0,500;0,700;1,400&display=swap');
@@ -261,28 +261,26 @@ ul li {
     border: 2px solid #C5E1A5;
 }
 
-/* การ์ดแยกระดับการศึกษา */
-.edu-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 16px;
+/* ประวัติการศึกษา แบบบรรทัดเรียงต่อกัน (ม.ปลาย แล้วเว้นบรรทัด แล้วม.ต้น) */
+.edu-lines {
     margin-top: 15px;
 }
 
-.edu-card {
+.edu-line {
     background: #FFF3E0;
-    padding: 18px;
-    border-radius: 20px;
+    padding: 14px 18px;
+    border-radius: 16px;
     border: 2px solid #FFCC80;
+    margin-bottom: 28px;
 }
 
-.edu-card b {
+.edu-line:last-child {
+    margin-bottom: 0;
+}
+
+.edu-line b {
     color: #E65100;
-    font-size: 20px;
-}
-
-.edu-card p {
-    margin: 6px 0 0 0;
+    font-size: 19px;
 }
 
 /* กิจกรรมแลกเปลี่ยน */
@@ -421,7 +419,7 @@ ul li {
         </div>
         <h1 class="main-title">Portfolio</h1>
         <div class="sub-title">Princess Usahana</div>
-        <p style="margin: 5px 0; color: #555; font-size: 18px;">วรรธนันท์ อุดมเดบภาคินทร์ (ปริ้นเซส)</p>
+        <p style="margin: 5px 0; color: #555; font-size: 18px;">วรรธนันท์ อุดมเดชภาคินทร์ </p>
     </div>
 
     <!-- แถบเมนูนำทาง (Tabs Navigation) -->
@@ -429,8 +427,7 @@ ul li {
         <button class="nav-btn active" onclick="goToSlide(0)">👩‍🎓 ประวัติส่วนตัว</button>
         <button class="nav-btn" onclick="goToSlide(1)">📚 ประวัติการศึกษา</button>
         <button class="nav-btn" onclick="goToSlide(2)">🏆 กิจกรรม</button>
-        <button class="nav-btn" onclick="goToSlide(3)">❤️ คติประจำใจ</button>
-        <button class="nav-btn" onclick="goToSlide(4)">🎯 ความสนใจ</button>
+        <button class="nav-btn" onclick="goToSlide(3)">🎯 ความสนใจ</button>
     </nav>
 
     <!-- พื้นที่สไลด์เลื่อนซ้าย-ขวา -->
@@ -449,24 +446,19 @@ ul li {
                         <div class="info-item"><b>ระดับชั้น :</b> มัธยมศึกษาปีที่ 6</div>
                         <div class="info-item"><b>แผนการเรียน :</b> Gifted</div>
                     </div>
-                    <div style="text-align: center; margin-top: 20px;">
-                        <a href="index.html" class="btn btn-home">🏠 กลับหน้าแรก</a>
-                    </div>
                 </div>
             </div>
 
-            <!-- Slide 2: ประวัติการศึกษา (แยกช่อง ม.ต้น / ม.ปลาย) -->
+            <!-- Slide 2: ประวัติการศึกษา (เรียงเป็นบรรทัด ม.ปลาย แล้วเว้นบรรทัดตามด้วย ม.ต้น) -->
             <div class="slide">
                 <div class="box">
                     <h2>📚 ประวัติการศึกษา <span class="fancy-text">Education</span></h2>
-                    <div class="edu-grid">
-                        <div class="edu-card">
-                            <b>🏫 ระดับมัธยมศึกษาตอนปลาย (ม.4 - ม.6)</b>
-                            <p>โรงเรียนบ้านบึง "อุตสาหกรรมนุเคราะห์"<br>(แผนการเรียน Gifted)</p>
+                    <div class="edu-lines">
+                        <div class="edu-line">
+                            <b>🏫 ระดับมัธยมศึกษาตอนปลาย (ม.4 - ม.6) :</b> โรงเรียนบ้านบึง "อุตสาหกรรมนุเคราะห์" (แผนการเรียน Gifted)
                         </div>
-                        <div class="edu-card">
-                            <b>🏫 ระดับมัธยมศึกษาตอนต้น (ม.1 - ม.3)</b>
-                            <p>โรงเรียนบ้านบึง "อุตสาหกรรมนุเคราะห์"</p>
+                        <div class="edu-line">
+                            <b>🏫 ระดับมัธยมศึกษาตอนต้น (ม.1 - ม.3) :</b> โรงเรียนบ้านบึง "อุตสาหกรรมนุเคราะห์"
                         </div>
                     </div>
                 </div>
@@ -491,44 +483,29 @@ ul li {
                         <div class="photo-box">📷 รูปที่ 1</div>
                         <div class="photo-box">📷 รูปที่ 2</div>
                         <div class="photo-box">📷 รูปที่ 3</div>
-                        <div class="photo-box">📷 รูปที่ 4</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Slide 4: สิ่งที่ภาคภูมิใจ & คติประจำใจ -->
+            <!-- Slide 4: ความสนใจในการศึกษาต่อ + คติประจำใจ -->
             <div class="slide">
                 <div class="box">
-                    <h2>❤️ สิ่งที่ภาคภูมิใจ & 💡 คติประจำใจ</h2>
-                    <p><b>สิ่งที่ภาคภูมิใจ :</b><br>มีความรับผิดชอบ ตั้งใจเรียน และพัฒนาตนเองอยู่เสมอ พร้อมเปิดรับและเรียนรู้สิ่งใหม่ ๆ เพื่อเติบโตในอนาคต</p>
+                    <h2> ความสนใจในการศึกษาต่อ <span class="fancy-text">Interests</span></h2>
+                    <p style="text-indent: 20px;">
+                        <b>สนใจคณะ/สาขา :</b><br>
+                        มีความสนใจเข้าศึกษาต่อในระดับอุดมศึกษา ในสาขาวิชาที่เกี่ยวข้องกับเทคโนโลยีสารสนเทศ วิทยาการคอมพิวเตอร์ หรือการออกแบบดิจิทัล เนื่องจากมีความหลงใหลในการคิดวิเคราะห์ พัฒนาโปรแกรม และการสร้างสรรค์ผลงานผ่านเทคโนโลยีใหม่ ๆ เพื่อประยุกต์ใช้ในอนาคต
+                    </p>
                     <hr style="border: 1px dashed #FF80AB; margin: 15px 0;">
                     <p><b>คติประจำใจ :</b><br><i style="font-size: 22px; color: #FF2A6D;">"ใครทำได้ ก็ให้เขาทำ"</i></p>
-                </div>
-            </div>
-
-            <!-- Slide 5: ความสนใจในการศึกษาต่อ (ย้ายมาไว้ท้ายสุด) -->
-            <div class="slide">
-                <div class="box">
-                    <h2>🎯 ความสนใจในการศึกษาต่อ <span class="fancy-text">Interests</span></h2>
-                    <p style="text-indent: 20px;">
-                        มีความสนใจเข้าศึกษาต่อในระดับอุดมศึกษา ในสาขาวิชาที่เกี่ยวข้องกับ <b>เทคโนโลยีสารสนเทศ วิทยาการคอมพิวเตอร์ หรือการออกแบบดิจิทัล</b>
-                    </p>
-                    <p style="text-indent: 20px;">
-                        เนื่องจากมีความหลงใหลในการคิดวิเคราะห์ พัฒนาโปรแกรม และการสร้างสรรค์ผลงานผ่านเทคโนโลยีใหม่ ๆ เพื่อประยุกต์ใช้ในอนาคต
-                    </p>
-
-                    <div style="text-align: center; margin-top: 20px;">
-                        <a href="index.html" class="btn">🏠 กลับหน้าแรก</a>
-                    </div>
                 </div>
             </div>
 
         </div>
     </div>
 
-    <!-- ปุ่มนำทาง ย้อนกลับ-ถัดไป -->
+    <!-- ปุ่มนำทาง ย้อนกลับ-ถัดไป (ปุ่มย้อนกลับในหน้าแรกจะพากลับไปหน้า index.html) -->
     <div class="controls">
-        <button class="btn" id="prevBtn" onclick="changeSlide(-1)">❮ ย้อนกลับ</button>
+        <button class="btn" id="prevBtn" onclick="goBackOrHome()">❮ ย้อนกลับ</button>
         <button class="btn" id="nextBtn" onclick="changeSlide(1)">ถัดไป ❯</button>
     </div>
 
@@ -560,8 +537,8 @@ function updateSlidePosition() {
         }
     });
 
-    // เปิด/ปิด การใช้งานปุ่มย้อนกลับ-ถัดไป
-    prevBtn.disabled = currentSlide === 0;
+    // ปุ่มย้อนกลับเปิดใช้งานตลอด (หน้าแรกจะพาไปหน้า index.html แทนการ disable)
+    prevBtn.disabled = false;
     nextBtn.disabled = currentSlide === totalSlides - 1;
 }
 
@@ -575,6 +552,15 @@ function changeSlide(direction) {
     if (currentSlide < 0) currentSlide = 0;
     if (currentSlide >= totalSlides) currentSlide = totalSlides - 1;
     updateSlidePosition();
+}
+
+// ปุ่ม "ย้อนกลับ" : ถ้าอยู่หน้าแรกแล้ว ให้พาไปหน้า index.html แทนการเลื่อนสไลด์
+function goBackOrHome() {
+    if (currentSlide === 0) {
+        window.location.href = 'index.html';
+    } else {
+        changeSlide(-1);
+    }
 }
 
 // รองรับการใช้นิ้วปัดซ้าย-ขวาบนหน้าจอมือถือ (Touch Swipe)
