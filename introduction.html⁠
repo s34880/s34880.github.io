@@ -81,7 +81,7 @@ p { font-size: 16px; color: #4a4a4a; line-height: 1.8; text-indent: 2em; }
             <img src="IMG_4109.png" alt="รูปโปรไฟล์">
         </div>
         <h1 class="main-title">Portfolio</h1>
-        <div class="sub-name">วรรธนันท์ อุดมเดชภาคินทร์</div>
+        <div class="sub-name"> วรรธนันท์ อุดมเดชภาคินทร์ </div>
     </div>
 
     <nav class="nav-tabs">
