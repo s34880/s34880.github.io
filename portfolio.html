@@ -553,7 +553,7 @@ function changeSlide(direction) {
 
 function goBackOrHome() {
     if (currentSlide === 0) {
-        alert('นี่คือหน้าแรกสุดแล้วครับ');
+        window.location.href = 'index.html';
     } else {
         changeSlide(-1);
     }
