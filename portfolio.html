@@ -3,189 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>แฟ้มสะสมผลงาน (Portfolio) - วรรธนันท์ อุดมเดชภาคินทร์</title>
+<title>หน้าหลัก (Portfolio Index) - วรรธนันท์ อุดมเดชภาคินทร์</title>
 <style>
-/* นำเข้าฟอนต์ Google Fonts: Great Vibes (ฟอนต์อังกฤษ), Sarabun (ฟอนต์ไทยหลัก) */
-@import url('https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&family=Great+Vibes&display=swap');
 
-* {
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
+* { box-sizing: border-box; }
 body {
     font-family: 'Sarabun', sans-serif;
     margin: 0;
     padding: 30px 15px;
-    /* เปลี่ยนพื้นหลังเป็นรูปภาพ IMG_4643.jpeg */
     background: url('IMG_4643.jpeg') center center / cover no-repeat fixed;
-    position: relative;
-    overflow-x: hidden;
     min-height: 100vh;
     color: #2b2b2b;
-}
-
-/* ลวดลายแสงละมุนจางๆ ซ้อนทับรูปพื้นหลัง */
-body::before,
-body::after {
-    content: '';
-    position: fixed;
-    border-radius: 50%;
-    filter: blur(60px);
-    z-index: 0;
-    pointer-events: none;
-}
-
-body::before {
-    width: 420px;
-    height: 420px;
-    top: -120px;
-    left: -100px;
-    background: rgba(255, 209, 220, 0.35);
-    animation: drift-one 22s ease-in-out infinite;
-}
-
-body::after {
-    width: 380px;
-    height: 380px;
-    bottom: -100px;
-    right: -100px;
-    background: rgba(179, 229, 252, 0.35);
-    animation: drift-two 26s ease-in-out infinite;
-}
-
-@keyframes drift-one {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(60px, 40px) scale(1.15); }
-}
-
-@keyframes drift-two {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(-50px, -30px) scale(1.15); }
-}
-
-/* ==================== ENTRANCE OVERLAY (อลังการ) ==================== */
-.entrance-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 9999;
-    display: flex;
-    pointer-events: none;
-}
-
-.entrance-panel {
-    flex: 1;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.entrance-panel.left {
-    background: linear-gradient(135deg, #F48FB1 0%, #CE93D8 100%);
-    justify-content: flex-end;
-}
-
-.entrance-panel.right {
-    background: linear-gradient(135deg, #80DEEA 0%, #B39DDB 100%);
-    justify-content: flex-start;
-}
-
-.entrance-logo-wrap {
-    display: flex;
-    align-items: center;
-}
-
-.entrance-logo {
-    font-family: 'Great Vibes', cursive;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 56px;
-    color: #ffffff;
-    letter-spacing: 2px;
-    text-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
-    opacity: 0;
-    animation: logoAppear 1.1s ease forwards 0.25s;
-}
-
-.entrance-panel.left .entrance-logo { transform-origin: right center; }
-.entrance-panel.right .entrance-logo { transform-origin: left center; }
-
-@keyframes logoAppear {
-    0% { opacity: 0; transform: scale(0.6); letter-spacing: 8px; }
-    60% { opacity: 1; }
-    100% { opacity: 1; transform: scale(1); letter-spacing: 2px; }
-}
-
-.sparkle {
-    position: absolute;
-    color: #ffffff;
-    opacity: 0;
-    font-size: 18px;
-    animation: sparkleFloat 2.2s ease-in-out infinite;
-}
-
-@keyframes sparkleFloat {
-    0% { opacity: 0; transform: translateY(10px) scale(0.5) rotate(0deg); }
-    40% { opacity: 1; }
-    100% { opacity: 0; transform: translateY(-60px) scale(1.1) rotate(90deg); }
-}
-
-body.entrance-run .entrance-overlay {
-    animation: overlayGone 0.1s linear forwards 1.5s;
-}
-
-body.entrance-run .entrance-panel.left {
-    animation: panelOutLeft 0.9s cubic-bezier(0.76, 0, 0.24, 1) forwards 0.9s;
-}
-
-body.entrance-run .entrance-panel.right {
-    animation: panelOutRight 0.9s cubic-bezier(0.76, 0, 0.24, 1) forwards 0.9s;
-}
-
-@keyframes panelOutLeft {
-    to { transform: translateX(-100%); }
-}
-
-@keyframes panelOutRight {
-    to { transform: translateX(100%); }
-}
-
-@keyframes overlayGone {
-    to { visibility: hidden; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .entrance-overlay { display: none; }
-    .reveal-item { opacity: 1 !important; transform: none !important; animation: none !important; }
-}
-
-/* ==================== เนื้อหาหลัก: จังหวะปรากฏหลังม่านเปิด ==================== */
-.reveal-item {
-    opacity: 0;
-}
-
-body.entrance-run .reveal-item {
-    animation-name: riseIn;
-    animation-duration: 0.85s;
-    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
-    animation-fill-mode: forwards;
-}
-
-body.entrance-run .header-wrapper.reveal-item { animation-delay: 1.05s; }
-body.entrance-run .nav-tabs.reveal-item { animation-delay: 1.25s; }
-body.entrance-run .slider-wrapper.reveal-item { animation-delay: 1.4s; }
-body.entrance-run .controls.reveal-item { animation-delay: 1.6s; }
-body.entrance-run .footer.reveal-item { animation-delay: 1.72s; }
-
-@keyframes riseIn {
-    0% { opacity: 0; transform: translateY(26px) scale(0.97); }
-    100% { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .container {
@@ -195,87 +24,37 @@ body.entrance-run .footer.reveal-item { animation-delay: 1.72s; }
     z-index: 1;
 }
 
-/* ส่วนหัวโปรไฟล์ */
 .header-wrapper {
     text-align: center;
     margin-bottom: 25px;
 }
 
-/* ==================== สไตล์รูปโปรไฟล์แบบทันสมัย (Modern & Elegant Profile) ==================== */
 .profile-card {
-    position: relative;
     width: 135px;
     height: 135px;
     margin: 0 auto 18px auto;
     border-radius: 50%;
-    /* แบ็คกราวด์และเส้นขอบแบบไล่เฉดสีไล่ระดับ */
     background: linear-gradient(135deg, #FF80AB, #CE93D8, #80DEEA);
-    padding: 3px; /* ความหนาของขอบไล่เฉดสี */
-    /* เงาฟุ้งแบบ Soft Neon Glow เพิ่มมิติความลึก */
-    box-shadow: 
-        0 10px 25px -5px rgba(233, 30, 99, 0.25),
-        0 8px 16px -8px rgba(128, 222, 234, 0.3);
-    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
-    cursor: pointer;
+    padding: 3px;
+    box-shadow: 0 10px 25px -5px rgba(233, 30, 99, 0.25);
 }
 
-/* วงแหวนเอฟเฟกต์สะท้อนแสงเบาๆ ซ่อนอยู่ด้านหลัง */
-.profile-card::before {
-    content: '';
-    position: absolute;
-    inset: -4px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #F48FB1, #80DEEA);
-    z-index: -1;
-    opacity: 0.4;
-    filter: blur(8px);
-    transition: opacity 0.4s ease, filter 0.4s ease;
-}
-
-.profile-card:hover {
-    transform: translateY(-4px) scale(1.03);
-    box-shadow: 
-        0 15px 30px -5px rgba(233, 30, 99, 0.35),
-        0 10px 20px -5px rgba(128, 222, 234, 0.4);
-}
-
-.profile-card:hover::before {
-    opacity: 0.8;
-    filter: blur(12px);
-}
-
-/* ตัวรูปภาพด้านในกรอบ */
 .profile-card img {
     width: 100%;
     height: 100%;
     border-radius: 50%;
     object-fit: cover;
-    display: block;
     border: 3px solid #ffffff;
-    box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
     background-color: #ffffff;
 }
 
-/* หัวข้อ Portfolio ใช้ฟอนต์ Great Vibes */
 .main-title {
     font-family: 'Great Vibes', cursive;
     font-size: 76px;
     margin: 0;
     color: #E91E63;
     font-weight: normal;
-    line-height: 1;
-    letter-spacing: 1px;
-    text-shadow: 3px 3px 0px #D1C4E9, 0 0 15px rgba(255, 64, 129, 0.4);
-    animation: glow 2s ease-in-out infinite alternate;
-}
-
-@keyframes glow {
-    from {
-        text-shadow: 2px 2px 0px #D1C4E9, 0 0 10px rgba(255, 128, 171, 0.5);
-    }
-    to {
-        text-shadow: 3px 3px 0px #D1C4E9, 0 0 20px rgba(255, 64, 129, 0.8), 0 0 30px #FF80AB;
-    }
+    text-shadow: 3px 3px 0px #D1C4E9;
 }
 
 .sub-name {
@@ -283,265 +62,51 @@ body.entrance-run .footer.reveal-item { animation-delay: 1.72s; }
     font-weight: 600;
     color: #4a4a4a;
     margin-top: 8px;
-    letter-spacing: 0.5px;
 }
 
-/* แถบเมนูนำทาง (Tabs Navigation) */
-.nav-tabs {
-    display: flex;
-    justify-content: center;
-    overflow-x: auto;
-    gap: 10px;
-    padding: 10px 5px;
-    margin-bottom: 20px;
-}
-
-.nav-tabs::-webkit-scrollbar {
-    height: 6px;
-}
-.nav-tabs::-webkit-scrollbar-thumb {
-    background-color: #CE93D8;
-    border-radius: 10px;
-}
-
-.nav-btn {
-    background: #ffffff;
-    color: #AB47BC;
-    padding: 8px 20px;
-    border-radius: 20px;
-    font-size: 16px;
-    font-weight: 600;
-    font-family: 'Sarabun', sans-serif;
-    border: 2px solid #CE93D8;
-    box-shadow: 3px 3px 0px #B39DDB;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: all 0.2s ease;
-}
-
-.nav-btn.active, .nav-btn:hover {
-    background: #CE93D8;
-    color: #ffffff;
-    box-shadow: 3px 3px 0px #81D4FA;
-    transform: translateY(-2px);
-}
-
-/* Slider Container */
-.slider-wrapper {
-    overflow: hidden;
-    width: 100%;
-    border-radius: 30px;
-}
-
-.slides-container {
-    display: flex;
-    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    width: 100%;
-}
-
-.slide {
-    min-width: 100%;
-    box-sizing: border-box;
-}
-
-/* กรอบเนื้อหาการ์ด */
 .box {
     background: rgba(255, 255, 255, 0.95);
     padding: 35px 30px;
     border-radius: 30px;
-    position: relative;
     border: 5px dashed #F06292;
     outline: 5px solid #ffffff;
-    box-shadow: 8px 8px 0px #F8BBD0, 14px 14px 0px rgba(255, 128, 171, 0.4);
-    min-height: 380px;
+    box-shadow: 8px 8px 0px #F8BBD0;
+    text-align: center;
 }
 
-.box::before {
-    content: '🌸';
-    position: absolute;
-    top: -18px;
-    left: 20px;
-    font-size: 24px;
-    background: #FFF;
-    padding: 0 5px;
-    border-radius: 50%;
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 25px;
 }
 
-.box::after {
-    content: '✨';
-    position: absolute;
-    bottom: -15px;
-    right: 20px;
-    font-size: 22px;
-}
-
-h2 {
+.menu-card {
+    background: #ffffff;
+    border: 2px solid #CE93D8;
+    border-radius: 20px;
+    padding: 20px;
+    text-decoration: none;
     color: #AB47BC;
-    font-size: 24px;
-    font-family: 'Sarabun', sans-serif;
     font-weight: 700;
-    border-bottom: 3px dotted #80DEEA;
-    padding-bottom: 12px;
-    margin-top: 0;
-    margin-bottom: 20px;
+    font-size: 18px;
+    box-shadow: 3px 3px 0px #B39DDB;
+    transition: all 0.2s ease;
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 8px;
 }
 
-.fancy-text {
-    font-family: 'Great Vibes', cursive;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 26px;
-    color: #E91E63;
-    margin-left: auto;
-    letter-spacing: 0.5px;
-}
-
-p, ul {
-    font-size: 16px;
-    color: #4a4a4a;
-    line-height: 1.8;
-}
-
-.info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 15px;
-    margin-top: 15px;
-}
-
-.info-item {
-    background: #FCE4EC;
-    padding: 12px 16px;
-    border-radius: 15px;
-    border: 2px solid #F8BBD0;
-    font-size: 15px;
-}
-
-.info-item b {
-    color: #222;
-}
-
-/* ประวัติการศึกษา */
-.edu-lines {
-    margin-top: 15px;
-}
-
-.edu-line {
-    background: #FCE4EC;
-    padding: 18px 20px;
-    border-radius: 16px;
-    border: 2px solid #F48FB1;
-    margin-bottom: 15px;
-}
-
-.edu-line:last-child {
-    margin-bottom: 0;
-}
-
-.edu-line b {
-    color: #0277BD;
-    font-size: 16px;
-}
-
-/* กิจกรรมแลกเปลี่ยน */
-.exchange-title {
-    font-size: 16px;
-    color: #AD1457;
-    background: #FCE4EC;
-    border: 2px dashed #F48FB1;
-    border-radius: 16px;
-    padding: 15px;
-    margin: 10px 0 20px 0;
-    text-align: center;
-    line-height: 1.6;
-}
-
-.cert-box {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    background: #FCE4EC;
-    border: 3px solid #F06292;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #AD1457;
-    font-size: 16px;
-    text-align: center;
-    margin-bottom: 20px;
-    overflow: hidden;
-}
-
-.cert-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.photo-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-    gap: 12px;
-}
-
-.photo-box {
-    aspect-ratio: 1 / 1;
-    background: #FCE4EC;
-    border: 2px solid #F48FB1;
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #AD1457;
-    font-size: 14px;
-    text-align: center;
-    overflow: hidden;
-}
-
-.photo-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* ปุ่มควบคุมล่าง */
-.controls {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 25px;
-}
-
-.btn {
-    background: linear-gradient(45deg, #FF4081, #CE93D8);
+.menu-card:hover {
+    background: #CE93D8;
     color: #ffffff;
-    padding: 10px 24px;
-    text-decoration: none;
-    border-radius: 20px;
-    font-size: 16px;
-    font-weight: 600;
-    font-family: 'Sarabun', sans-serif;
-    box-shadow: 0 4px 10px rgba(255, 64, 129, 0.3);
-    transition: all 0.3s ease;
-    border: 2px solid #ffffff;
-    cursor: pointer;
-    display: inline-block;
+    transform: translateY(-3px);
+    box-shadow: 4px 4px 0px #81D4FA;
 }
 
-.btn:hover {
-    background: linear-gradient(45deg, #AB47BC, #FF80AB);
-    transform: scale(1.05);
-}
-
-.btn:disabled {
-    background: #f5f5f5;
-    color: #ccc;
-    border-color: #eee;
-    box-shadow: none;
-    cursor: not-allowed;
-    transform: none;
+.menu-card span {
+    font-size: 28px;
 }
 
 .footer {
@@ -552,224 +117,53 @@ p, ul {
     background: rgba(255, 255, 255, 0.8);
     padding: 12px;
     border-radius: 20px;
-    backdrop-filter: blur(5px);
     font-family: 'Great Vibes', cursive;
-    font-weight: 400;
-    font-style: normal;
-    letter-spacing: 0.5px;
 }
 </style>
 </head>
 <body>
 
-<!-- ม่านเปิดเว็บแบบอลังการ -->
-<div class="entrance-overlay" id="entranceOverlay">
-    <div class="entrance-panel left">
-        <div class="entrance-logo-wrap">
-            <span class="entrance-logo">Port</span>
-        </div>
-        <span class="sparkle" style="top:30%; right:20%; animation-delay:0.2s;">✨</span>
-        <span class="sparkle" style="top:60%; right:35%; animation-delay:0.8s;">🌸</span>
-        <span class="sparkle" style="top:45%; right:10%; animation-delay:1.3s;">✨</span>
-    </div>
-    <div class="entrance-panel right">
-        <div class="entrance-logo-wrap">
-            <span class="entrance-logo">folio</span>
-        </div>
-        <span class="sparkle" style="top:35%; left:15%; animation-delay:0.4s;">🌸</span>
-        <span class="sparkle" style="top:65%; left:30%; animation-delay:1s;">✨</span>
-        <span class="sparkle" style="top:50%; left:45%; animation-delay:1.5s;">✨</span>
-    </div>
-</div>
-
 <div class="container">
-
-    <!-- ส่วนหัว -->
-    <div class="header-wrapper reveal-item">
+    <div class="header-wrapper">
         <div class="profile-card">
-            <!-- ไฟล์รูปโปรไฟล์ -->
             <img src="IMG_4109.png" alt="รูปโปรไฟล์">
         </div>
         <h1 class="main-title">Portfolio</h1>
         <div class="sub-name">วรรธนันท์ อุดมเดชภาคินทร์</div>
     </div>
 
-    <!-- แถบเมนูนำทาง (Tabs Navigation) -->
-    <nav class="nav-tabs reveal-item">
-        <button class="nav-btn active" onclick="goToSlide(0)"> ประวัติส่วนตัว</button>
-        <button class="nav-btn" onclick="goToSlide(1)"> ประวัติการศึกษา</button>
-        <button class="nav-btn" onclick="goToSlide(2)"> กิจกรรม</button>
-        <button class="nav-btn" onclick="goToSlide(3)"> ความสนใจในการศึกษาต่อ</button>
-    </nav>
-
-    <!-- พื้นที่สไลด์เลื่อนซ้าย-ขวา -->
-    <div class="slider-wrapper reveal-item" id="sliderWrapper">
-        <div class="slides-container" id="slidesContainer">
-
-            <!-- Slide 1: ประวัติส่วนตัว -->
-            <div class="slide">
-                <div class="box">
-                    <h2> ประวัติส่วนตัว <span class="fancy-text">Profile</span></h2>
-                    <div class="info-grid">
-                        <div class="info-item"><b>ชื่อ-นามสกุล :</b> วรรธนันท์ อุดมเดชภาคินทร์</div>
-                        <div class="info-item"><b>ชื่อเล่น :</b> ปริ้นเซส</div>
-                        <div class="info-item"><b>วันเกิด :</b> 17 พฤศจิกายน 2551</div>
-                        <div class="info-item"><b>อายุ :</b> 17 ปี</div>
-                        <div class="info-item"><b>ระดับชั้น :</b> มัธยมศึกษาปีที่ 6</div>
-                        <div class="info-item"><b>แผนการเรียน :</b> Gifted</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 2: ประวัติการศึกษา -->
-            <div class="slide">
-                <div class="box">
-                    <h2> ประวัติการศึกษา <span class="fancy-text">Education</span></h2>
-                    <div class="edu-lines">
-                        <div class="edu-line">
-                            <b>🏫 ระดับมัธยมศึกษาตอนปลาย (ม.4 - ม.6) :</b> โรงเรียนบ้านบึง "อุตสาหกรรมนุเคราะห์" (แผนการเรียน Gifted)
-                        </div>
-                        <div class="edu-line">
-                            <b>🏫 ระดับมัธยมศึกษาตอนต้น (ม.1 - ม.3) :</b> โรงเรียนบ้านบึง "อุตสาหกรรมนุเคราะห์" (แผนการเรียน Gifted)
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 3: กิจกรรมและเกียรติบัตร -->
-            <div class="slide">
-                <div class="box">
-                    <h2> กิจกรรมและเกียรติบัตร <span class="fancy-text">Activities</span></h2>
-
-                    <div class="exchange-title">
-                        <b>โครงการแลกเปลี่ยนทางวิชาการครั้งที่ 10</b><br>
-                        ระหว่างโรงเรียนมัธยมศึกษาอิจิคาว่า ประเทศญี่ปุ่น<br>
-                        และโรงเรียนวิทยาศาสตร์จุฬาภรณราชวิทยาลัย
-                    </div>
-
-                    <!-- พื้นที่ใส่รูปเกียรติบัตรหลัก (IMG_4630.PNG) -->
-                    <div class="cert-box">
-                        <img src="IMG_4630.PNG" alt="เกียรติบัตร">
-                    </div>
-
-                    <!-- พื้นที่ใส่รูปรอง 3 รูป (JPG) -->
-                    <div class="photo-grid">
-                        <div class="photo-box">
-                            <img src="IMG_4782.JPG" alt="รูปกิจกรรม 1">
-                        </div>
-                        <div class="photo-box">
-                            <img src="IMG_4781.JPG" alt="รูปกิจกรรม 2">
-                        </div>
-                        <div class="photo-box">
-                            <img src="IMG_4779.JPG" alt="รูปกิจกรรม 3">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 4: ความสนใจในการศึกษาต่อ -->
-            <div class="slide">
-                <div class="box">
-                    <h2> ความสนใจในการศึกษาต่อ <span class="fancy-text">Interests</span></h2>
-                    <p>
-                        <b>คณะอักษรศาสตร์ :</b><br>
-                        มีความสนใจเข้าศึกษาต่อในระดับอุดมศึกษา ในคณะอักษรศาสตร์ เนื่องจากมีความรักและหลงใหลในภาษา การศึกษาวัฒนธรรม และการวิเคราะห์วรรณกรรม มุ่งมั่นที่จะพัฒนาทักษะการสื่อสารระดับสูงและการคิดวิเคราะห์ เพื่อนำองค์ความรู้ไปประยุกต์ใช้ในสายอาชีพและการพัฒนาตนเองในอนาคต
-                    </p>
-                    <hr style="border: 0; border-top: 1px dashed #FF80AB; margin: 20px 0;">
-                </div>
-            </div>
-
+    <div class="box">
+        <h2 style="color: #AB47BC; margin-top:0;">🌸 ยินดีต้อนรับเข้าสู่แฟ้มสะสมผลงาน 🌸</h2>
+        <p style="color: #666;">กรุณาเลือกหัวข้อที่ต้องการรับชม</p>
+        
+        <div class="menu-grid">
+            <a href="introduction.html" class="menu-card">
+                <span>📝</span>
+                1. คำนำ
+            </a>
+            <a href="profile.html" class="menu-card">
+                <span>👤</span>
+                2. ประวัติส่วนตัว & การศึกษา
+            </a>
+            <a href="university.html" class="menu-card">
+                <span>🎓</span>
+                3. ความสนใจในการศึกษาต่อ
+            </a>
+            <a href="projects.html" class="menu-card">
+                <span>🏆</span>
+                4. กิจกรรมที่เข้าร่วม
+            </a>
+            <a href="skill.html" class="menu-card">
+                <span>💡</span>
+                5. ทักษะความสามารถ
+            </a>
         </div>
     </div>
 
-    <!-- ปุ่มนำทาง ย้อนกลับ-ถัดไป -->
-    <div class="controls reveal-item">
-        <button class="btn" id="prevBtn" onclick="goBackOrHome()">❮ ย้อนกลับ</button>
-        <button class="btn" id="nextBtn" onclick="changeSlide(1)">ถัดไป ❯</button>
-    </div>
-
-    <!-- ฟุตเตอร์ -->
-    <div class="footer reveal-item">
+    <div class="footer">
         © Portfolio - Wantanan Udomdetphakin
     </div>
-
 </div>
-
-<script>
-// เริ่มลำดับการเปิดม่านอลังการทันทีที่โหลดหน้าเว็บ
-document.body.classList.add('entrance-run');
-setTimeout(() => {
-    const overlay = document.getElementById('entranceOverlay');
-    if (overlay) overlay.remove();
-}, 2000);
-
-let currentSlide = 0;
-const slidesContainer = document.getElementById('slidesContainer');
-const totalSlides = document.querySelectorAll('.slide').length;
-const navButtons = document.querySelectorAll('.nav-btn');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
-
-function updateSlidePosition() {
-    slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
-
-    navButtons.forEach((btn, index) => {
-        if(index === currentSlide) {
-            btn.classList.add('active');
-            btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-        } else {
-            btn.classList.remove('active');
-        }
-    });
-
-    prevBtn.disabled = false;
-    nextBtn.disabled = currentSlide === totalSlides - 1;
-}
-
-function goToSlide(index) {
-    currentSlide = index;
-    updateSlidePosition();
-}
-
-function changeSlide(direction) {
-    currentSlide += direction;
-    if (currentSlide < 0) currentSlide = 0;
-    if (currentSlide >= totalSlides) currentSlide = totalSlides - 1;
-    updateSlidePosition();
-}
-
-function goBackOrHome() {
-    if (currentSlide === 0) {
-        window.location.href = 'index.html';
-    } else {
-        changeSlide(-1);
-    }
-}
-
-let touchStartX = 0;
-let touchEndX = 0;
-const sliderWrapper = document.getElementById('sliderWrapper');
-
-sliderWrapper.addEventListener('touchstart', e => {
-    touchStartX = e.changedTouches[0].screenX;
-});
-
-sliderWrapper.addEventListener('touchend', e => {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-});
-
-function handleSwipe() {
-    if (touchStartX - touchEndX > 50) {
-        if (currentSlide < totalSlides - 1) changeSlide(1);
-    }
-    if (touchEndX - touchStartX > 50) {
-        if (currentSlide > 0) changeSlide(-1);
-    }
-}
-
-updateSlidePosition();
-</script>
 
 </body>
 </html>
