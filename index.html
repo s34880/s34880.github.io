@@ -27,7 +27,6 @@
   }
 
   body {
-    /* พื้นหลังหลักไล่เฉดสีชมพูพาสเทลหวานๆ */
     background: linear-gradient(135deg, #fff0f5 0%, #ffd1dc 40%, #e1bee7 70%, #b3e5fc 100%);
     font-family: 'Great Vibes', cursive;
     color: var(--text-color);
@@ -40,7 +39,6 @@
     position: relative;
   }
 
-  /* ------------------- CSS สร้างพื้นหลังวงกลมลอยดุ๊กดิ๊ก (Background Blobs) ------------------- */
   .bg-decorations {
     position: fixed;
     top: 0;
@@ -108,7 +106,6 @@
     }
   }
 
-  /* ------------------- เอฟเฟกต์ตกแต่งตกลงมา ------------------- */
   .falling-container {
     position: fixed;
     top: 0;
@@ -151,7 +148,6 @@
   .falling-item:nth-child(8)  { left: 88%; animation-duration: 9.5s; animation-delay: 1.5s; }
   .falling-item:nth-child(9)  { left: 95%; animation-duration: 6.8s; animation-delay: 3.5s; }
 
-  /* ------------------- การ์ดโปรไฟล์ ------------------- */
   .card {
     background: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(16px);
@@ -168,13 +164,11 @@
     animation: floatCard 3.5s ease-in-out infinite alternate;
   }
 
-  /* การ์ดลอยขึ้น-ลงนุ่มนวล */
   @keyframes floatCard {
     0% { transform: translateY(0px) rotate(-0.5deg); }
     100% { transform: translateY(-12px) rotate(0.5deg); }
   }
 
-  /* ------------------- รูปโปรไฟล์แบบดุ๊กดิ๊ก ------------------- */
   .avatar-wrapper {
     position: relative;
     width: 130px;
@@ -191,13 +185,11 @@
     padding: 4px;
     background: #fff;
     box-shadow: 0 8px 20px rgba(251, 111, 146, 0.25);
-    /* เอฟเฟกต์ดุ๊กดิ๊กตลอดเวลา */
     animation: avatarBounce 2.5s ease-in-out infinite alternate;
     cursor: pointer;
     transition: transform 0.3s;
   }
 
-  /* เอฟเฟกต์เด้งสั่นดุ๊กดิ๊ก */
   @keyframes avatarBounce {
     0% { transform: translateY(0) scale(1) rotate(0deg); }
     30% { transform: translateY(-6px) scale(1.03) rotate(-3deg); }
@@ -240,7 +232,6 @@
     animation: pulseHighlight 2s infinite alternate;
   }
 
-  /* ตกแต่งตัวอักษรภาษาอังกฤษด้วยฟอนต์ Heart Script */
   .heart-text {
     font-family: 'Great Vibes', cursive;
     font-size: 1.25em;
@@ -252,7 +243,6 @@
     100% { transform: scale(1.05); }
   }
 
-  /* ------------------- ปุ่มกดขยับดุ๊กดิ๊ก ------------------- */
   .btn {
     display: inline-block;
     background: linear-gradient(45deg, var(--pink-main), var(--purple-soft));
@@ -267,7 +257,6 @@
     transition: all 0.3s ease;
     margin-top: 15px;
     border: 2px dashed #ffffff;
-    /* เอฟเฟกต์ปุ่มสั่นไหวดุ๊กดิ๊ก */
     animation: btnPulse 3s ease-in-out infinite;
   }
 
@@ -282,7 +271,6 @@
     background: linear-gradient(45deg, var(--purple-soft), var(--pink-dark));
   }
 
-  /* ------------------- โซเชียลมีเดียดุ๊กดิ๊ก ------------------- */
   .social-links {
     margin-top: 25px;
     font-size: 24px;
@@ -313,7 +301,6 @@
 </head>
 <body>
 
-<!-- วงกลมพื้นหลังลอยดุ๊กดิ๊ก (Pastel Floating Blobs) -->
 <div class="bg-decorations">
   <div class="bg-circle bg-circle-1"></div>
   <div class="bg-circle bg-circle-2"></div>
@@ -321,7 +308,6 @@
   <div class="bg-circle bg-circle-4"></div>
 </div>
 
-<!-- ไอคอนตกลงมา -->
 <div class="falling-container">
   <div class="falling-item">✨</div>
   <div class="falling-item">🌸</div>
@@ -334,16 +320,15 @@
   <div class="falling-item">🍓</div>
 </div>
 
-<!-- การ์ดเนื้อหา -->
 <div class="card">
   <div class="avatar-wrapper">
     <img src="IMG_4109.png" alt="รูปโปรไฟล์วรรธนันท์" class="avatar-img" title="ลองแตะสิ!">
   </div>
-  
+
   <h1 class="heart-font">Welcome to My Profile ✨</h1>
   <p>สวัสดีค่ะ! ดิฉันชื่อ <span class="highlight">วรรธนันท์ (<span class="heart-text">Wantanan</span>)</span> 🎀</p>
   <p> สนใจศึกษาต่อใน <br><strong class="heart-text" style="font-size: 1.15em;"> คณะอักษรศาสตร์ ✨</strong></p>
-  
+
   <a href="portfolio.html" class="btn">✨🎀 แฟ้มสะสมผลงาน 🪽✨</a>
 
   <div class="social-links">
@@ -355,3 +340,4 @@
 
 </body>
 </html>
+
