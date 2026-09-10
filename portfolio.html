@@ -20,14 +20,15 @@ body {
     font-family: 'Sarabun', sans-serif;
     margin: 0;
     padding: 30px 15px;
-    background: linear-gradient(135deg, #F3E5F5 0%, #E1F5FE 50%, #FCE4EC 100%);
+    /* เปลี่ยนพื้นหลังเป็นรูปภาพ IMG_4643.jpeg */
+    background: url('IMG_4643.jpeg') center center / cover no-repeat fixed;
     position: relative;
     overflow-x: hidden;
     min-height: 100vh;
     color: #2b2b2b;
 }
 
-/* ลวดลายพื้นหลังขยับได้เบาๆ โดยไม่เปลี่ยนสี */
+/* ลวดลายแสงละมุนจางๆ ซ้อนทับรูปพื้นหลัง */
 body::before,
 body::after {
     content: '';
@@ -43,7 +44,7 @@ body::before {
     height: 420px;
     top: -120px;
     left: -100px;
-    background: rgba(255, 209, 220, 0.55);
+    background: rgba(255, 209, 220, 0.35);
     animation: drift-one 22s ease-in-out infinite;
 }
 
@@ -52,7 +53,7 @@ body::after {
     height: 380px;
     bottom: -100px;
     right: -100px;
-    background: rgba(179, 229, 252, 0.55);
+    background: rgba(179, 229, 252, 0.35);
     animation: drift-two 26s ease-in-out infinite;
 }
 
@@ -200,33 +201,62 @@ body.entrance-run .footer.reveal-item { animation-delay: 1.72s; }
     margin-bottom: 25px;
 }
 
+/* ==================== สไตล์รูปโปรไฟล์แบบทันสมัย (Modern & Elegant Profile) ==================== */
 .profile-card {
-    width: 130px;
-    height: 130px;
+    position: relative;
+    width: 135px;
+    height: 135px;
+    margin: 0 auto 18px auto;
     border-radius: 50%;
-    background: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 15px auto;
-    border: 5px solid #FF80AB;
-    box-shadow: 6px 6px 0px #80DEEA, -5px -5px 0px #CE93D8;
-    transition: transform 0.3s ease;
+    /* แบ็คกราวด์และเส้นขอบแบบไล่เฉดสีไล่ระดับ */
+    background: linear-gradient(135deg, #FF80AB, #CE93D8, #80DEEA);
+    padding: 3px; /* ความหนาของขอบไล่เฉดสี */
+    /* เงาฟุ้งแบบ Soft Neon Glow เพิ่มมิติความลึก */
+    box-shadow: 
+        0 10px 25px -5px rgba(233, 30, 99, 0.25),
+        0 8px 16px -8px rgba(128, 222, 234, 0.3);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+    cursor: pointer;
+}
+
+/* วงแหวนเอฟเฟกต์สะท้อนแสงเบาๆ ซ่อนอยู่ด้านหลัง */
+.profile-card::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #F48FB1, #80DEEA);
+    z-index: -1;
+    opacity: 0.4;
+    filter: blur(8px);
+    transition: opacity 0.4s ease, filter 0.4s ease;
 }
 
 .profile-card:hover {
-    transform: rotate(5deg) scale(1.05);
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 
+        0 15px 30px -5px rgba(233, 30, 99, 0.35),
+        0 10px 20px -5px rgba(128, 222, 234, 0.4);
 }
 
+.profile-card:hover::before {
+    opacity: 0.8;
+    filter: blur(12px);
+}
+
+/* ตัวรูปภาพด้านในกรอบ */
 .profile-card img {
-    width: 120px;
-    height: 120px;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
-    border: 3px solid #A7FFEB;
     object-fit: cover;
+    display: block;
+    border: 3px solid #ffffff;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+    background-color: #ffffff;
 }
 
-/* หัวข้อ Portfolio ใช้ฟอนต์ Playfair Display (ตามภาพตัวอย่าง) */
+/* หัวข้อ Portfolio ใช้ฟอนต์ Great Vibes */
 .main-title {
     font-family: 'Great Vibes', cursive;
     font-size: 76px;
@@ -316,7 +346,7 @@ body.entrance-run .footer.reveal-item { animation-delay: 1.72s; }
 
 /* กรอบเนื้อหาการ์ด */
 .box {
-    background: rgba(255, 255, 255, 0.97);
+    background: rgba(255, 255, 255, 0.95);
     padding: 35px 30px;
     border-radius: 30px;
     position: relative;
@@ -519,7 +549,7 @@ p, ul {
     font-size: 26px;
     color: #424242;
     margin-top: 30px;
-    background: rgba(255, 255, 255, 0.75);
+    background: rgba(255, 255, 255, 0.8);
     padding: 12px;
     border-radius: 20px;
     backdrop-filter: blur(5px);
@@ -557,7 +587,7 @@ p, ul {
     <!-- ส่วนหัว -->
     <div class="header-wrapper reveal-item">
         <div class="profile-card">
-            <!-- สมมติว่าไฟล์รูปโปรไฟล์ชื่อ IMG_4109.png ตามโค้ดเดิม -->
+            <!-- ไฟล์รูปโปรไฟล์ -->
             <img src="IMG_4109.png" alt="รูปโปรไฟล์">
         </div>
         <h1 class="main-title">Portfolio</h1>
@@ -566,10 +596,10 @@ p, ul {
 
     <!-- แถบเมนูนำทาง (Tabs Navigation) -->
     <nav class="nav-tabs reveal-item">
-        <button class="nav-btn active" onclick="goToSlide(0)">👩‍🎓 ประวัติส่วนตัว</button>
-        <button class="nav-btn" onclick="goToSlide(1)">📚 ประวัติการศึกษา</button>
-        <button class="nav-btn" onclick="goToSlide(2)">🏆 กิจกรรม</button>
-        <button class="nav-btn" onclick="goToSlide(3)">🎯 ความสนใจในการศึกษาต่อ</button>
+        <button class="nav-btn active" onclick="goToSlide(0)"> ประวัติส่วนตัว</button>
+        <button class="nav-btn" onclick="goToSlide(1)"> ประวัติการศึกษา</button>
+        <button class="nav-btn" onclick="goToSlide(2)"> กิจกรรม</button>
+        <button class="nav-btn" onclick="goToSlide(3)"> ความสนใจในการศึกษาต่อ</button>
     </nav>
 
     <!-- พื้นที่สไลด์เลื่อนซ้าย-ขวา -->
@@ -579,7 +609,7 @@ p, ul {
             <!-- Slide 1: ประวัติส่วนตัว -->
             <div class="slide">
                 <div class="box">
-                    <h2>👩‍🎓 ประวัติส่วนตัว <span class="fancy-text">Profile</span></h2>
+                    <h2> ประวัติส่วนตัว <span class="fancy-text">Profile</span></h2>
                     <div class="info-grid">
                         <div class="info-item"><b>ชื่อ-นามสกุล :</b> วรรธนันท์ อุดมเดชภาคินทร์</div>
                         <div class="info-item"><b>ชื่อเล่น :</b> ปริ้นเซส</div>
@@ -594,7 +624,7 @@ p, ul {
             <!-- Slide 2: ประวัติการศึกษา -->
             <div class="slide">
                 <div class="box">
-                    <h2>📚 ประวัติการศึกษา <span class="fancy-text">Education</span></h2>
+                    <h2> ประวัติการศึกษา <span class="fancy-text">Education</span></h2>
                     <div class="edu-lines">
                         <div class="edu-line">
                             <b>🏫 ระดับมัธยมศึกษาตอนปลาย (ม.4 - ม.6) :</b> โรงเรียนบ้านบึง "อุตสาหกรรมนุเคราะห์" (แผนการเรียน Gifted)
@@ -609,7 +639,7 @@ p, ul {
             <!-- Slide 3: กิจกรรมและเกียรติบัตร -->
             <div class="slide">
                 <div class="box">
-                    <h2>🏆 กิจกรรมและเกียรติบัตร <span class="fancy-text">Activities</span></h2>
+                    <h2> กิจกรรมและเกียรติบัตร <span class="fancy-text">Activities</span></h2>
 
                     <div class="exchange-title">
                         <b>โครงการแลกเปลี่ยนทางวิชาการครั้งที่ 10</b><br>
@@ -640,7 +670,7 @@ p, ul {
             <!-- Slide 4: ความสนใจในการศึกษาต่อ -->
             <div class="slide">
                 <div class="box">
-                    <h2>🎯 ความสนใจในการศึกษาต่อ <span class="fancy-text">Interests</span></h2>
+                    <h2> ความสนใจในการศึกษาต่อ <span class="fancy-text">Interests</span></h2>
                     <p>
                         <b>คณะอักษรศาสตร์ :</b><br>
                         มีความสนใจเข้าศึกษาต่อในระดับอุดมศึกษา ในคณะอักษรศาสตร์ เนื่องจากมีความรักและหลงใหลในภาษา การศึกษาวัฒนธรรม และการวิเคราะห์วรรณกรรม มุ่งมั่นที่จะพัฒนาทักษะการสื่อสารระดับสูงและการคิดวิเคราะห์ เพื่อนำองค์ความรู้ไปประยุกต์ใช้ในสายอาชีพและการพัฒนาตนเองในอนาคต
