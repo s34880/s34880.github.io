@@ -1,8 +1,3 @@
-นี่คือโค้ด HTML ที่ได้รับการปรับแก้ไขตามที่ขอเรียบร้อยแล้วครับ:
- 1. **ลบหัวข้อ/ข้อความ Princess Usahana ออกแล้ว**
- 2. **เปลี่ยนฟอนต์ของคำว่า Portfolio** ให้ใช้ฟอนต์ **Great Vibes** (ฟอนต์แบบเดียวกับที่เคยใช้กับ Princess Usahana)
- 3. **ปรับสไตล์และเลย์เอาต์ให้เรียบหรู ดูทันสมัย มินิมอล มีมิติ** มีความสะอาดตาและเป็นมืออาชีพ ใกล้เคียงกับสไตล์ของเว็บไซต์พอร์ตโฟลิโอตัวอย่าง พร้อมทั้งยังคงระบบสไลด์ การ์ดข้อมูล และการรองรับการปัดหน้าจอ (Touch Swipe) ไว้เต็มรูปแบบ
-```html
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -10,50 +5,187 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>แฟ้มสะสมผลงาน (Portfolio) - วรรธนันท์ อุดมเดชภาคินทร์</title>
 <style>
-/* นำเข้าฟอนต์ Google Fonts: Great Vibes (คำว่า Portfolio), Baloo 2 และ Mali (เนื้อหา) */
-@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Great+Vibes&family=Mali:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap');
+/* นำเข้าฟอนต์ Google Fonts: Great Vibes (ฟอนต์อังกฤษ), Sarabun (ฟอนต์ไทยหลัก) */
+@import url('https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Great+Vibes&display=swap');
 
 * {
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: 'Mali', cursive, sans-serif;
+    font-family: 'Sarabun', sans-serif;
     margin: 0;
     padding: 30px 15px;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    background-attachment: fixed;
+    /* เปลี่ยนพื้นหลังเป็นรูปภาพ IMG_4643.jpeg */
+    background: url('IMG_4643.jpeg') center center / cover no-repeat fixed;
     position: relative;
     overflow-x: hidden;
     min-height: 100vh;
     color: #2b2b2b;
 }
 
-/* ตกแต่งพื้นหลังเรืองแสงแบบซอฟต์ๆ มินิมอล */
-body::before {
-    content: '';
-    position: fixed;
-    top: -100px;
-    right: -100px;
-    width: 350px;
-    height: 350px;
-    background: rgba(255, 182, 193, 0.35);
-    filter: blur(80px);
-    border-radius: 50%;
-    z-index: 0;
-}
-
+/* ลวดลายแสงละมุนจางๆ ซ้อนทับรูปพื้นหลัง */
+body::before,
 body::after {
     content: '';
     position: fixed;
-    bottom: -100px;
-    left: -100px;
-    width: 350px;
-    height: 350px;
-    background: rgba(173, 216, 230, 0.35);
-    filter: blur(80px);
     border-radius: 50%;
+    filter: blur(60px);
     z-index: 0;
+    pointer-events: none;
+}
+
+body::before {
+    width: 420px;
+    height: 420px;
+    top: -120px;
+    left: -100px;
+    background: rgba(255, 209, 220, 0.35);
+    animation: drift-one 22s ease-in-out infinite;
+}
+
+body::after {
+    width: 380px;
+    height: 380px;
+    bottom: -100px;
+    right: -100px;
+    background: rgba(179, 229, 252, 0.35);
+    animation: drift-two 26s ease-in-out infinite;
+}
+
+@keyframes drift-one {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(60px, 40px) scale(1.15); }
+}
+
+@keyframes drift-two {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-50px, -30px) scale(1.15); }
+}
+
+/* ==================== ENTRANCE OVERLAY (อลังการ) ==================== */
+.entrance-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    pointer-events: none;
+}
+
+.entrance-panel {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.entrance-panel.left {
+    background: linear-gradient(135deg, #F48FB1 0%, #CE93D8 100%);
+    justify-content: flex-end;
+}
+
+.entrance-panel.right {
+    background: linear-gradient(135deg, #80DEEA 0%, #B39DDB 100%);
+    justify-content: flex-start;
+}
+
+.entrance-logo-wrap {
+    display: flex;
+    align-items: center;
+}
+
+.entrance-logo {
+    font-family: 'Great Vibes', cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 56px;
+    color: #ffffff;
+    letter-spacing: 2px;
+    text-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
+    opacity: 0;
+    animation: logoAppear 1.1s ease forwards 0.25s;
+}
+
+.entrance-panel.left .entrance-logo { transform-origin: right center; }
+.entrance-panel.right .entrance-logo { transform-origin: left center; }
+
+@keyframes logoAppear {
+    0% { opacity: 0; transform: scale(0.6); letter-spacing: 8px; }
+    60% { opacity: 1; }
+    100% { opacity: 1; transform: scale(1); letter-spacing: 2px; }
+}
+
+.sparkle {
+    position: absolute;
+    color: #ffffff;
+    opacity: 0;
+    font-size: 18px;
+    animation: sparkleFloat 2.2s ease-in-out infinite;
+}
+
+@keyframes sparkleFloat {
+    0% { opacity: 0; transform: translateY(10px) scale(0.5) rotate(0deg); }
+    40% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(-60px) scale(1.1) rotate(90deg); }
+}
+
+body.entrance-run .entrance-overlay {
+    animation: overlayGone 0.1s linear forwards 1.5s;
+}
+
+body.entrance-run .entrance-panel.left {
+    animation: panelOutLeft 0.9s cubic-bezier(0.76, 0, 0.24, 1) forwards 0.9s;
+}
+
+body.entrance-run .entrance-panel.right {
+    animation: panelOutRight 0.9s cubic-bezier(0.76, 0, 0.24, 1) forwards 0.9s;
+}
+
+@keyframes panelOutLeft {
+    to { transform: translateX(-100%); }
+}
+
+@keyframes panelOutRight {
+    to { transform: translateX(100%); }
+}
+
+@keyframes overlayGone {
+    to { visibility: hidden; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .entrance-overlay { display: none; }
+    .reveal-item { opacity: 1 !important; transform: none !important; animation: none !important; }
+}
+
+/* ==================== เนื้อหาหลัก: จังหวะปรากฏหลังม่านเปิด ==================== */
+.reveal-item {
+    opacity: 0;
+}
+
+body.entrance-run .reveal-item {
+    animation-name: riseIn;
+    animation-duration: 0.85s;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    animation-fill-mode: forwards;
+}
+
+body.entrance-run .header-wrapper.reveal-item { animation-delay: 1.05s; }
+body.entrance-run .nav-tabs.reveal-item { animation-delay: 1.25s; }
+body.entrance-run .slider-wrapper.reveal-item { animation-delay: 1.4s; }
+body.entrance-run .controls.reveal-item { animation-delay: 1.6s; }
+body.entrance-run .footer.reveal-item { animation-delay: 1.72s; }
+
+@keyframes riseIn {
+    0% { opacity: 0; transform: translateY(26px) scale(0.97); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .container {
@@ -69,41 +201,81 @@ body::after {
     margin-bottom: 25px;
 }
 
+/* ==================== สไตล์รูปโปรไฟล์แบบทันสมัย (Modern & Elegant Profile) ==================== */
 .profile-card {
-    width: 130px;
-    height: 130px;
+    position: relative;
+    width: 135px;
+    height: 135px;
+    margin: 0 auto 18px auto;
     border-radius: 50%;
-    background: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 15px auto;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-    border: 3px solid #ffffff;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* แบ็คกราวด์และเส้นขอบแบบไล่เฉดสีไล่ระดับ */
+    background: linear-gradient(135deg, #FF80AB, #CE93D8, #80DEEA);
+    padding: 3px; /* ความหนาของขอบไล่เฉดสี */
+    /* เงาฟุ้งแบบ Soft Neon Glow เพิ่มมิติความลึก */
+    box-shadow: 
+        0 10px 25px -5px rgba(233, 30, 99, 0.25),
+        0 8px 16px -8px rgba(128, 222, 234, 0.3);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+    cursor: pointer;
+}
+
+/* วงแหวนเอฟเฟกต์สะท้อนแสงเบาๆ ซ่อนอยู่ด้านหลัง */
+.profile-card::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #F48FB1, #80DEEA);
+    z-index: -1;
+    opacity: 0.4;
+    filter: blur(8px);
+    transition: opacity 0.4s ease, filter 0.4s ease;
 }
 
 .profile-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 
+        0 15px 30px -5px rgba(233, 30, 99, 0.35),
+        0 10px 20px -5px rgba(128, 222, 234, 0.4);
 }
 
+.profile-card:hover::before {
+    opacity: 0.8;
+    filter: blur(12px);
+}
+
+/* ตัวรูปภาพด้านในกรอบ */
 .profile-card img {
-    width: 120px;
-    height: 120px;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
     object-fit: cover;
+    display: block;
+    border: 3px solid #ffffff;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.06);
+    background-color: #ffffff;
 }
 
-/* หัวข้อ Portfolio ใช้ฟอนต์ Great Vibes (สไตล์ Princess Usahana เดิม) */
+/* หัวข้อ Portfolio ใช้ฟอนต์ Great Vibes */
 .main-title {
     font-family: 'Great Vibes', cursive;
-    font-size: 72px;
+    font-size: 76px;
     margin: 0;
-    color: #333333;
+    color: #E91E63;
     font-weight: normal;
     line-height: 1;
     letter-spacing: 1px;
+    text-shadow: 3px 3px 0px #D1C4E9, 0 0 15px rgba(255, 64, 129, 0.4);
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 2px 2px 0px #D1C4E9, 0 0 10px rgba(255, 128, 171, 0.5);
+    }
+    to {
+        text-shadow: 3px 3px 0px #D1C4E9, 0 0 20px rgba(255, 64, 129, 0.8), 0 0 30px #FF80AB;
+    }
 }
 
 .sub-name {
@@ -114,49 +286,51 @@ body::after {
     letter-spacing: 0.5px;
 }
 
-/* แถบเมนูนำทาง (Tabs Navigation) สไตล์แคปซูลมินิมอล */
+/* แถบเมนูนำทาง (Tabs Navigation) */
 .nav-tabs {
     display: flex;
     justify-content: center;
     overflow-x: auto;
     gap: 10px;
-    padding: 8px;
+    padding: 10px 5px;
     margin-bottom: 20px;
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
-    border-radius: 30px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
 }
 
 .nav-tabs::-webkit-scrollbar {
-    display: none;
+    height: 6px;
+}
+.nav-tabs::-webkit-scrollbar-thumb {
+    background-color: #CE93D8;
+    border-radius: 10px;
 }
 
 .nav-btn {
-    background: transparent;
-    color: #666666;
+    background: #ffffff;
+    color: #AB47BC;
     padding: 8px 20px;
     border-radius: 20px;
     font-size: 16px;
     font-weight: 600;
-    font-family: 'Mali', cursive;
-    border: none;
+    font-family: 'Sarabun', sans-serif;
+    border: 2px solid #CE93D8;
+    box-shadow: 3px 3px 0px #B39DDB;
     cursor: pointer;
     white-space: nowrap;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 
 .nav-btn.active, .nav-btn:hover {
-    background: #2b2b2b;
+    background: #CE93D8;
     color: #ffffff;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 3px 3px 0px #81D4FA;
+    transform: translateY(-2px);
 }
 
 /* Slider Container */
 .slider-wrapper {
     overflow: hidden;
     width: 100%;
-    border-radius: 24px;
+    border-radius: 30px;
 }
 
 .slides-container {
@@ -174,19 +348,39 @@ body::after {
 .box {
     background: rgba(255, 255, 255, 0.95);
     padding: 35px 30px;
-    border-radius: 24px;
+    border-radius: 30px;
     position: relative;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.8);
+    border: 5px dashed #F06292;
+    outline: 5px solid #ffffff;
+    box-shadow: 8px 8px 0px #F8BBD0, 14px 14px 0px rgba(255, 128, 171, 0.4);
     min-height: 380px;
 }
 
-h2 {
-    color: #222222;
+.box::before {
+    content: '🌸';
+    position: absolute;
+    top: -18px;
+    left: 20px;
     font-size: 24px;
-    font-family: 'Baloo 2', cursive;
+    background: #FFF;
+    padding: 0 5px;
+    border-radius: 50%;
+}
+
+.box::after {
+    content: '✨';
+    position: absolute;
+    bottom: -15px;
+    right: 20px;
+    font-size: 22px;
+}
+
+h2 {
+    color: #AB47BC;
+    font-size: 24px;
+    font-family: 'Sarabun', sans-serif;
     font-weight: 700;
-    border-bottom: 2px solid #f0f0f0;
+    border-bottom: 3px dotted #80DEEA;
     padding-bottom: 12px;
     margin-top: 0;
     margin-bottom: 20px;
@@ -196,11 +390,13 @@ h2 {
 }
 
 .fancy-text {
-    font-family: 'Baloo 2', cursive;
-    font-weight: 600;
-    font-size: 20px;
-    color: #888888;
+    font-family: 'Great Vibes', cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 26px;
+    color: #E91E63;
     margin-left: auto;
+    letter-spacing: 0.5px;
 }
 
 p, ul {
@@ -217,10 +413,10 @@ p, ul {
 }
 
 .info-item {
-    background: #fdfdfd;
+    background: #FCE4EC;
     padding: 12px 16px;
-    border-radius: 12px;
-    border: 1px solid #eaeaea;
+    border-radius: 15px;
+    border: 2px solid #F8BBD0;
     font-size: 15px;
 }
 
@@ -234,10 +430,10 @@ p, ul {
 }
 
 .edu-line {
-    background: #fdfdfd;
+    background: #FCE4EC;
     padding: 18px 20px;
     border-radius: 16px;
-    border: 1px solid #eaeaea;
+    border: 2px solid #F48FB1;
     margin-bottom: 15px;
 }
 
@@ -246,17 +442,17 @@ p, ul {
 }
 
 .edu-line b {
-    color: #111111;
+    color: #0277BD;
     font-size: 16px;
 }
 
 /* กิจกรรมแลกเปลี่ยน */
 .exchange-title {
     font-size: 16px;
-    color: #2c3e50;
-    background: #f8f9fa;
-    border: 1px solid #e9ecef;
-    border-radius: 12px;
+    color: #AD1457;
+    background: #FCE4EC;
+    border: 2px dashed #F48FB1;
+    border-radius: 16px;
     padding: 15px;
     margin: 10px 0 20px 0;
     text-align: center;
@@ -266,13 +462,13 @@ p, ul {
 .cert-box {
     width: 100%;
     aspect-ratio: 16 / 9;
-    background: #f1f3f5;
-    border: 1px dashed #ced4da;
-    border-radius: 16px;
+    background: #FCE4EC;
+    border: 3px solid #F06292;
+    border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #adb5bd;
+    color: #AD1457;
     font-size: 16px;
     text-align: center;
     margin-bottom: 20px;
@@ -282,7 +478,7 @@ p, ul {
 .cert-box img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .photo-grid {
@@ -293,13 +489,13 @@ p, ul {
 
 .photo-box {
     aspect-ratio: 1 / 1;
-    background: #f1f3f5;
-    border: 1px solid #dee2e6;
-    border-radius: 12px;
+    background: #FCE4EC;
+    border: 2px solid #F48FB1;
+    border-radius: 14px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #adb5bd;
+    color: #AD1457;
     font-size: 14px;
     text-align: center;
     overflow: hidden;
@@ -319,26 +515,24 @@ p, ul {
 }
 
 .btn {
-    background: #ffffff;
-    color: #333333;
+    background: linear-gradient(45deg, #FF4081, #CE93D8);
+    color: #ffffff;
     padding: 10px 24px;
     text-decoration: none;
     border-radius: 20px;
     font-size: 16px;
     font-weight: 600;
-    font-family: 'Mali', cursive;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    font-family: 'Sarabun', sans-serif;
+    box-shadow: 0 4px 10px rgba(255, 64, 129, 0.3);
     transition: all 0.3s ease;
-    border: 1px solid #e0e0e0;
+    border: 2px solid #ffffff;
     cursor: pointer;
     display: inline-block;
 }
 
 .btn:hover {
-    background: #2b2b2b;
-    color: #ffffff;
-    border-color: #2b2b2b;
-    transform: translateY(-2px);
+    background: linear-gradient(45deg, #AB47BC, #FF80AB);
+    transform: scale(1.05);
 }
 
 .btn:disabled {
@@ -352,21 +546,48 @@ p, ul {
 
 .footer {
     text-align: center;
-    font-size: 14px;
-    color: #777777;
+    font-size: 26px;
+    color: #424242;
     margin-top: 30px;
-    padding: 10px;
-    font-family: 'Mali', cursive;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 12px;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    font-family: 'Great Vibes', cursive;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 0.5px;
 }
 </style>
 </head>
 <body>
 
+<!-- ม่านเปิดเว็บแบบอลังการ -->
+<div class="entrance-overlay" id="entranceOverlay">
+    <div class="entrance-panel left">
+        <div class="entrance-logo-wrap">
+            <span class="entrance-logo">Port</span>
+        </div>
+        <span class="sparkle" style="top:30%; right:20%; animation-delay:0.2s;">✨</span>
+        <span class="sparkle" style="top:60%; right:35%; animation-delay:0.8s;">🌸</span>
+        <span class="sparkle" style="top:45%; right:10%; animation-delay:1.3s;">✨</span>
+    </div>
+    <div class="entrance-panel right">
+        <div class="entrance-logo-wrap">
+            <span class="entrance-logo">folio</span>
+        </div>
+        <span class="sparkle" style="top:35%; left:15%; animation-delay:0.4s;">🌸</span>
+        <span class="sparkle" style="top:65%; left:30%; animation-delay:1s;">✨</span>
+        <span class="sparkle" style="top:50%; left:45%; animation-delay:1.5s;">✨</span>
+    </div>
+</div>
+
 <div class="container">
 
     <!-- ส่วนหัว -->
-    <div class="header-wrapper">
+    <div class="header-wrapper reveal-item">
         <div class="profile-card">
+            <!-- ไฟล์รูปโปรไฟล์ -->
             <img src="IMG_4109.png" alt="รูปโปรไฟล์">
         </div>
         <h1 class="main-title">Portfolio</h1>
@@ -374,21 +595,21 @@ p, ul {
     </div>
 
     <!-- แถบเมนูนำทาง (Tabs Navigation) -->
-    <nav class="nav-tabs">
-        <button class="nav-btn active" onclick="goToSlide(0)">ประวัติส่วนตัว</button>
-        <button class="nav-btn" onclick="goToSlide(1)">ประวัติการศึกษา</button>
-        <button class="nav-btn" onclick="goToSlide(2)">กิจกรรม</button>
-        <button class="nav-btn" onclick="goToSlide(3)">ความสนใจในการศึกษาต่อ</button>
+    <nav class="nav-tabs reveal-item">
+        <button class="nav-btn active" onclick="goToSlide(0)"> ประวัติส่วนตัว</button>
+        <button class="nav-btn" onclick="goToSlide(1)"> ประวัติการศึกษา</button>
+        <button class="nav-btn" onclick="goToSlide(2)"> กิจกรรม</button>
+        <button class="nav-btn" onclick="goToSlide(3)"> ความสนใจในการศึกษาต่อ</button>
     </nav>
 
     <!-- พื้นที่สไลด์เลื่อนซ้าย-ขวา -->
-    <div class="slider-wrapper" id="sliderWrapper">
+    <div class="slider-wrapper reveal-item" id="sliderWrapper">
         <div class="slides-container" id="slidesContainer">
 
             <!-- Slide 1: ประวัติส่วนตัว -->
             <div class="slide">
                 <div class="box">
-                    <h2>👩‍🎓 ประวัติส่วนตัว <span class="fancy-text">Profile</span></h2>
+                    <h2> ประวัติส่วนตัว <span class="fancy-text">Profile</span></h2>
                     <div class="info-grid">
                         <div class="info-item"><b>ชื่อ-นามสกุล :</b> วรรธนันท์ อุดมเดชภาคินทร์</div>
                         <div class="info-item"><b>ชื่อเล่น :</b> ปริ้นเซส</div>
@@ -403,7 +624,7 @@ p, ul {
             <!-- Slide 2: ประวัติการศึกษา -->
             <div class="slide">
                 <div class="box">
-                    <h2>📚 ประวัติการศึกษา <span class="fancy-text">Education</span></h2>
+                    <h2> ประวัติการศึกษา <span class="fancy-text">Education</span></h2>
                     <div class="edu-lines">
                         <div class="edu-line">
                             <b>🏫 ระดับมัธยมศึกษาตอนปลาย (ม.4 - ม.6) :</b> โรงเรียนบ้านบึง "อุตสาหกรรมนุเคราะห์" (แผนการเรียน Gifted)
@@ -418,7 +639,7 @@ p, ul {
             <!-- Slide 3: กิจกรรมและเกียรติบัตร -->
             <div class="slide">
                 <div class="box">
-                    <h2>🏆 กิจกรรมและเกียรติบัตร <span class="fancy-text">Activities</span></h2>
+                    <h2> กิจกรรมและเกียรติบัตร <span class="fancy-text">Activities</span></h2>
 
                     <div class="exchange-title">
                         <b>โครงการแลกเปลี่ยนทางวิชาการครั้งที่ 10</b><br>
@@ -426,28 +647,35 @@ p, ul {
                         และโรงเรียนวิทยาศาสตร์จุฬาภรณราชวิทยาลัย
                     </div>
 
+                    <!-- พื้นที่ใส่รูปเกียรติบัตรหลัก (IMG_4630.PNG) -->
                     <div class="cert-box">
-                        🖼️ วางรูปเกียรติบัตรที่นี่
+                        <img src="IMG_4630.PNG" alt="เกียรติบัตร">
                     </div>
 
+                    <!-- พื้นที่ใส่รูปรอง 3 รูป (JPG) -->
                     <div class="photo-grid">
-                        <div class="photo-box">📷 รูปที่ 1</div>
-                        <div class="photo-box">📷 รูปที่ 2</div>
-                        <div class="photo-box">📷 รูปที่ 3</div>
+                        <div class="photo-box">
+                            <img src="IMG_4782.JPG" alt="รูปกิจกรรม 1">
+                        </div>
+                        <div class="photo-box">
+                            <img src="IMG_4781.JPG" alt="รูปกิจกรรม 2">
+                        </div>
+                        <div class="photo-box">
+                            <img src="IMG_4779.JPG" alt="รูปกิจกรรม 3">
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Slide 4: ความสนใจในการศึกษาต่อ + คติประจำใจ -->
+            <!-- Slide 4: ความสนใจในการศึกษาต่อ -->
             <div class="slide">
                 <div class="box">
-                    <h2>🎯 ความสนใจในการศึกษาต่อ <span class="fancy-text">Interests</span></h2>
+                    <h2> ความสนใจในการศึกษาต่อ <span class="fancy-text">Interests</span></h2>
                     <p>
-                        <b>สนใจคณะ/สาขา :</b><br>
-                        มีความสนใจเข้าศึกษาต่อในระดับอุดมศึกษา ในสาขาวิชาที่เกี่ยวข้องกับเทคโนโลยีสารสนเทศ วิทยาการคอมพิวเตอร์ หรือการออกแบบดิจิทัล เนื่องจากมีความหลงใหลในการคิดวิเคราะห์ พัฒนาโปรแกรม และการสร้างสรรค์ผลงานผ่านเทคโนโลยีใหม่ ๆ เพื่อประยุกต์ใช้ในอนาคต
+                        <b>คณะอักษรศาสตร์ :</b><br>
+                        มีความสนใจเข้าศึกษาต่อในระดับอุดมศึกษา ในคณะอักษรศาสตร์ เนื่องจากมีความรักและหลงใหลในภาษา การศึกษาวัฒนธรรม และการวิเคราะห์วรรณกรรม มุ่งมั่นที่จะพัฒนาทักษะการสื่อสารระดับสูงและการคิดวิเคราะห์ เพื่อนำองค์ความรู้ไปประยุกต์ใช้ในสายอาชีพและการพัฒนาตนเองในอนาคต
                     </p>
-                    <hr style="border: 0; border-top: 1px dashed #e0e0e0; margin: 20px 0;">
-                    <p><b>คติประจำใจ :</b><br><i style="font-size: 18px; color: #2b2b2b;">"ใครทำได้ ก็ให้เขาทำ"</i></p>
+                    <hr style="border: 0; border-top: 1px dashed #FF80AB; margin: 20px 0;">
                 </div>
             </div>
 
@@ -455,19 +683,26 @@ p, ul {
     </div>
 
     <!-- ปุ่มนำทาง ย้อนกลับ-ถัดไป -->
-    <div class="controls">
+    <div class="controls reveal-item">
         <button class="btn" id="prevBtn" onclick="goBackOrHome()">❮ ย้อนกลับ</button>
         <button class="btn" id="nextBtn" onclick="changeSlide(1)">ถัดไป ❯</button>
     </div>
 
     <!-- ฟุตเตอร์ -->
-    <div class="footer">
+    <div class="footer reveal-item">
         © Portfolio - Wantanan Udomdetphakin
     </div>
 
 </div>
 
 <script>
+// เริ่มลำดับการเปิดม่านอลังการทันทีที่โหลดหน้าเว็บ
+document.body.classList.add('entrance-run');
+setTimeout(() => {
+    const overlay = document.getElementById('entranceOverlay');
+    if (overlay) overlay.remove();
+}, 2000);
+
 let currentSlide = 0;
 const slidesContainer = document.getElementById('slidesContainer');
 const totalSlides = document.querySelectorAll('.slide').length;
@@ -478,7 +713,6 @@ const nextBtn = document.getElementById('nextBtn');
 function updateSlidePosition() {
     slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
 
-    // อัปเดตสถานะปุ่มแท็บ
     navButtons.forEach((btn, index) => {
         if(index === currentSlide) {
             btn.classList.add('active');
@@ -512,7 +746,6 @@ function goBackOrHome() {
     }
 }
 
-// รองรับการใช้นิ้วปัดซ้าย-ขวาบนหน้าจอมือถือ (Touch Swipe)
 let touchStartX = 0;
 let touchEndX = 0;
 const sliderWrapper = document.getElementById('sliderWrapper');
@@ -540,5 +773,3 @@ updateSlidePosition();
 
 </body>
 </html>
-
-```
