@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skill - วรรธนันท์ อุดมเดชภาคินทร์</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<!-- ทรานซิชันเปลี่ยนหน้าแบบดอกไม้บาน -->
+<div class="page-fade" id="pageFade">
+    <span class="bloom-emoji" style="top:38%; left:30%;">🌸</span>
+    <span class="bloom-emoji" style="top:55%; left:65%;">✨</span>
+    <span class="bloom-emoji" style="top:30%; left:60%;">💫</span>
+    <span class="bloom-emoji" style="top:65%; left:35%;">🌸</span>
+</div>
+
+<div class="container">
+
+    <div class="header-wrapper reveal-item">
+        <div class="profile-card">
+            <img src="IMG_4109.png" alt="รูปโปรไฟล์">
+        </div>
+        <h1 class="main-title" style="font-size:44px;">Skill</h1>
+        <div class="page-tagline">ทักษะและความสามารถ</div>
+    </div>
+
+    <nav class="nav-tabs reveal-item">
+        <a class="nav-btn" href="portfolio.html">Portfolio</a>
+        <a class="nav-btn" href="introduction.html">Introduction</a>
+        <a class="nav-btn" href="profile.html">Profile</a>
+        <a class="nav-btn" href="university.html">University</a>
+        <a class="nav-btn" href="projects.html">Projects</a>
+        <a class="nav-btn active" href="skill.html">Skill</a>
+    </nav>
+
+    <div class="box reveal-item">
+        <h2>ทักษะและความสามารถ <span class="fancy-text">Skills</span></h2>
+
+        <!-- ตัวอย่างเนื้อหา แก้ไข/เพิ่มเติมได้ตามทักษะจริงของน้อง -->
+        <div class="skill-grid">
+            <div class="skill-card">
+                <div class="skill-icon">📖</div>
+                <h3>ภาษาและวรรณกรรม</h3>
+                <p>มีความสนใจด้านภาษา การอ่าน และการวิเคราะห์วรรณกรรม</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🌏</div>
+                <h3>การสื่อสารข้ามวัฒนธรรม</h3>
+                <p>ประสบการณ์จากโครงการแลกเปลี่ยนกับโรงเรียนในประเทศญี่ปุ่น</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🎤</div>
+                <h3>การพูดและนำเสนอ</h3>
+                <p>สามารถสื่อสารและนำเสนอข้อมูลได้อย่างชัดเจน กล้าแสดงความคิดเห็น</p>
+            </div>
+            <div class="skill-card">
+                <div class="skill-icon">🤝</div>
+                <h3>การทำงานเป็นทีม</h3>
+                <p>ทำงานร่วมกับผู้อื่นได้ดี แบ่งหน้าที่และรับผิดชอบงานของตนเอง</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="controls reveal-item">
+        <a class="btn" href="projects.html">❮ ย้อนกลับ</a>
+        <a class="btn" href="portfolio.html">กลับหน้าพอร์ตโฟลิโอ ❯</a>
+    </div>
+
+    <div class="footer reveal-item">
+        © Portfolio - Wantanan Udomdetphakin
+    </div>
+
+</div>
+
+
+
+<script>
+// ทรานซิชันดอกไม้บานก่อนเปลี่ยนหน้า แล้วค่อยพาไปหน้าใหม่
+document.querySelectorAll('a[href$=".html"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+        var href = this.getAttribute('href');
+        if (!href || href.startsWith('http')) return;
+        e.preventDefault();
+        document.body.classList.add('page-leaving');
+        setTimeout(function () { window.location.href = href; }, 800);
+    });
+});
+</script>
+</body>
+</html>
