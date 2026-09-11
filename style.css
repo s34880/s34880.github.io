@@ -155,6 +155,28 @@ body.entrance-run .entrance-panel.right {
 @keyframes panelOutRight { to { transform: translateX(100%); } }
 @keyframes overlayGone { to { visibility: hidden; } }
 
+/* ---------- ม่านปิดก่อนเปลี่ยนหน้า (Page-leave transition) ---------- */
+body.entrance-leave .entrance-overlay {
+    visibility: visible;
+    animation: none;
+}
+
+body.entrance-leave .entrance-panel.left {
+    animation: panelInLeft 0.7s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+body.entrance-leave .entrance-panel.right {
+    animation: panelInRight 0.7s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+body.entrance-leave .entrance-logo {
+    animation: none;
+    opacity: 1;
+}
+
+@keyframes panelInLeft { from { transform: translateX(-100%); } to { transform: translateX(0); } }
+@keyframes panelInRight { from { transform: translateX(100%); } to { transform: translateX(0); } }
+
 @media (prefers-reduced-motion: reduce) {
     .entrance-overlay { display: none; }
     .reveal-item { opacity: 1 !important; transform: none !important; animation: none !important; }
