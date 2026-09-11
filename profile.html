@@ -80,7 +80,7 @@ document.querySelectorAll('a[href$=".html"]').forEach(function (link) {
         if (!href || href.startsWith('http')) return;
         e.preventDefault();
         document.body.classList.add('page-leaving');
-        setTimeout(function () { window.location.href = href; }, 500);
+        setTimeout(function () { window.location.href = href; }, 800);
     });
 });
 </script>
