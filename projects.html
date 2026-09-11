@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects - วรรธนันท์ อุดมเดชภาคินทร์</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<!-- ทรานซิชันเปลี่ยนหน้าแบบดอกไม้บาน -->
+<div class="page-fade" id="pageFade">
+    <span class="bloom-emoji" style="top:38%; left:30%;">🌸</span>
+    <span class="bloom-emoji" style="top:55%; left:65%;">✨</span>
+    <span class="bloom-emoji" style="top:30%; left:60%;">💫</span>
+    <span class="bloom-emoji" style="top:65%; left:35%;">🌸</span>
+</div>
+
+<div class="container">
+
+    <div class="header-wrapper reveal-item">
+        <div class="profile-card">
+            <img src="IMG_4109.png" alt="รูปโปรไฟล์">
+        </div>
+        <h1 class="main-title" style="font-size:44px;">Projects</h1>
+        <div class="page-tagline">กิจกรรมและเกียรติบัตร</div>
+    </div>
+
+    <nav class="nav-tabs reveal-item">
+        <a class="nav-btn" href="portfolio.html">Portfolio</a>
+        <a class="nav-btn" href="introduction.html">Introduction</a>
+        <a class="nav-btn" href="profile.html">Profile</a>
+        <a class="nav-btn" href="university.html">University</a>
+        <a class="nav-btn active" href="projects.html">Projects</a>
+        <a class="nav-btn" href="skill.html">Skill</a>
+    </nav>
+
+    <div class="box reveal-item">
+        <h2>กิจกรรมและเกียรติบัตร <span class="fancy-text">Activities</span></h2>
+
+        <div class="exchange-title">
+            <b>โครงการแลกเปลี่ยนทางวิชาการครั้งที่ 10</b><br>
+            ระหว่างโรงเรียนมัธยมศึกษาอิจิคาว่า ประเทศญี่ปุ่น<br>
+            และโรงเรียนวิทยาศาสตร์จุฬาภรณราชวิทยาลัย
+        </div>
+
+        <div class="cert-box">
+            <img src="IMG_4630.PNG" alt="เกียรติบัตร">
+        </div>
+
+        <div class="photo-grid">
+            <div class="photo-box">
+                <img src="IMG_4782.JPG" alt="รูปกิจกรรม 1">
+            </div>
+            <div class="photo-box">
+                <img src="IMG_4781.JPG" alt="รูปกิจกรรม 2">
+            </div>
+            <div class="photo-box">
+                <img src="IMG_4779.JPG" alt="รูปกิจกรรม 3">
+            </div>
+        </div>
+    </div>
+
+    <div class="controls reveal-item">
+        <a class="btn" href="university.html">❮ ย้อนกลับ</a>
+        <a class="btn" href="skill.html">ถัดไป ❯</a>
+    </div>
+
+    <div class="footer reveal-item">
+        © Portfolio - Wantanan Udomdetphakin
+    </div>
+
+</div>
+
+
+
+<script>
+// ทรานซิชันดอกไม้บานก่อนเปลี่ยนหน้า แล้วค่อยพาไปหน้าใหม่
+document.querySelectorAll('a[href$=".html"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+        var href = this.getAttribute('href');
+        if (!href || href.startsWith('http')) return;
+        e.preventDefault();
+        document.body.classList.add('page-leaving');
+        setTimeout(function () { window.location.href = href; }, 800);
+    });
+});
+</script>
+</body>
+</html>
