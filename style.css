@@ -70,136 +70,71 @@ body::after {
     z-index: 1;
 }
 
-/* ==================== ENTRANCE OVERLAY (อลังการ) ==================== */
-.entrance-overlay {
+/* ==================== ทรานซิชันเปลี่ยนหน้าแบบดอกไม้บาน ====================
+   ใช้แทนม่าน สำหรับการเปลี่ยนหน้าทุกจุดยกเว้น index.html <-> portfolio.html
+   ==================================================================== */
+.page-fade {
     position: fixed;
     inset: 0;
     z-index: 9999;
-    display: flex;
     pointer-events: none;
-}
-
-.entrance-panel {
-    flex: 1;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.entrance-panel.left {
-    background: linear-gradient(135deg, #F48FB1 0%, #CE93D8 100%);
-    justify-content: flex-end;
-}
-
-.entrance-panel.right {
-    background: linear-gradient(135deg, #80DEEA 0%, #B39DDB 100%);
-    justify-content: flex-start;
-}
-
-.entrance-logo-wrap {
-    display: flex;
-    align-items: center;
-}
-
-.entrance-logo {
-    font-family: 'Great Vibes', cursive;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 56px;
-    color: #ffffff;
-    letter-spacing: 2px;
-    text-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
     opacity: 0;
-    animation: logoAppear 1.1s ease forwards 0.25s;
+    background: radial-gradient(circle at 50% 50%, #ffffff 0%, #ffe0ec 45%, #d8c5fb 75%, #bfe9fb 100%);
+    transition: opacity 0.45s ease;
 }
 
-.entrance-panel.left .entrance-logo { transform-origin: right center; }
-.entrance-panel.right .entrance-logo { transform-origin: left center; }
-
-@keyframes logoAppear {
-    0% { opacity: 0; transform: scale(0.6); letter-spacing: 8px; }
-    60% { opacity: 1; }
-    100% { opacity: 1; transform: scale(1); letter-spacing: 2px; }
-}
-
-.sparkle {
-    position: absolute;
-    color: #ffffff;
-    opacity: 0;
-    font-size: 18px;
-    animation: sparkleFloat 2.2s ease-in-out infinite;
-}
-
-@keyframes sparkleFloat {
-    0% { opacity: 0; transform: translateY(10px) scale(0.5) rotate(0deg); }
-    40% { opacity: 1; }
-    100% { opacity: 0; transform: translateY(-60px) scale(1.1) rotate(90deg); }
-}
-
-body.entrance-run .entrance-overlay {
-    animation: overlayGone 0.1s linear forwards 1.5s;
-}
-
-body.entrance-run .entrance-panel.left {
-    animation: panelOutLeft 0.9s cubic-bezier(0.76, 0, 0.24, 1) forwards 0.9s;
-}
-
-body.entrance-run .entrance-panel.right {
-    animation: panelOutRight 0.9s cubic-bezier(0.76, 0, 0.24, 1) forwards 0.9s;
-}
-
-@keyframes panelOutLeft { to { transform: translateX(-100%); } }
-@keyframes panelOutRight { to { transform: translateX(100%); } }
-@keyframes overlayGone { to { visibility: hidden; } }
-
-/* ---------- ม่านปิดก่อนเปลี่ยนหน้า (Page-leave transition) ---------- */
-body.entrance-leave .entrance-overlay {
-    visibility: visible;
-    animation: none;
-}
-
-body.entrance-leave .entrance-panel.left {
-    animation: panelInLeft 0.7s cubic-bezier(0.76, 0, 0.24, 1) forwards;
-}
-
-body.entrance-leave .entrance-panel.right {
-    animation: panelInRight 0.7s cubic-bezier(0.76, 0, 0.24, 1) forwards;
-}
-
-body.entrance-leave .entrance-logo {
-    animation: none;
+body.page-leaving .page-fade {
     opacity: 1;
 }
 
-@keyframes panelInLeft { from { transform: translateX(-100%); } to { transform: translateX(0); } }
-@keyframes panelInRight { from { transform: translateX(100%); } to { transform: translateX(0); } }
-
-@media (prefers-reduced-motion: reduce) {
-    .entrance-overlay { display: none; }
-    .reveal-item { opacity: 1 !important; transform: none !important; animation: none !important; }
+body.page-leaving .container {
+    animation: zoomFadeOut 0.45s ease forwards;
 }
 
-/* ==================== เนื้อหาหลัก: จังหวะปรากฏหลังม่านเปิด ==================== */
-.reveal-item {
+@keyframes zoomFadeOut {
+    to { opacity: 0; transform: scale(0.94); filter: blur(3px); }
+}
+
+.bloom-emoji {
+    position: absolute;
+    font-size: 26px;
     opacity: 0;
 }
 
-body.entrance-run .reveal-item {
-    animation-name: riseIn;
-    animation-duration: 0.85s;
-    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
-    animation-fill-mode: forwards;
+body.page-leaving .bloom-emoji {
+    animation: bloomPop 0.6s ease forwards;
 }
 
-body.entrance-run .header-wrapper.reveal-item { animation-delay: 1.05s; }
-body.entrance-run .nav-tabs.reveal-item       { animation-delay: 1.25s; }
-body.entrance-run .box.reveal-item            { animation-delay: 1.4s; }
-body.entrance-run .box.reveal-item + .box.reveal-item { animation-delay: 1.5s; }
-body.entrance-run .controls.reveal-item       { animation-delay: 1.6s; }
-body.entrance-run .footer.reveal-item         { animation-delay: 1.72s; }
+.page-fade .bloom-emoji:nth-child(1) { animation-delay: 0.05s; }
+.page-fade .bloom-emoji:nth-child(2) { animation-delay: 0.15s; }
+.page-fade .bloom-emoji:nth-child(3) { animation-delay: 0.10s; }
+.page-fade .bloom-emoji:nth-child(4) { animation-delay: 0.20s; }
+
+@keyframes bloomPop {
+    0% { opacity: 0; transform: scale(0.4) rotate(0deg); }
+    60% { opacity: 1; }
+    100% { opacity: 0; transform: scale(1.3) rotate(25deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .page-fade { display: none; }
+    .reveal-item { opacity: 1 !important; transform: none !important; animation: none !important; }
+}
+
+/* ==================== เนื้อหาหลัก: จังหวะปรากฏขึ้นเมื่อโหลดหน้า ====================
+   (แบบธรรมดา เล่นทันที ไม่ต้องรอม่าน — ใช้ในหน้า introduction/profile/university/projects/skill)
+   ==================================================================== */
+.reveal-item {
+    opacity: 0;
+    animation: riseIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.header-wrapper.reveal-item { animation-delay: 0.05s; }
+.nav-tabs.reveal-item       { animation-delay: 0.15s; }
+.box.reveal-item            { animation-delay: 0.28s; }
+.box.reveal-item + .box.reveal-item { animation-delay: 0.38s; }
+.controls.reveal-item       { animation-delay: 0.48s; }
+.footer.reveal-item         { animation-delay: 0.58s; }
 
 @keyframes riseIn {
     0% { opacity: 0; transform: translateY(26px) scale(0.97); }
