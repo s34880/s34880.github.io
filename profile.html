@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile - วรรธนันท์ อุดมเดชภาคินทร์</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<!-- ทรานซิชันเปลี่ยนหน้าแบบดอกไม้บาน -->
+<div class="page-fade" id="pageFade">
+    <span class="bloom-emoji" style="top:38%; left:30%;">🌸</span>
+    <span class="bloom-emoji" style="top:55%; left:65%;">✨</span>
+    <span class="bloom-emoji" style="top:30%; left:60%;">💫</span>
+    <span class="bloom-emoji" style="top:65%; left:35%;">🌸</span>
+</div>
+
+<div class="container">
+
+    <div class="header-wrapper reveal-item">
+        <div class="profile-card">
+            <img src="IMG_4109.png" alt="รูปโปรไฟล์">
+        </div>
+        <h1 class="main-title" style="font-size:44px;">Profile</h1>
+        <div class="page-tagline">ประวัติส่วนตัวและการศึกษา</div>
+    </div>
+
+    <nav class="nav-tabs reveal-item">
+        <a class="nav-btn" href="portfolio.html">Portfolio</a>
+        <a class="nav-btn" href="introduction.html">Introduction</a>
+        <a class="nav-btn active" href="profile.html">Profile</a>
+        <a class="nav-btn" href="university.html">University</a>
+        <a class="nav-btn" href="projects.html">Projects</a>
+        <a class="nav-btn" href="skill.html">Skill</a>
+    </nav>
+
+    <div class="box reveal-item">
+        <h2>ประวัติส่วนตัว <span class="fancy-text">Profile</span></h2>
+        <div class="info-grid">
+            <div class="info-item"><b>ชื่อ-นามสกุล :</b> วรรธนันท์ อุดมเดชภาคินทร์</div>
+            <div class="info-item"><b>ชื่อเล่น :</b> ปริ้นเซส</div>
+            <div class="info-item"><b>วันเกิด :</b> 17 พฤศจิกายน 2551</div>
+            <div class="info-item"><b>ระดับชั้น :</b> มัธยมศึกษาปีที่ 6</div>
+            <div class="info-item"><b>แผนการเรียน :</b> Gifted</div>
+        </div>
+    </div>
+
+    <div class="box reveal-item" style="margin-top:25px;">
+        <h2>ประวัติการศึกษา <span class="fancy-text">Education</span></h2>
+        <div class="edu-lines">
+            <div class="edu-line">
+                <b>🏫 ระดับมัธยมศึกษาตอนปลาย (ม.4 - ม.6) :</b> โรงเรียนบ้านบึง "อุตสาหกรรมนุเคราะห์" (แผนการเรียน Gifted)
+            </div>
+            <div class="edu-line">
+                <b>🏫 ระดับมัธยมศึกษาตอนต้น (ม.1 - ม.3) :</b> โรงเรียนบ้านบึง "อุตสาหกรรมนุเคราะห์" (แผนการเรียน Gifted)
+            </div>
+        </div>
+    </div>
+
+    <div class="controls reveal-item">
+        <a class="btn" href="introduction.html">❮ ย้อนกลับ</a>
+        <a class="btn" href="university.html">ถัดไป ❯</a>
+    </div>
+
+    <div class="footer reveal-item">
+        © Portfolio - Wantanan Udomdetphakin
+    </div>
+
+</div>
+
+
+
+<script>
+// ทรานซิชันดอกไม้บานก่อนเปลี่ยนหน้า แล้วค่อยพาไปหน้าใหม่
+document.querySelectorAll('a[href$=".html"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+        var href = this.getAttribute('href');
+        if (!href || href.startsWith('http')) return;
+        e.preventDefault();
+        document.body.classList.add('page-leaving');
+        setTimeout(function () { window.location.href = href; }, 500);
+    });
+});
+</script>
+</body>
+</html>
