@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>University - วรรธนันท์ อุดมเดชภาคินทร์</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<!-- ทรานซิชันเปลี่ยนหน้าแบบดอกไม้บาน -->
+<div class="page-fade" id="pageFade">
+    <span class="bloom-emoji" style="top:38%; left:30%;">🌸</span>
+    <span class="bloom-emoji" style="top:55%; left:65%;">✨</span>
+    <span class="bloom-emoji" style="top:30%; left:60%;">💫</span>
+    <span class="bloom-emoji" style="top:65%; left:35%;">🌸</span>
+</div>
+
+<div class="container">
+
+    <div class="header-wrapper reveal-item">
+        <div class="profile-card">
+            <img src="IMG_4109.png" alt="รูปโปรไฟล์">
+        </div>
+        <h1 class="main-title" style="font-size:44px;">University</h1>
+        <div class="page-tagline">ความสนใจในการศึกษาต่อ</div>
+    </div>
+
+    <nav class="nav-tabs reveal-item">
+        <a class="nav-btn" href="portfolio.html">Portfolio</a>
+        <a class="nav-btn" href="introduction.html">Introduction</a>
+        <a class="nav-btn" href="profile.html">Profile</a>
+        <a class="nav-btn active" href="university.html">University</a>
+        <a class="nav-btn" href="projects.html">Projects</a>
+        <a class="nav-btn" href="skill.html">Skill</a>
+    </nav>
+
+    <div class="box reveal-item">
+        <h2>ความสนใจในการศึกษาต่อ <span class="fancy-text">Interests</span></h2>
+        <p>
+            <b>คณะอักษรศาสตร์ :</b><br>
+            มีความสนใจเข้าศึกษาต่อในระดับอุดมศึกษา ในคณะอักษรศาสตร์ เนื่องจากมีความรักและหลงใหลในภาษา
+            การศึกษาวัฒนธรรม และการวิเคราะห์วรรณกรรม มุ่งมั่นที่จะพัฒนาทักษะการสื่อสารระดับสูงและการคิดวิเคราะห์
+            เพื่อนำองค์ความรู้ไปประยุกต์ใช้ในสายอาชีพและการพัฒนาตนเองในอนาคต
+        </p>
+        <hr style="border: 0; border-top: 1px dashed #FF80AB; margin: 20px 0;">
+        <div class="info-grid">
+            <div class="info-item"><b>คณะเป้าหมาย :</b> อักษรศาสตร์</div>
+            <div class="info-item"><b>ความสนใจเฉพาะทาง :</b> ภาษา วรรณกรรม และวัฒนธรรม</div>
+        </div>
+    </div>
+
+    <div class="controls reveal-item">
+        <a class="btn" href="profile.html">❮ ย้อนกลับ</a>
+        <a class="btn" href="projects.html">ถัดไป ❯</a>
+    </div>
+
+    <div class="footer reveal-item">
+        © Portfolio - Wantanan Udomdetphakin
+    </div>
+
+</div>
+
+
+
+<script>
+// ทรานซิชันดอกไม้บานก่อนเปลี่ยนหน้า แล้วค่อยพาไปหน้าใหม่
+document.querySelectorAll('a[href$=".html"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+        var href = this.getAttribute('href');
+        if (!href || href.startsWith('http')) return;
+        e.preventDefault();
+        document.body.classList.add('page-leaving');
+        setTimeout(function () { window.location.href = href; }, 500);
+    });
+});
+</script>
+</body>
+</html>
