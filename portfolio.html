@@ -1,3 +1,120 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio - วรรธนันท์ อุดมเดชภาคินทร์</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* ==================== ม่านเปิดหน้า Portfolio (เก็บไว้เฉพาะ index<->portfolio) ==================== */
+.entrance-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    pointer-events: none;
+}
+
+.entrance-panel {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.entrance-panel.left {
+    background: linear-gradient(135deg, #F48FB1 0%, #CE93D8 100%);
+    justify-content: flex-end;
+}
+
+.entrance-panel.right {
+    background: linear-gradient(135deg, #80DEEA 0%, #B39DDB 100%);
+    justify-content: flex-start;
+}
+
+.entrance-logo-wrap {
+    display: flex;
+    align-items: center;
+}
+
+.entrance-logo {
+    font-family: 'Great Vibes', cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 56px;
+    color: #ffffff;
+    letter-spacing: 2px;
+    text-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
+    opacity: 0;
+    animation: logoAppear 1.1s ease forwards 0.25s;
+}
+
+.entrance-panel.left .entrance-logo { transform-origin: right center; }
+.entrance-panel.right .entrance-logo { transform-origin: left center; }
+
+@keyframes logoAppear {
+    0% { opacity: 0; transform: scale(0.6); letter-spacing: 8px; }
+    60% { opacity: 1; }
+    100% { opacity: 1; transform: scale(1); letter-spacing: 2px; }
+}
+
+.sparkle {
+    position: absolute;
+    color: #ffffff;
+    opacity: 0;
+    font-size: 18px;
+    animation: sparkleFloat 2.2s ease-in-out infinite;
+}
+
+@keyframes sparkleFloat {
+    0% { opacity: 0; transform: translateY(10px) scale(0.5) rotate(0deg); }
+    40% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(-60px) scale(1.1) rotate(90deg); }
+}
+
+body.entrance-run .entrance-overlay {
+    animation: overlayGone 0.1s linear forwards 1.5s;
+}
+
+body.entrance-run .entrance-panel.left {
+    animation: panelOutLeft 0.9s cubic-bezier(0.76, 0, 0.24, 1) forwards 0.9s;
+}
+
+body.entrance-run .entrance-panel.right {
+    animation: panelOutRight 0.9s cubic-bezier(0.76, 0, 0.24, 1) forwards 0.9s;
+}
+
+@keyframes panelOutLeft { to { transform: translateX(-100%); } }
+@keyframes panelOutRight { to { transform: translateX(100%); } }
+@keyframes overlayGone { to { visibility: hidden; } }
+
+/* เนื้อหาหน้านี้ต้องรอม่านเปิดก่อนค่อยปรากฏ (ทับค่า .reveal-item แบบธรรมดาจาก style.css) */
+.reveal-item { opacity: 0; animation: none; }
+
+body.entrance-run .reveal-item {
+    animation-name: riseIn;
+    animation-duration: 0.85s;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    animation-fill-mode: forwards;
+}
+
+body.entrance-run .header-wrapper.reveal-item { animation-delay: 1.05s; }
+body.entrance-run .nav-tabs.reveal-item       { animation-delay: 1.25s; }
+body.entrance-run .box.reveal-item            { animation-delay: 1.4s; }
+body.entrance-run .controls.reveal-item       { animation-delay: 1.6s; }
+body.entrance-run .footer.reveal-item         { animation-delay: 1.72s; }
+
+@media (prefers-reduced-motion: reduce) {
+    .entrance-overlay { display: none; }
+    .reveal-item { opacity: 1 !important; animation: none !important; }
+}
+</style>
+</head>
+<body>
+
 <!-- ม่านเปิดเว็บแบบอลังการ -->
 <div class="entrance-overlay" id="entranceOverlay">
     <div class="entrance-panel left">
@@ -17,3 +134,89 @@
         <span class="sparkle" style="top:50%; left:45%; animation-delay:1.5s;">✨</span>
     </div>
 </div>
+
+<!-- ทรานซิชันเปลี่ยนหน้าแบบดอกไม้บาน (ใช้ตอนออกจากหน้านี้ไปหน้าอื่น) -->
+<div class="page-fade" id="pageFade">
+    <span class="bloom-emoji" style="top:38%; left:30%;">🌸</span>
+    <span class="bloom-emoji" style="top:55%; left:65%;">✨</span>
+    <span class="bloom-emoji" style="top:30%; left:60%;">💫</span>
+    <span class="bloom-emoji" style="top:65%; left:35%;">🌸</span>
+</div>
+
+<div class="container">
+
+    <div class="header-wrapper reveal-item">
+        <div class="profile-card">
+            <img src="IMG_4109.png" alt="รูปโปรไฟล์">
+        </div>
+        <h1 class="main-title" style="font-size:44px;">Portfolio</h1>
+        <div class="page-tagline">วรรธนันท์ อุดมเดชภาคินทร์</div>
+    </div>
+
+    <nav class="nav-tabs reveal-item">
+        <a class="nav-btn active" href="portfolio.html">Portfolio</a>
+        <a class="nav-btn" href="introduction.html">Introduction</a>
+        <a class="nav-btn" href="profile.html">Profile</a>
+        <a class="nav-btn" href="university.html">University</a>
+        <a class="nav-btn" href="projects.html">Projects</a>
+        <a class="nav-btn" href="contact.html">Contact</a>
+    </nav>
+
+    <div class="box reveal-item">
+        <h2>เลือกหัวข้อที่ต้องการดู <span class="fancy-text">Explore</span></h2>
+
+        <div class="hub-grid">
+            <a class="hub-card" href="introduction.html">
+                <div class="hub-icon">👋</div>
+                <h3>Introduction</h3>
+                <p>แนะนำตัวและเป้าหมาย</p>
+            </a>
+            <a class="hub-card" href="profile.html">
+                <div class="hub-icon">🧾</div>
+                <h3>Profile</h3>
+                <p>ประวัติส่วนตัวและการศึกษา</p>
+            </a>
+            <a class="hub-card" href="university.html">
+                <div class="hub-icon">🎓</div>
+                <h3>University</h3>
+                <p>ความสนใจในการศึกษาต่อ</p>
+            </a>
+            <a class="hub-card" href="projects.html">
+                <div class="hub-icon">📸</div>
+                <h3>Projects</h3>
+                <p>กิจกรรมและเกียรติบัตร</p>
+            </a>
+            <a class="hub-card" href="contact.html">
+                <div class="hub-icon">✉️</div>
+                <h3>Contact</h3>
+                <p>ช่องทางการติดต่อ</p>
+            </a>
+        </div>
+    </div>
+
+    <div class="footer reveal-item">
+        © Portfolio - Wantanan Udomdetphakin
+    </div>
+
+</div>
+
+
+<script>
+// เริ่มลำดับการเปิดม่านอลังการทันทีที่โหลดหน้าเว็บ
+document.body.classList.add('entrance-run');
+</script>
+
+<script>
+// ทรานซิชันดอกไม้บานก่อนออกไปหน้าอื่น (ไม่ใช้ม่านอีกแล้ว)
+document.querySelectorAll('a[href$=".html"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+        var href = this.getAttribute('href');
+        if (!href || href.startsWith('http')) return;
+        e.preventDefault();
+        document.body.classList.add('page-leaving');
+        setTimeout(function () { window.location.href = href; }, 800);
+    });
+});
+</script>
+</body>
+</html>
